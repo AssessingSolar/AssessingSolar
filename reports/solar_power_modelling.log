@@ -1,0 +1,61 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# 1st step: Estimating the parameters for the CEC single diode model
+""" WARNING - This function relies on NREL's SAM tool. So PySAM, its Python API, needs to be installed 
+in the same computer. Otherwise, you can expect the following error: 'ImportError if NREL-PySAM is not installed.'
+"""
+cec_fit_params = pvlib.ivtools.sdm.fit_cec_sam(module_data['celltype'], module_data['v_mp'], module_data['i_mp'],
+                                  module_data['v_oc'], module_data['i_sc'], module_data['alpha_sc'],
+                                  module_data['beta_voc'], module_data['gamma_pmp'], 
+                                  module_data['cells_in_series'], module_data['temp_ref'])
+
+# Let's have a look to the output
+print(cec_fit_params)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pvlib/ivtools/sdm.py[0m in [0;36mfit_cec_sam[0;34m(celltype, v_mp, i_mp, v_oc, i_sc, alpha_sc, beta_voc, gamma_pmp, cells_in_series, temp_ref)[0m
+[1;32m     96[0m     [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 97[0;31m         [0;32mfrom[0m [0mPySAM[0m [0;32mimport[0m [0mPySSC[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     98[0m     [0;32mexcept[0m [0mImportError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'PySAM'
+
+During handling of the above exception, another exception occurred:
+
+[0;31mImportError[0m                               Traceback (most recent call last)
+[0;32m/tmp/ipykernel_1874/1379621200.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      6[0m                                   [0mmodule_data[0m[0;34m[[0m[0;34m'v_oc'[0m[0;34m][0m[0;34m,[0m [0mmodule_data[0m[0;34m[[0m[0;34m'i_sc'[0m[0;34m][0m[0;34m,[0m [0mmodule_data[0m[0;34m[[0m[0;34m'alpha_sc'[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m                                   [0mmodule_data[0m[0;34m[[0m[0;34m'beta_voc'[0m[0;34m][0m[0;34m,[0m [0mmodule_data[0m[0;34m[[0m[0;34m'gamma_pmp'[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 8[0;31m                                   module_data['cells_in_series'], module_data['temp_ref'])
+[0m[1;32m      9[0m [0;34m[0m[0m
+[1;32m     10[0m [0;31m# Let's have a look to the output[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pvlib/ivtools/sdm.py[0m in [0;36mfit_cec_sam[0;34m(celltype, v_mp, i_mp, v_oc, i_sc, alpha_sc, beta_voc, gamma_pmp, cells_in_series, temp_ref)[0m
+[1;32m     97[0m         [0;32mfrom[0m [0mPySAM[0m [0;32mimport[0m [0mPySSC[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     98[0m     [0;32mexcept[0m [0mImportError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 99[0;31m         raise ImportError("Requires NREL's PySAM package at "
+[0m[1;32m    100[0m                           "https://pypi.org/project/NREL-PySAM/.")
+[1;32m    101[0m [0;34m[0m[0m
+
+[0;31mImportError[0m: Requires NREL's PySAM package at https://pypi.org/project/NREL-PySAM/.
+ImportError: Requires NREL's PySAM package at https://pypi.org/project/NREL-PySAM/.
+
