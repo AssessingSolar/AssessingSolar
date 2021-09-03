@@ -1,0 +1,1909 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solar Power Modelling &#8212; Solar Resource Assessment in Python</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Benchmarking" href="benchmarking.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/assessing_solar_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Solar Resource Assessment in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Solar radiation modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_components_and_geometry.html">
+   Solar Components and Geometry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_position.html">
+   Solar position
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_radiation_modelling.html">
+   Solar Radiation Modelling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="manipulating_time_series.html">
+   Manipulating Time-series
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Solar resource data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_resource_data_overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="satellite_data.html">
+   Satellite data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reanalysis_data.html">
+   Reanalysis data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ground_measurements.html">
+   Ground-based solar irradiance data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quality_asessment.html">
+   Quality assessment of solar irradiance data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="benchmarking.html">
+   Benchmarking
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Solar power modeling
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Solar Power Modelling
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/solar_power_modelling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AssessingSolar/Assessing-Solar"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/AssessingSolar/Assessing-Solar/issues/new?title=Issue%20on%20page%20%2Fnotebooks/solar_power_modelling.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AssessingSolar/Assessing-Solar/master?urlpath=tree/notebooks/solar_power_modelling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-pv-system-components-a-id-characteristicspv-a">
+   1 Defining PV System Components
+   <a id="CharacteristicsPV">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition-of-pv-module">
+     Definition of PV module
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition-of-a-pv-inverter">
+     Definition of a PV inverter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-v-characteristic-curve-a-id-ivcurve-a">
+   2 I-V Characteristic Curve
+   <a id="IVcurve">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#irradiance-to-dc-power-conversion-a-id-dcmodels-a">
+   3 Irradiance to DC power conversion
+   <a id="DCmodels">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dc-to-ac-power-conversion-inverter-models-a-id-inverter-a">
+   4 DC to AC power conversion (inverter models)
+   <a id="inverter">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#whole-system-irradiance-to-power-conversion-a-id-fullsystem-a">
+   5 Whole System Irradiance to Power Conversion
+   <a id="fullsystem">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-summary">
+   Section Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="solar-power-modelling">
+<h1>Solar Power Modelling<a class="headerlink" href="#solar-power-modelling" title="Permalink to this headline">¶</a></h1>
+<p>The conversion of <strong>solar irradiance to electric power output</strong> as observed in photovoltaic (PV) systems is covered in this chapter of <a class="reference external" href="https://assessingsolar.org/"><em>AssessingSolar.org</em></a>. Other chapters facilitate best practices in how to obtain solar radiation data, how to apply certain quality checks to the data or how to manipulate and assess timeseries of solar data for solar resource assessment. However, for PV applications it is important that we consider the conversion from irradiance to power output occuring between the different components of a PV system and of the PV system as a whole.</p>
+<p>The several sections of this chapter aim to illustrate the conversion from irradiance to power step by step:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#CharacteristicsPV">1 Defining PV system components;</a></p></li>
+<li><p><a class="reference external" href="#IVcurve">2 I-V characteristic curve;</a></p></li>
+<li><p><a class="reference external" href="#DCmodels">3 Irradiance to DC power conversion;</a></p></li>
+<li><p><a class="reference external" href="#inverter">4 DC to AC power conversion (inverter models);</a></p></li>
+<li><p><a class="reference external" href="#fullsystem">5 Whole System Irradiance to Power Conversion.</a></p></li>
+</ul>
+<p>The code in this chapter is mainly based on the Python libraries <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/"><em>pvlib</em></a> and other general purpose libraries, such as <a class="reference external" href="https://numpy.org/"><em>numpy</em></a>, <a class="reference external" href="https://pandas.pydata.org/"><em>pandas</em></a> and <a class="reference external" href="https://matplotlib.org/"><em>matplotlib</em></a>.</p>
+<hr class="docutils" />
+<div style="text-align: right"> <i>Content by Javier Lopez Lorente</i> </div><div class="section" id="defining-pv-system-components-a-id-characteristicspv-a">
+<h2>1 Defining PV System Components <a id='CharacteristicsPV'></a><a class="headerlink" href="#defining-pv-system-components-a-id-characteristicspv-a" title="Permalink to this headline">¶</a></h2>
+<p>In this section we cover how to define or obtain the different characteristics and specifications of several components of PV systems, such as PV modules and PV inverters. These components can be defined manually, for example, in Python dictionary or can be retrieved from existing databases.</p>
+<div class="section" id="definition-of-pv-module">
+<h3>Definition of PV module<a class="headerlink" href="#definition-of-pv-module" title="Permalink to this headline">¶</a></h3>
+<p>The characteristics of PV modules in Python can be retrieved by using <em>pvlib</em>. The 2 main databases for PV modules that can be imported are: (1) the Sandia Laboratories PV module database; and (2) the CEC PV module database. Below, we present an example to how the databases can be accessed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the particular module of the pvlib library</span>
+<span class="kn">from</span> <span class="nn">pvlib</span> <span class="kn">import</span> <span class="n">pvsystem</span>
+
+<span class="c1"># CEC PV Module Database</span>
+<span class="n">cec_mod_db</span> <span class="o">=</span> <span class="n">pvsystem</span><span class="o">.</span><span class="n">retrieve_sam</span><span class="p">(</span><span class="s1">&#39;CECmod&#39;</span><span class="p">)</span>
+
+<span class="c1"># Size of the database</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cec_mod_db</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_13436</span><span class="o">/</span><span class="mf">905169781.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Import the particular module of the pvlib library</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">pvlib</span> <span class="kn">import</span> <span class="n">pvsystem</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># CEC PV Module Database</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">cec_mod_db</span> <span class="o">=</span> <span class="n">pvsystem</span><span class="o">.</span><span class="n">retrieve_sam</span><span class="p">(</span><span class="s1">&#39;CECmod&#39;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pvlib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are over 21,500 modules in that version of the CEC PV module database. Each module has 25 parameters that are technical information of the module and metadata. The database is returned as a pandas DataFrame, so each of the modules can be accessed with integer-location based indexing using <em>iloc</em>. Let’s have a look to the parameters of one of them selected randomly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cec_mod_db</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">cec_mod_db</span><span class="p">))])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Technology            Mono-c-Si
+Bifacial                      0
+STC                     184.702
+PTC                       160.2
+A_c                         1.3
+Length                    1.576
+Width                     0.825
+N_s                          72
+I_sc_ref                   5.43
+V_oc_ref                  44.14
+I_mp_ref                   5.03
+V_mp_ref                  36.72
+alpha_sc               0.002253
+beta_oc                -0.15961
+T_NOCT                     49.9
+a_ref                   1.98482
+I_L_ref                 5.43568
+I_o_ref             1.16164e-09
+R_s                    0.311962
+R_sh_ref                298.424
+Adjust                  15.6882
+gamma_r                 -0.5072
+BIPV                          N
+Version       SAM 2018.11.11 r2
+Date                   1/3/2019
+Name: A10Green_Technology_A10J_S72_185, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>The parameters of the CEC database include technology (<em>string</em>), bifacial (<em>boolean</em>), STC power (<em>float</em>), PTC power (<em>float</em>), dimensions of the panel, open-circuit and short-circuit specifications, and other technical characteristics including the 5-parameter needed for the single diode equation to estimate the DC power under certain conditions.</p>
+<p>Similarly, the Sandia Laboratories PV module database can be accessed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sandia PV Module Database</span>
+<span class="n">sandia_mod_db</span> <span class="o">=</span> <span class="n">pvsystem</span><span class="o">.</span><span class="n">retrieve_sam</span><span class="p">(</span><span class="s1">&#39;sandiamod&#39;</span><span class="p">)</span>
+
+<span class="c1"># Dimensions</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sandia_mod_db</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(42, 523)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accessing the characteristics of one of the modules randomly</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sandia_mod_db</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sandia_mod_db</span><span class="p">))])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vintage                                                      2002 (E)
+Area                                                            0.657
+Material                                                      Si-Film
+Cells_in_Series                                                    39
+Parallel_Strings                                                    1
+Isco                                                              3.4
+Voco                                                             20.7
+Impo                                                                3
+Vmpo                                                             16.8
+Aisc                                                         0.000552
+Aimp                                                         0.000216
+C0                                                              0.951
+C1                                                              0.049
+Bvoco                                                          -0.098
+Mbvoc                                                               0
+Bvmpo                                                          -0.093
+Mbvmp                                                               0
+N                                                               1.851
+C2                                                            0.37957
+C3                                                            -6.5492
+A0                                                              0.928
+A1                                                           0.073144
+A2                                                          -0.019427
+A3                                                          0.0017513
+A4                                                        -5.1288e-05
+B0                                                                  1
+B1                                                          -0.002438
+B2                                                          0.0003103
+B3                                                         -1.246e-05
+B4                                                           2.11e-07
+B5                                                          -1.36e-09
+DTC                                                                 3
+FD                                                                  1
+A                                                               -3.56
+B                                                              -0.075
+C4                                                              0.992
+C5                                                              0.008
+IXO                                                              3.38
+IXXO                                                              1.9
+C6                                                              1.032
+C7                                                             -0.032
+Notes               Source: Sandia National Laboratories Updated 9...
+Name: AstroPower_APX_50__2002__E__, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>We observe that the database of PV modules from Sandia Laboratories includes more technical parameters and information than the CEC module database. However, it contains less modules. Alternatively, you can define a dictionary with the characteristics of the PV module as found in a typical datasheet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PV module data from a typical datasheet (e.g. Kyocera Solar KD225GX LPB)</span>
+<span class="n">module_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;celltype&#39;</span><span class="p">:</span> <span class="s1">&#39;multiSi&#39;</span><span class="p">,</span> <span class="c1"># technology</span>
+               <span class="s1">&#39;STC&#39;</span><span class="p">:</span> <span class="mf">224.99</span><span class="p">,</span> <span class="c1"># STC power</span>
+               <span class="s1">&#39;PTC&#39;</span><span class="p">:</span> <span class="mf">203.3</span><span class="p">,</span> <span class="c1"># PTC power</span>
+               <span class="s1">&#39;v_mp&#39;</span><span class="p">:</span> <span class="mf">29.8</span><span class="p">,</span> <span class="c1"># Maximum power voltage</span>
+               <span class="s1">&#39;i_mp&#39;</span><span class="p">:</span> <span class="mf">7.55</span><span class="p">,</span> <span class="c1"># Maximum power current</span>
+               <span class="s1">&#39;v_oc&#39;</span><span class="p">:</span> <span class="mf">36.9</span><span class="p">,</span> <span class="c1"># Open-circuit voltage</span>
+               <span class="s1">&#39;i_sc&#39;</span><span class="p">:</span> <span class="mf">8.18</span><span class="p">,</span> <span class="c1"># Short-circuit current</span>
+               <span class="s1">&#39;alpha_sc&#39;</span><span class="p">:</span> <span class="mf">0.001636</span><span class="p">,</span> <span class="c1"># Temperature Coeff. Short Circuit Current [A/C]</span>
+               <span class="s1">&#39;beta_voc&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.12177</span><span class="p">,</span> <span class="c1"># Temperature Coeff. Open Circuit Voltage [V/C]</span>
+               <span class="s1">&#39;gamma_pmp&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.43</span><span class="p">,</span> <span class="c1"># Temperature coefficient of power at maximum point [%/C]</span>
+               <span class="s1">&#39;cells_in_series&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="c1"># Number of cells in series</span>
+               <span class="s1">&#39;temp_ref&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>  <span class="c1"># Reference temperature conditions</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="definition-of-a-pv-inverter">
+<h3>Definition of a PV inverter<a class="headerlink" href="#definition-of-a-pv-inverter" title="Permalink to this headline">¶</a></h3>
+<p>Similarly to the database of PV modules, it is possible to access the CEC database of PV inverters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">invdb</span> <span class="o">=</span> <span class="n">pvsystem</span><span class="o">.</span><span class="n">retrieve_sam</span><span class="p">(</span><span class="s1">&#39;CECInverter&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">invdb</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16, 3264)
+</pre></div>
+</div>
+</div>
+</div>
+<p>There over 3,200 inverters available and each of them has 16 parameters. As in the case of the PV modules, you can define your own PV inverter using a dictionary. Let’s have a look to one of those solar inverters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accessing the characteristics of one of the modules randomly</span>
+<span class="n">inverter_data</span> <span class="o">=</span> <span class="n">invdb</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">invdb</span><span class="p">))]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">inverter_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vac                          208
+Pso                      1.76944
+Paco                         300
+Pdco                     312.421
+Vdco                          45
+C0                      -4.5e-05
+C1                     -0.000196
+C2                      0.001959
+C3                     -0.023725
+Pnt                         0.09
+Vdcmax                        60
+Idcmax                   6.94269
+Mppt_low                      30
+Mppt_high                     60
+CEC_Date                     NaN
+CEC_Type     Utility Interactive
+Name: ABB__MICRO_0_3HV_I_OUTD_US_208__208V_, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="i-v-characteristic-curve-a-id-ivcurve-a">
+<h2>2 I-V Characteristic Curve <a id='IVcurve'></a><a class="headerlink" href="#i-v-characteristic-curve-a-id-ivcurve-a" title="Permalink to this headline">¶</a></h2>
+<p>The I-V curve of a PV module is one of the typical technical characteristics often available in datasheets. In this section, we are going to build the I-V characteristic curve of a PV module from the data available in the technical specification sheet. We will use the dictionary <em>‘module_data’</em> that we have just created in the previous section.</p>
+<p>In order to build the I-V curve, we will need several steps until we estimate the 5 input parameters needed to perform the single diode equation that will return the I and V values for given values of effective irradiance and cell/module temperature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the pvlib library</span>
+<span class="kn">import</span> <span class="nn">pvlib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1st step: Estimating the parameters for the CEC single diode model</span>
+<span class="sd">&quot;&quot;&quot; WARNING - This function relies on NREL&#39;s SAM tool. So PySAM, its Python API, needs to be installed </span>
+<span class="sd">in the same computer. Otherwise, you can expect the following error: &#39;ImportError if NREL-PySAM is not installed.&#39;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">cec_fit_params</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">ivtools</span><span class="o">.</span><span class="n">sdm</span><span class="o">.</span><span class="n">fit_cec_sam</span><span class="p">(</span><span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;celltype&#39;</span><span class="p">],</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;v_mp&#39;</span><span class="p">],</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;i_mp&#39;</span><span class="p">],</span>
+                                  <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;v_oc&#39;</span><span class="p">],</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;i_sc&#39;</span><span class="p">],</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;alpha_sc&#39;</span><span class="p">],</span>
+                                  <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;beta_voc&#39;</span><span class="p">],</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;gamma_pmp&#39;</span><span class="p">],</span> 
+                                  <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;cells_in_series&#39;</span><span class="p">],</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;temp_ref&#39;</span><span class="p">])</span>
+
+<span class="c1"># Let&#39;s have a look to the output</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cec_fit_params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8.202934970033095, 1.0116474533318072e-10, 0.35799019877176264, 127.68099994564776, 1.471122011098777, 1.0522774079781079)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We observe that the output of the function are 6 <em>float</em> elements. The documentation of <em>pvlib</em> indicates that these correspond to reference conditions values for:</p>
+<ol class="simple">
+<li><p>Light-generated current (i_l_ref) in Amps;</p></li>
+<li><p>Diode reverse saturation current (i_o_ref) in Amps;</p></li>
+<li><p>Series resistance (r_s) in Ohms;</p></li>
+<li><p>Shunt resistance (r_sh_ref) in Ohms;</p></li>
+<li><p>The product of the diode ideality factor, number of cells in series and cell thermal voltage (a_ref); and</p></li>
+<li><p>The adjustment to the temperature coefficient for short-circuit current in percentage (adjust).</p></li>
+</ol>
+<p>After this step, we have an extended set of technical characteristics of the PV module. We could skip this step if we had these data at the beginning, e.g. by using a PV module from the CEC or Sandia databases.</p>
+<p>We will now define several reference conditions of effective irradiance and average cell temperature values for which to estimate the I-V curve. Then, the second step is estimating the 5 input parameters to be used in the Single Diode Equation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Effective irradiance values (W/m2)</span>
+<span class="n">irrad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">200</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">1000</span><span class="p">])</span>
+<span class="c1"># Average cell temperature (degrees Celsius)</span>
+<span class="n">temp_cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+
+<span class="c1"># 2nd step: Apply model to estimate the 5 parameters of the single diode equation using the CEC model</span>
+<span class="n">diode_params</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">calcparams_cec</span><span class="p">(</span><span class="n">irrad</span><span class="p">,</span> <span class="n">temp_cell</span><span class="p">,</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;alpha_sc&#39;</span><span class="p">],</span> <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> 
+                                            <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> 
+                                            <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># The result of the function returns a Tuple of 5 parameters to be used in the single diode equation</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of elements returned: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">diode_params</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of elements returned:  5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s have a look to the tuple:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diode_params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1.64544335, 3.2908867 , 4.93633004, 6.58177339, 8.22721674]), array([1.1196491e-09, 1.1196491e-09, 1.1196491e-09, 1.1196491e-09,
+       1.1196491e-09]), 0.35799019877176264, array([638.40499973, 319.20249986, 212.80166658, 159.60124993,
+       127.68099995]), array([1.54513452, 1.54513452, 1.54513452, 1.54513452, 1.54513452]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we can estimate the <strong>I-V characteristic of the PV module</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate I-V characteristic using the Single Diode Equation</span>
+<span class="n">iv_values1</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">singlediode</span><span class="p">(</span><span class="n">diode_params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+                                        <span class="n">diode_params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+                                        <span class="n">diode_params</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> 
+                                        <span class="n">diode_params</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> 
+                                        <span class="n">diode_params</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> 
+                                        <span class="n">ivcurve_pnts</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>   <span class="c1"># Number of points of the I-V curve (equally distributed)</span>
+                                        <span class="n">method</span><span class="o">=</span><span class="s1">&#39;lambertw&#39;</span><span class="p">)</span> <span class="c1"># I-V using the Lambert W. function</span>
+
+<span class="c1"># The result is a large ordered dictionary with the IV-curve characteristics of our example.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iv_values1</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>odict_keys([&#39;i_sc&#39;, &#39;v_oc&#39;, &#39;i_mp&#39;, &#39;v_mp&#39;, &#39;p_mp&#39;, &#39;i_x&#39;, &#39;i_xx&#39;, &#39;v&#39;, &#39;i&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then visualize the I-V characteristic of our PV module and the given reference conditions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing our library for plotting and visualization</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># We iterate over voltage</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">irrad</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">iv_values1</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">iv_values1</span><span class="p">[</span><span class="s1">&#39;i&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">irrad</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39; W/m$^2$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">iv_values1</span><span class="p">[</span><span class="s1">&#39;v_mp&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">iv_values1</span><span class="p">[</span><span class="s1">&#39;i_mp&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+<span class="c1"># Add the title, axis labels and legend: </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;I-V characteristic curve with maximum power at 40$^\circ$C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Current [A]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x298305d7d68&gt;
+</pre></div>
+</div>
+<img alt="../_images/solar_power_modelling_24_1.png" src="../_images/solar_power_modelling_24_1.png" />
+</div>
+</div>
+<p>Following on the assessment of the I-V curve of a PV module, it is possible to analyse the <em>effect of temperature in the PV module performance</em>. Below, an example of I-V curve is shown for an effective irradiance of 800 W/m<span class="math notranslate nohighlight">\(^2\)</span> with different average cell temperatures:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Effective irradiance values (W/m2)</span>
+<span class="n">irrad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span>
+<span class="c1"># Average cell temperature (degrees Celsius)</span>
+<span class="n">temp_cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
+
+<span class="c1"># Repeating the process from before:</span>
+<span class="c1"># Estimate the 5 parameters of the single diode equation using the CEC model</span>
+<span class="n">diode_params</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">calcparams_cec</span><span class="p">(</span><span class="n">irrad</span><span class="p">,</span> <span class="n">temp_cell</span><span class="p">,</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;alpha_sc&#39;</span><span class="p">],</span> <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> 
+                                            <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> 
+                                            <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cec_fit_params</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># Estimate I-V characteristic using the Single Diode Equation</span>
+<span class="n">iv_values2</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">singlediode</span><span class="p">(</span><span class="n">diode_params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+                                        <span class="n">diode_params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+                                        <span class="n">diode_params</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> 
+                                        <span class="n">diode_params</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> 
+                                        <span class="n">diode_params</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> 
+                                        <span class="n">ivcurve_pnts</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>   <span class="c1"># Number of points of the I-V curve (equally distributed)</span>
+                                        <span class="n">method</span><span class="o">=</span><span class="s1">&#39;lambertw&#39;</span><span class="p">)</span> <span class="c1"># I-V using the Lambert W. function</span>
+
+<span class="c1"># Plotting the results</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">irrad</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">iv_values2</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">iv_values2</span><span class="p">[</span><span class="s1">&#39;i&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">temp_cell</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39;$^\circ$C&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">iv_values2</span><span class="p">[</span><span class="s1">&#39;v_mp&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">iv_values2</span><span class="p">[</span><span class="s1">&#39;i_mp&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+<span class="c1"># Add the title, axis labels and legend: </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Effect of module temperature in the I-V curve (800 W/m$^2$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Voltage [V]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Current [A]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x298306b7828&gt;
+</pre></div>
+</div>
+<img alt="../_images/solar_power_modelling_26_1.png" src="../_images/solar_power_modelling_26_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="irradiance-to-dc-power-conversion-a-id-dcmodels-a">
+<h2>3 Irradiance to DC power conversion <a id='DCmodels'></a><a class="headerlink" href="#irradiance-to-dc-power-conversion-a-id-dcmodels-a" title="Permalink to this headline">¶</a></h2>
+<p>The production of DC power output of the PV module given by certain conditions of effective irradiance and cell temperature can be estimated in a straight-away manner by using  NREL’s PVWatts DC power model (<em>pvwatts_dc</em>), which is available within <em>pvlib</em>. An example is presented below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Randomly define a set of Effective Irradiance and cell temperature values:</span>
+
+<span class="c1"># Global plane-of-array effective irradiance between 200 and 1000 W/m2</span>
+<span class="n">g_poa_effective</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="p">,))</span>
+<span class="c1"># Mean cell temperature values between 10 and 50 degrees Celsius</span>
+<span class="n">temp_cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="p">,))</span> 
+
+<span class="c1"># Definition of PV module characteristics:</span>
+<span class="n">pdc0</span> <span class="o">=</span> <span class="mi">250</span> <span class="c1"># STC power</span>
+<span class="n">gamma_pdc</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.0045</span> <span class="c1"># The temperature coefficient in units of 1/C</span>
+
+<span class="c1"># Estimate DC power with PVWatts model</span>
+<span class="n">dc_power</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">pvwatts_dc</span><span class="p">(</span><span class="n">g_poa_effective</span><span class="p">,</span> <span class="n">temp_cell</span><span class="p">,</span> <span class="n">pdc0</span><span class="p">,</span> <span class="n">gamma_pdc</span><span class="p">,</span> <span class="n">temp_ref</span><span class="o">=</span><span class="mf">25.0</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s visualize the DC power output as function of the effective irradiance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">g_poa_effective</span><span class="p">,</span> <span class="n">dc_power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">temp_cell</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Cell Temperature [$^\circ$C]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;PV Module DC Output vs. Plane-of-Array Irradiance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Effective Global Plane-of-Array Irradiance ($G_</span><span class="si">{POA}</span><span class="s1">$) [W/m$^2$]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;DC Power Output [W]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/solar_power_modelling_28_0.png" src="../_images/solar_power_modelling_28_0.png" />
+</div>
+</div>
+<p>We can observe the linear relationship between incident effective irradiance and DC power, and how cell temperature has a negative impact on the performance of the PV module. Overall, the lower the module’s temperature, the higher the PV output for a given irradiance level.</p>
+</div>
+<div class="section" id="dc-to-ac-power-conversion-inverter-models-a-id-inverter-a">
+<h2>4 DC to AC power conversion (inverter models) <a id='inverter'></a><a class="headerlink" href="#dc-to-ac-power-conversion-inverter-models-a-id-inverter-a" title="Permalink to this headline">¶</a></h2>
+<p>Once the DC power is available, the AC power output can be estimated. The inverter is the PV element that implementes the power conversion from DC to AC. An example is shown below where we will use the DataFrame ‘<em>inverter_data</em>’ and the dictionary ‘<em>iv_values1</em>’ resulted from sections 1 and 2, respectively.</p>
+<p>Let’s recall and have a look to the keys available in those elements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The DataFrame with the technical characteristics of the PV inverter</span>
+<span class="n">inverter_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Vac&#39;, &#39;Pso&#39;, &#39;Paco&#39;, &#39;Pdco&#39;, &#39;Vdco&#39;, &#39;C0&#39;, &#39;C1&#39;, &#39;C2&#39;, &#39;C3&#39;, &#39;Pnt&#39;,
+       &#39;Vdcmax&#39;, &#39;Idcmax&#39;, &#39;Mppt_low&#39;, &#39;Mppt_high&#39;, &#39;CEC_Date&#39;, &#39;CEC_Type&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The dictionary with the current and voltage values</span>
+<span class="n">iv_values1</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>odict_keys([&#39;i_sc&#39;, &#39;v_oc&#39;, &#39;i_mp&#39;, &#39;v_mp&#39;, &#39;p_mp&#39;, &#39;i_x&#39;, &#39;i_xx&#39;, &#39;v&#39;, &#39;i&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate AC power from DC power using the Sandia Model</span>
+<span class="n">ac_power</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">inverter</span><span class="o">.</span><span class="n">sandia</span><span class="p">(</span><span class="n">iv_values1</span><span class="p">[</span><span class="s1">&#39;v_mp&#39;</span><span class="p">],</span> <span class="c1"># DC voltage input to the inverter</span>
+                                 <span class="n">iv_values1</span><span class="p">[</span><span class="s1">&#39;p_mp&#39;</span><span class="p">],</span> <span class="c1"># DC power input to the inverter</span>
+                                 <span class="n">inverter_data</span><span class="p">)</span> <span class="c1"># Parameters for the inverter </span>
+<span class="c1"># Estimated Power Output</span>
+<span class="n">ac_power</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 39.16721703,  81.25576537, 122.67628941, 163.04035011,
+       202.17677308])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is an array of 5 elements expressed in Watts. It is worth noting that the inverter requires starting power, which is denoted by ‘Pso’ in the dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s check the start DC power required for the inversion process (or self-consumption of the inverter)</span>
+<span class="n">inverter_data</span><span class="p">[</span><span class="s1">&#39;Pso&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7694439999999998
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="whole-system-irradiance-to-power-conversion-a-id-fullsystem-a">
+<h2>5 Whole System Irradiance to Power Conversion <a id='fullsystem'></a><a class="headerlink" href="#whole-system-irradiance-to-power-conversion-a-id-fullsystem-a" title="Permalink to this headline">¶</a></h2>
+<p>The previous section have shown the conversion irradiance to power step-by-step. The library <em>pvlib</em> has an alternative method to estimate the AC power output in a more straight-forward way by using the <em>pvlib</em> classes <em>PVSystem</em> and <em>ModelChain</em>.</p>
+<p>This section presents an example to estimate the AC power directly using real weather data. The example below uses weather data from a <a class="reference external" href="https://midcdmz.nrel.gov/apps/sitehome.pl?site=UOSMRL">station</a> located at the University of Oregon, which belongs to the Measurement and Instrumentation Data Center (MIDC) of the U.S. National Renewable Energy Laboratory (NREL). The data used are 1-minute GHI, DHI, DNI, ambient temperature and wind speed measurements for one day in June 2021 (Vignola and Andreas, 2013).</p>
+<p><strong>Retrieving real weather data:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># Let&#39;s read the weather data from the MIDC station using the I/O tools available within pvlib</span>
+<span class="n">df_weather</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">read_midc_raw_data_from_nrel</span><span class="p">(</span><span class="s1">&#39;UOSMRL&#39;</span><span class="p">,</span>               <span class="c1"># Station id</span>
+                                                    <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;20210601&#39;</span><span class="p">),</span>   <span class="c1"># Start date YYYYMMDD</span>
+                                                    <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;20210601&#39;</span><span class="p">))</span>   <span class="c1"># End date  YYYYMMDD</span>
+
+<span class="c1"># Let&#39;s see the head, shape and columns of the data</span>
+<span class="n">df_weather</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Year</th>
+      <th>DOY</th>
+      <th>PST</th>
+      <th>Unnamed: 4</th>
+      <th>Direct NIP [W/m^2]</th>
+      <th>Diffuse Schenk [W/m^2]</th>
+      <th>Global LI-200 [W/m^2]</th>
+      <th>Relative Humidity [%]</th>
+      <th>Air Temperature [deg C]</th>
+      <th>...</th>
+      <th>CHP1 Temp [deg K]</th>
+      <th>CMP22 Temp [deg K]</th>
+      <th>Avg Wind Direction @ 10m [deg from N]</th>
+      <th>Zenith Angle [degrees]</th>
+      <th>Azimuth Angle [degrees]</th>
+      <th>Airmass</th>
+      <th>Solar Eclipse Shading</th>
+      <th>Direct SAMPA/Bird (calc) [W/m^2]</th>
+      <th>Global SAMPA/Bird (calc) [W/m^2]</th>
+      <th>Diffuse SAMPA/Bird (calc) [W/m^2]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-06-01 00:00:00-08:00</th>
+      <td>0</td>
+      <td>2021</td>
+      <td>152</td>
+      <td>0</td>
+      <td>-7999</td>
+      <td>-0.453</td>
+      <td>-1.129</td>
+      <td>0.157</td>
+      <td>58.95</td>
+      <td>19.89</td>
+      <td>...</td>
+      <td>292.8</td>
+      <td>294.6</td>
+      <td>41.59</td>
+      <td>113.81644</td>
+      <td>357.43310</td>
+      <td>-1.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:01:00-08:00</th>
+      <td>0</td>
+      <td>2021</td>
+      <td>152</td>
+      <td>1</td>
+      <td>-7999</td>
+      <td>-0.482</td>
+      <td>-1.150</td>
+      <td>0.154</td>
+      <td>59.13</td>
+      <td>19.79</td>
+      <td>...</td>
+      <td>292.8</td>
+      <td>294.6</td>
+      <td>64.06</td>
+      <td>113.82399</td>
+      <td>357.68613</td>
+      <td>-1.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:02:00-08:00</th>
+      <td>0</td>
+      <td>2021</td>
+      <td>152</td>
+      <td>2</td>
+      <td>-7999</td>
+      <td>-0.575</td>
+      <td>-1.174</td>
+      <td>0.134</td>
+      <td>59.76</td>
+      <td>19.70</td>
+      <td>...</td>
+      <td>292.7</td>
+      <td>294.5</td>
+      <td>63.20</td>
+      <td>113.83076</td>
+      <td>357.93921</td>
+      <td>-1.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 29 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_weather</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1437, 29)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_weather</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Unnamed: 0&#39;, &#39;Year&#39;, &#39;DOY&#39;, &#39;PST&#39;, &#39;Unnamed: 4&#39;, &#39;Direct NIP [W/m^2]&#39;,
+       &#39;Diffuse Schenk [W/m^2]&#39;, &#39;Global LI-200 [W/m^2]&#39;,
+       &#39;Relative Humidity [%]&#39;, &#39;Air Temperature [deg C]&#39;,
+       &#39;Avg Wind Speed @ 10m [m/s]&#39;, &#39;Station Pressure [mBar]&#39;,
+       &#39;Downwelling IR PIR [W/m^2]&#39;, &#39;Instrument Net PIR [W/m^2]&#39;,
+       &#39;PIR Case Temp [deg K]&#39;, &#39;PIR Dome Temp [deg K]&#39;,
+       &#39;Logger Battery [VDC]&#39;, &#39;Direct CHP1 [W/m^2]&#39;, &#39;Global CMP22 [W/m^2]&#39;,
+       &#39;CHP1 Temp [deg K]&#39;, &#39;CMP22 Temp [deg K]&#39;,
+       &#39;Avg Wind Direction @ 10m [deg from N]&#39;, &#39;Zenith Angle [degrees]&#39;,
+       &#39;Azimuth Angle [degrees]&#39;, &#39;Airmass&#39;, &#39;Solar Eclipse Shading&#39;,
+       &#39;Direct SAMPA/Bird (calc) [W/m^2]&#39;, &#39;Global SAMPA/Bird (calc) [W/m^2]&#39;,
+       &#39;Diffuse SAMPA/Bird (calc) [W/m^2]&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The DataFrame of weather data provides more many variables (29 variables) than those needed (i.e., irradiance components, ambient temperature and wind speed) to estimate the equivalent AC power of a PV system.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subset variables needed</span>
+<span class="n">df_weather</span> <span class="o">=</span> <span class="n">df_weather</span><span class="p">[[</span><span class="s1">&#39;Global CMP22 [W/m^2]&#39;</span><span class="p">,</span> <span class="s1">&#39;Diffuse Schenk [W/m^2]&#39;</span><span class="p">,</span> 
+                         <span class="s1">&#39;Direct CHP1 [W/m^2]&#39;</span><span class="p">,</span><span class="s1">&#39;Air Temperature [deg C]&#39;</span><span class="p">,</span> <span class="s1">&#39;Avg Wind Speed @ 10m [m/s]&#39;</span><span class="p">]]</span>
+<span class="c1"># Rename the columns</span>
+<span class="n">df_weather</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ghi&#39;</span><span class="p">,</span> <span class="s1">&#39;dhi&#39;</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">,</span> <span class="s1">&#39;temp_air&#39;</span><span class="p">,</span> <span class="s1">&#39;wind_speed&#39;</span><span class="p">]</span>
+
+<span class="c1"># See the first columns of our weather dataset</span>
+<span class="n">df_weather</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ghi</th>
+      <th>dhi</th>
+      <th>dni</th>
+      <th>temp_air</th>
+      <th>wind_speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-06-01 00:00:00-08:00</th>
+      <td>-0.391</td>
+      <td>-1.129</td>
+      <td>0.425</td>
+      <td>19.89</td>
+      <td>0.200</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:01:00-08:00</th>
+      <td>-0.391</td>
+      <td>-1.150</td>
+      <td>0.411</td>
+      <td>19.79</td>
+      <td>0.312</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:02:00-08:00</th>
+      <td>-0.401</td>
+      <td>-1.174</td>
+      <td>0.425</td>
+      <td>19.70</td>
+      <td>0.250</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>For the example, the surface tilt will be 30<span class="math notranslate nohighlight">\(^\circ\)</span>, and a surface_azimuth of 180<span class="math notranslate nohighlight">\(^\circ\)</span> (south orientation).</p>
+<p>Let’s define the basics parameters within the <em>PVSystem</em> and <em>ModelChain</em> classes:</p>
+<p><strong>Definining the characteristics of the PV system:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Coordinates of the weather station at University of Oregon (SRML)</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="mf">44.0467</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">123.0743</span>
+<span class="n">altitude</span> <span class="o">=</span> <span class="mf">133.8</span>
+
+<span class="c1"># Define the location object</span>
+<span class="n">location</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">altitude</span><span class="o">=</span><span class="n">altitude</span><span class="p">)</span>
+
+<span class="c1"># Define Temperature Paremeters </span>
+<span class="n">temperature_model_parameters</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">TEMPERATURE_MODEL_PARAMETERS</span><span class="p">[</span><span class="s1">&#39;sapm&#39;</span><span class="p">][</span><span class="s1">&#39;open_rack_glass_glass&#39;</span><span class="p">]</span>
+
+<span class="c1"># Define the PV Module and the Inverter from the CEC databases (For example, the first entry of the databases)</span>
+<span class="n">module_data</span> <span class="o">=</span> <span class="n">cec_mod_db</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Define the basics of the class PVSystem</span>
+<span class="n">system</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">PVSystem</span><span class="p">(</span><span class="n">surface_tilt</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">surface_azimuth</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+                                 <span class="n">module_parameters</span><span class="o">=</span><span class="n">module_data</span><span class="p">,</span>
+                                 <span class="n">inverter_parameters</span><span class="o">=</span><span class="n">inverter_data</span><span class="p">,</span>
+                                 <span class="n">temperature_model_parameters</span><span class="o">=</span><span class="n">temperature_model_parameters</span><span class="p">)</span>
+
+<span class="c1"># Creation of the ModelChain object</span>
+<span class="sd">&quot;&quot;&quot; The example does not consider AOI losses nor irradiance spectral losses&quot;&quot;&quot;</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">modelchain</span><span class="o">.</span><span class="n">ModelChain</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> 
+                                 <span class="n">aoi_model</span><span class="o">=</span><span class="s1">&#39;no_loss&#39;</span><span class="p">,</span> 
+                                 <span class="n">spectral_model</span><span class="o">=</span><span class="s1">&#39;no_loss&#39;</span><span class="p">,</span>
+                                 <span class="n">name</span><span class="o">=</span><span class="s1">&#39;AssessingSolar_PV&#39;</span><span class="p">)</span>
+
+<span class="c1"># Have a look to the ModelChain</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ModelChain: 
+  name: AssessingSolar_PV
+  clearsky_model: ineichen
+  transposition_model: haydavies
+  solar_position_method: nrel_numpy
+  airmass_model: kastenyoung1989
+  dc_model: cec
+  ac_model: sandia_inverter
+  aoi_model: no_aoi_loss
+  spectral_model: no_spectral_loss
+  temperature_model: sapm_temp
+  losses_model: no_extra_losses
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Running the model with the weather data:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pass the weather data to the model</span>
+<span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">The weather DataFrame must include the irradiance components with the names &#39;dni&#39;, &#39;ghi&#39;, and &#39;dhi&#39;. </span>
+<span class="sd">The air temperature named &#39;temp_air&#39; in degree Celsius and wind speed &#39;wind_speed&#39; in m/s are optional.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">mc</span><span class="o">.</span><span class="n">run_model</span><span class="p">(</span><span class="n">df_weather</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ModelChain: 
+  name: AssessingSolar_PV
+  clearsky_model: ineichen
+  transposition_model: haydavies
+  solar_position_method: nrel_numpy
+  airmass_model: kastenyoung1989
+  dc_model: cec
+  ac_model: sandia_inverter
+  aoi_model: no_aoi_loss
+  spectral_model: no_spectral_loss
+  temperature_model: sapm_temp
+  losses_model: no_extra_losses
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Accessing the results of the model:</strong></p>
+<p>After running the model with the weather data, the results can be accessed with the method ‘<em>results</em>’. There are multiple sets of results that can be accessed, some of them are: the weather data ‘weather’; the solar position ‘solar_position’; the plane-of-array irradiance components ‘total_irrad’; the DC power output ‘dc’; or the AC power output ‘ac’.</p>
+<p>Let’s have a look how that can be done:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access the weather data</span>
+<span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">weather</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ghi</th>
+      <th>dhi</th>
+      <th>dni</th>
+      <th>wind_speed</th>
+      <th>temp_air</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-06-01 00:00:00-08:00</th>
+      <td>-0.391</td>
+      <td>-1.129</td>
+      <td>0.425</td>
+      <td>0.200</td>
+      <td>19.89</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:01:00-08:00</th>
+      <td>-0.391</td>
+      <td>-1.150</td>
+      <td>0.411</td>
+      <td>0.312</td>
+      <td>19.79</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:02:00-08:00</th>
+      <td>-0.401</td>
+      <td>-1.174</td>
+      <td>0.425</td>
+      <td>0.250</td>
+      <td>19.70</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:03:00-08:00</th>
+      <td>-0.414</td>
+      <td>-1.185</td>
+      <td>0.425</td>
+      <td>0.375</td>
+      <td>19.67</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:04:00-08:00</th>
+      <td>-0.420</td>
+      <td>-1.182</td>
+      <td>0.425</td>
+      <td>0.300</td>
+      <td>19.59</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:55:00-08:00</th>
+      <td>-0.299</td>
+      <td>-0.849</td>
+      <td>0.425</td>
+      <td>0.200</td>
+      <td>22.74</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:56:00-08:00</th>
+      <td>-0.295</td>
+      <td>-0.838</td>
+      <td>0.425</td>
+      <td>0.200</td>
+      <td>22.75</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:57:00-08:00</th>
+      <td>-0.300</td>
+      <td>-0.865</td>
+      <td>0.425</td>
+      <td>0.200</td>
+      <td>22.74</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:58:00-08:00</th>
+      <td>-0.299</td>
+      <td>-0.952</td>
+      <td>0.425</td>
+      <td>0.200</td>
+      <td>22.77</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:59:00-08:00</th>
+      <td>-0.275</td>
+      <td>-0.974</td>
+      <td>0.425</td>
+      <td>0.200</td>
+      <td>22.81</td>
+    </tr>
+  </tbody>
+</table>
+<p>1437 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>This returns the same DataFrame ‘df_weather’ that we had passed to the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access the solar position at each timestamp</span>
+<span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">solar_position</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>apparent_zenith</th>
+      <th>zenith</th>
+      <th>apparent_elevation</th>
+      <th>elevation</th>
+      <th>azimuth</th>
+      <th>equation_of_time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-06-01 00:00:00-08:00</th>
+      <td>113.816399</td>
+      <td>113.816399</td>
+      <td>-23.816399</td>
+      <td>-23.816399</td>
+      <td>357.431855</td>
+      <td>2.157534</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:01:00-08:00</th>
+      <td>113.823961</td>
+      <td>113.823961</td>
+      <td>-23.823961</td>
+      <td>-23.823961</td>
+      <td>357.684892</td>
+      <td>2.157427</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:02:00-08:00</th>
+      <td>113.830729</td>
+      <td>113.830729</td>
+      <td>-23.830729</td>
+      <td>-23.830729</td>
+      <td>357.937970</td>
+      <td>2.157321</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:03:00-08:00</th>
+      <td>113.836705</td>
+      <td>113.836705</td>
+      <td>-23.836705</td>
+      <td>-23.836705</td>
+      <td>358.191084</td>
+      <td>2.157214</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:04:00-08:00</th>
+      <td>113.841887</td>
+      <td>113.841887</td>
+      <td>-23.841887</td>
+      <td>-23.841887</td>
+      <td>358.444229</td>
+      <td>2.157107</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:55:00-08:00</th>
+      <td>113.634624</td>
+      <td>113.634624</td>
+      <td>-23.634624</td>
+      <td>-23.634624</td>
+      <td>356.135134</td>
+      <td>2.000772</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:56:00-08:00</th>
+      <td>113.646251</td>
+      <td>113.646251</td>
+      <td>-23.646251</td>
+      <td>-23.646251</td>
+      <td>356.387404</td>
+      <td>2.000661</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:57:00-08:00</th>
+      <td>113.657089</td>
+      <td>113.657089</td>
+      <td>-23.657089</td>
+      <td>-23.657089</td>
+      <td>356.639737</td>
+      <td>2.000549</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:58:00-08:00</th>
+      <td>113.667137</td>
+      <td>113.667137</td>
+      <td>-23.667137</td>
+      <td>-23.667137</td>
+      <td>356.892129</td>
+      <td>2.000438</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:59:00-08:00</th>
+      <td>113.676395</td>
+      <td>113.676395</td>
+      <td>-23.676395</td>
+      <td>-23.676395</td>
+      <td>357.144575</td>
+      <td>2.000326</td>
+    </tr>
+  </tbody>
+</table>
+<p>1437 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>The solar position returns the zenith, solar elevation, azimuth angles and the equation of time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access Plane-of-array Irradiances</span>
+<span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">total_irrad</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>poa_global</th>
+      <th>poa_direct</th>
+      <th>poa_diffuse</th>
+      <th>poa_sky_diffuse</th>
+      <th>poa_ground_diffuse</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-06-01 00:00:00-08:00</th>
+      <td>-0.006548</td>
+      <td>0.0</td>
+      <td>-0.006548</td>
+      <td>0.0</td>
+      <td>-0.006548</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:01:00-08:00</th>
+      <td>-0.006548</td>
+      <td>0.0</td>
+      <td>-0.006548</td>
+      <td>0.0</td>
+      <td>-0.006548</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:02:00-08:00</th>
+      <td>-0.006715</td>
+      <td>0.0</td>
+      <td>-0.006715</td>
+      <td>0.0</td>
+      <td>-0.006715</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:03:00-08:00</th>
+      <td>-0.006933</td>
+      <td>0.0</td>
+      <td>-0.006933</td>
+      <td>0.0</td>
+      <td>-0.006933</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:04:00-08:00</th>
+      <td>-0.007034</td>
+      <td>0.0</td>
+      <td>-0.007034</td>
+      <td>0.0</td>
+      <td>-0.007034</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:55:00-08:00</th>
+      <td>-0.005007</td>
+      <td>0.0</td>
+      <td>-0.005007</td>
+      <td>0.0</td>
+      <td>-0.005007</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:56:00-08:00</th>
+      <td>-0.004940</td>
+      <td>0.0</td>
+      <td>-0.004940</td>
+      <td>0.0</td>
+      <td>-0.004940</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:57:00-08:00</th>
+      <td>-0.005024</td>
+      <td>0.0</td>
+      <td>-0.005024</td>
+      <td>0.0</td>
+      <td>-0.005024</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:58:00-08:00</th>
+      <td>-0.005007</td>
+      <td>0.0</td>
+      <td>-0.005007</td>
+      <td>0.0</td>
+      <td>-0.005007</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:59:00-08:00</th>
+      <td>-0.004605</td>
+      <td>0.0</td>
+      <td>-0.004605</td>
+      <td>0.0</td>
+      <td>-0.004605</td>
+    </tr>
+  </tbody>
+</table>
+<p>1437 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>The results for the plane-of-array irradiance returns the global POA irradiance and its components at the designated tilt and azimuth angle of the PV system and estimated with the method designated in ModelChain.</p>
+<p>Let’s see how to access the DC and AC power output of the PV system:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access the DC power output</span>
+<span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">dc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>i_sc</th>
+      <th>v_oc</th>
+      <th>i_mp</th>
+      <th>v_mp</th>
+      <th>p_mp</th>
+      <th>i_x</th>
+      <th>i_xx</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-06-01 00:00:00-08:00</th>
+      <td>-0.000034</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:01:00-08:00</th>
+      <td>-0.000034</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:02:00-08:00</th>
+      <td>-0.000035</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:03:00-08:00</th>
+      <td>-0.000036</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 00:04:00-08:00</th>
+      <td>-0.000036</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:55:00-08:00</th>
+      <td>-0.000026</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:56:00-08:00</th>
+      <td>-0.000026</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:57:00-08:00</th>
+      <td>-0.000026</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:58:00-08:00</th>
+      <td>-0.000026</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2021-06-01 23:59:00-08:00</th>
+      <td>-0.000024</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1437 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access the AC power output</span>
+<span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">ac</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-06-01 00:00:00-08:00   -0.09
+2021-06-01 00:01:00-08:00   -0.09
+2021-06-01 00:02:00-08:00   -0.09
+2021-06-01 00:03:00-08:00   -0.09
+2021-06-01 00:04:00-08:00   -0.09
+                             ... 
+2021-06-01 23:55:00-08:00   -0.09
+2021-06-01 23:56:00-08:00   -0.09
+2021-06-01 23:57:00-08:00   -0.09
+2021-06-01 23:58:00-08:00   -0.09
+2021-06-01 23:59:00-08:00   -0.09
+Length: 1437, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Analyzing and visualizing the results:</strong></p>
+<p>With all the set of results, we can analyze and visualize the results of the PV system.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <span class="n">DateFormatter</span>
+
+<span class="c1"># Define labels of variables to plot and colors </span>
+<span class="n">irrad_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ghi&#39;</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">,</span> <span class="s1">&#39;dhi&#39;</span><span class="p">]</span>
+<span class="n">poa_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;poa_global&#39;</span><span class="p">,</span> <span class="s1">&#39;poa_direct&#39;</span><span class="p">,</span> <span class="s1">&#39;poa_diffuse&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="c1"># Plot of Irradiance Variables</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">irrad_labels</span><span class="p">)):</span>
+    <span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">weather</span><span class="p">[</span><span class="n">irrad_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">irrad_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">total_irrad</span><span class="p">[</span><span class="n">poa_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">poa_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%H:%M&quot;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Irradiance [W/m$^2$]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;UTC Time [HH:MM]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Irradiance Components&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/solar_power_modelling_56_0.png" src="../_images/solar_power_modelling_56_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot of Power Output </span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">dc</span><span class="p">[</span><span class="s1">&#39;p_mp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DC power&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;AC power&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%H:%M&quot;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Power [W]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;UTC Time [HH:MM]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Power Output of PV System&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/solar_power_modelling_57_0.png" src="../_images/solar_power_modelling_57_0.png" />
+</div>
+</div>
+<p>With the power output data, it is possible to assess the amount of solar energy generated in the period of time assessed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate solar energy available and generated</span>
+<span class="n">poa_energy</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">total_irrad</span><span class="p">[</span><span class="s1">&#39;poa_global&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># Daily POA irradiation in kWh</span>
+<span class="n">dc_energy</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">dc</span><span class="p">[</span><span class="s1">&#39;p_mp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># Daily DC energy in kWh</span>
+<span class="n">ac_energy</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># Daily AC energy in kWh</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="o">*</span><span class="mi">15</span><span class="p">,</span> <span class="s1">&#39; Daily Production &#39;</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="o">*</span><span class="mi">15</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">48</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">POA irradiation: &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">poa_energy</span><span class="p">,</span> <span class="s1">&#39;kWh&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Installed PV Capacity: &#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;STC&#39;</span><span class="p">],</span> <span class="s1">&#39;W&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">DC generation:&#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dc_energy</span><span class="p">,</span> <span class="s1">&#39;kWh (&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">dc_energy</span><span class="o">*</span><span class="mi">1000</span><span class="o">/</span><span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;STC&#39;</span><span class="p">]),</span> <span class="s1">&#39;kWh/kWp)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">AC generation:&#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ac_energy</span><span class="p">,</span> <span class="s1">&#39;kWh (&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">ac_energy</span><span class="o">*</span><span class="mi">1000</span><span class="o">/</span><span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;STC&#39;</span><span class="p">]),</span> <span class="s1">&#39;kWh/kWp)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>***************  Daily Production  *************** 
+ ------------------------------------------------
+	POA irradiation:  8.11 kWh
+	Installed PV Capacity:  175.09 W
+	DC generation: 1.20 kWh ( 6.88 kWh/kWp)
+	AC generation: 1.15 kWh ( 6.55 kWh/kWp)
+--------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-summary">
+<h2>Section Summary<a class="headerlink" href="#section-summary" title="Permalink to this headline">¶</a></h2>
+<p>This section has looked at the <strong>conversion from irradiance to power output in a PV system</strong>. Multiple examples have been presented illustrating:</p>
+<ul class="simple">
+<li><p>how to access data of PV components such as PV modules and inverters;</p></li>
+<li><p>how to estimate and visualize the I-V curve of a PV module under certain irradiance and temperature conditions; and</p></li>
+<li><p>how to estimate and visualize the DC and AC power output from irradiance data.</p></li>
+</ul>
+<p>The code provided in the examples can help you as a starting point to assess other solar systems by adapting the characteristics and particularising to your case study.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>Vignola, F.; Andreas, A.; (2013). University of Oregon: GPS-based Precipitable Water Vapor (Data); NREL Report No. DA-5500-64452. <a class="reference external" href="http://dx.doi.org/10.7799/1183467">http://dx.doi.org/10.7799/1183467</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="benchmarking.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Benchmarking</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
