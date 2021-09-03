@@ -1,5 +1,5 @@
 ![Cover photo](graphics/cover_photo_shaded.png)
-# Solar Resource Assessment in Python
+# Introduction to Solar Resource Assessment in Python
 
 AssessingSolar is a practical guide to solar ressource assessment in Python, aiming make it easy to obtain solar radiation data, apply radiation models, and forecasting methods. The development of this guide is a collaborative effort within the IEA Photovoltaic Power Systems Programme (PVPS) [Task 16](https://www.iea-pvps.org/research-tasks/solar-resource-for-high-penetration-and-large-scale-applications/contacts_t16/).
 
