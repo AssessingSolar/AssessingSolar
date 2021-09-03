@@ -18,9 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      with:
-        lfs: true
-        token: ${{ secrets.ACCESS_TOKEN }}
 
     # Install dependencies
     - name: Set up Python 3.7
