@@ -8,7 +8,7 @@ parts:
     chapters:
     - file: notebooks/solar_components_and_geometry
     - file: notebooks/solar_position
-    - file: notebooks/solar_radiation_modelling
+    - file: notebooks/solar_radiation_modeling
     - file: notebooks/manipulating_time_series
   - caption: Solar resource data
     chapters:
@@ -25,4 +25,4 @@ parts:
 #    - file: notebooks/satellite_forecasting
   - caption: Solar power modeling
     chapters:
-    - file: notebooks/solar_power_modelling
+    - file: notebooks/solar_power_modeling
