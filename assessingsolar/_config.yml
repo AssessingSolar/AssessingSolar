@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Solar Resource Assessment in Python
-#author: The Assessing Solar contributors
+author: The Assessing Solar contributors
 logo: graphics/assessing_solar_logo.png
 
 # Force re-execution of notebooks on each build.
