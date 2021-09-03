@@ -42,7 +42,7 @@ print(cec_fit_params)
 During handling of the above exception, another exception occurred:
 
 [0;31mImportError[0m                               Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1907/1379621200.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1928/1379621200.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      6[0m                                   [0mmodule_data[0m[0;34m[[0m[0;34m'v_oc'[0m[0;34m][0m[0;34m,[0m [0mmodule_data[0m[0;34m[[0m[0;34m'i_sc'[0m[0;34m][0m[0;34m,[0m [0mmodule_data[0m[0;34m[[0m[0;34m'alpha_sc'[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      7[0m                                   [0mmodule_data[0m[0;34m[[0m[0;34m'beta_voc'[0m[0;34m][0m[0;34m,[0m [0mmodule_data[0m[0;34m[[0m[0;34m'gamma_pmp'[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 8[0;31m                                   module_data['cells_in_series'], module_data['temp_ref'])
