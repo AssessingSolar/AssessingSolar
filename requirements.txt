@@ -1,0 +1,6 @@
+jupyter-book
+matplotlib
+numpy
+pandas
+folium
+git+https://git@github.com/pvlib/pvlib-python@master#egg=pvlib
