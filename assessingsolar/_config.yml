@@ -38,5 +38,6 @@ repository:
   path_to_book              : AssessingSolar  # Optional path to your book, relative to the repository root
   branch                    : main  # Which branch of the repository should be used when creating links (optional)
 
+# Add launch button for Theme - making it possible to execute "live" code in the document
 launch_buttons:
   thebe                  : true

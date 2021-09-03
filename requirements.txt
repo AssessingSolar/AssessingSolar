@@ -3,4 +3,8 @@ matplotlib
 numpy
 pandas
 folium
+seaborn
 git+https://git@github.com/pvlib/pvlib-python@master#egg=pvlib
+lxml
+# Solar Power Modeling
+NREL-PySAM
