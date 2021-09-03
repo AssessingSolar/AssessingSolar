@@ -32,12 +32,12 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build assessing-solar
+        jupyter-book build assessingsolar
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: assessing-solar/_build/html
+        publish_dir: assessingsolar/_build/html
         cname: assessingsolar.org
