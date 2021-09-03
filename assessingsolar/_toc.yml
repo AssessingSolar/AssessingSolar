@@ -3,6 +3,9 @@
 
 format: jb-book
 root: intro
+- url: https://iea-pvps.org/research-tasks/solar-resource-for-high-penetration-and-large-scale-applications/
+  title: IEA PVPS Task 16
+
 parts:
   - caption: Solar radiation modeling
     chapters:
