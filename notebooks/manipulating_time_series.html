@@ -441,19 +441,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1733</span><span class="o">/</span><span class="mf">691303087.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">pvlib</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="build-our-customized-dataset">
 <h3>1.1 Build our customized dataset<a class="headerlink" href="#build-our-customized-dataset" title="Permalink to this headline">¶</a></h3>
@@ -477,100 +464,138 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1848</span><span class="o">/</span><span class="mf">3986636639.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>                                                     <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;20200101&#39;</span><span class="p">),</span>   <span class="c1"># Start date YYYYMMDD</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>                                                     <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;20201231&#39;</span><span class="p">),</span>   <span class="c1"># End date  YYYYMMDD</span>
+<span class="ne">---&gt; </span><span class="mi">11</span>                                                     <span class="n">variable_map</span><span class="o">=</span><span class="n">var_map</span><span class="p">)</span>       <span class="c1"># Variable Map</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># Let&#39;s have a look to the first 2 rows of the dataset</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">df_ref</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pvlib/iotools/midc.py</span> in <span class="ni">read_midc_raw_data_from_nrel</span><span class="nt">(site, start, end, variable_map, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span>     <span class="c1"># so first parse the header to determine the number of data columns</span>
+<span class="g g-Whitespace">    </span><span class="mi">256</span>     <span class="c1"># to parse</span>
+<span class="ne">--&gt; </span><span class="mi">257</span>     <span class="n">csv_request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span>     <span class="n">csv_request</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span>     <span class="n">raw_csv</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">csv_request</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>year</th>
-      <th>DOY</th>
-      <th>PST</th>
-      <th>dni</th>
-      <th>ghi</th>
-      <th>Global UVA [W/m^2]</th>
-      <th>Global UVE [W/m^2]</th>
-      <th>Global UVE [Index]</th>
-      <th>Dry Bulb Temp [deg C]</th>
-      <th>...</th>
-      <th>Avg Wind Direction @ 30ft [deg from N]</th>
-      <th>Peak Wind Speed @ 30ft [m/s]</th>
-      <th>UVSAET Temp [deg C]</th>
-      <th>Logger Temp [deg C]</th>
-      <th>Logger Battery [VDC]</th>
-      <th>Wind Chill Temp [deg C]</th>
-      <th>dhi</th>
-      <th>Zenith Angle [degrees]</th>
-      <th>Azimuth Angle [degrees]</th>
-      <th>Airmass</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2020-01-01 00:00:00-08:00</th>
-      <td>0</td>
-      <td>2020</td>
-      <td>1</td>
-      <td>0</td>
-      <td>-1.67051</td>
-      <td>-2.53035</td>
-      <td>-0.005</td>
-      <td>0.0</td>
-      <td>0.002</td>
-      <td>6.004</td>
-      <td>...</td>
-      <td>17.67</td>
-      <td>0.098</td>
-      <td>24.9</td>
-      <td>22.25</td>
-      <td>13.28</td>
-      <td>6.004</td>
-      <td>0.0</td>
-      <td>166.494</td>
-      <td>16.4003</td>
-      <td>-7999.0</td>
-    </tr>
-    <tr>
-      <th>2020-01-01 00:01:00-08:00</th>
-      <td>0</td>
-      <td>2020</td>
-      <td>1</td>
-      <td>1</td>
-      <td>-1.64962</td>
-      <td>-2.53035</td>
-      <td>-0.007</td>
-      <td>0.0</td>
-      <td>0.003</td>
-      <td>6.210</td>
-      <td>...</td>
-      <td>8.79</td>
-      <td>1.176</td>
-      <td>24.9</td>
-      <td>22.26</td>
-      <td>13.28</td>
-      <td>6.210</td>
-      <td>0.0</td>
-      <td>166.435</td>
-      <td>17.3510</td>
-      <td>-7999.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>2 rows × 21 columns</p>
-</div></div></div>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="sd"> </span>
+<span class="ne">---&gt; </span><span class="mi">75</span><span class="sd">     return request(&#39;get&#39;, url, params=params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span><span class="sd"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span><span class="sd">     # cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="sd">     with sessions.Session() as session:</span>
+<span class="ne">---&gt; </span><span class="mi">61</span><span class="sd">         return session.request(method=method, url=url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="sd"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span><span class="sd">         }</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span><span class="sd">         send_kwargs.update(settings)</span>
+<span class="ne">--&gt; </span><span class="mi">542</span><span class="sd">         resp = self.send(prep, **send_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span><span class="sd">         return resp</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span><span class="sd">             # Redirect resolving generator.</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span><span class="sd">             gen = self.resolve_redirects(r, request, **kwargs)</span>
+<span class="ne">--&gt; </span><span class="mi">677</span><span class="sd">             history = [resp for resp in gen]</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span><span class="sd">             history = []</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span><span class="sd">             # Redirect resolving generator.</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span><span class="sd">             gen = self.resolve_redirects(r, request, **kwargs)</span>
+<span class="ne">--&gt; </span><span class="mi">677</span><span class="sd">             history = [resp for resp in gen]</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span><span class="sd">             history = []</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">resolve_redirects</span><span class="nt">(self, resp, req, stream, timeout, verify, cert, proxies, yield_requests, **adapter_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span><span class="sd">                     proxies=proxies,</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span><span class="sd">                     allow_redirects=False,</span>
+<span class="ne">--&gt; </span><span class="mi">245</span><span class="sd">                     **adapter_kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span><span class="sd">                 )</span>
+<span class="g g-Whitespace">    </span><span class="mi">247</span><span class="sd"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">696</span><span class="sd">         if not stream:</span>
+<span class="ne">--&gt; </span><span class="mi">697</span><span class="sd">             r.content</span>
+<span class="g g-Whitespace">    </span><span class="mi">698</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">699</span><span class="sd">         return r</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/models.py</span> in <span class="ni">content</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">834</span><span class="sd">                 self._content = None</span>
+<span class="g g-Whitespace">    </span><span class="mi">835</span><span class="sd">             else:</span>
+<span class="ne">--&gt; </span><span class="mi">836</span><span class="sd">                 self._content = b&#39;&#39;.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b&#39;&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">837</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">838</span><span class="sd">         self._content_consumed = True</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/models.py</span> in <span class="ni">generate</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">756</span><span class="sd">             if hasattr(self.raw, &#39;stream&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">757</span><span class="sd">                 try:</span>
+<span class="ne">--&gt; </span><span class="mi">758</span><span class="sd">                     for chunk in self.raw.stream(chunk_size, decode_content=True):</span>
+<span class="g g-Whitespace">    </span><span class="mi">759</span><span class="sd">                         yield chunk</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span><span class="sd">                 except ProtocolError as e:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/urllib3/response.py</span> in <span class="ni">stream</span><span class="nt">(self, amt, decode_content)</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunked</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">supports_chunked_reads</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">572</span>             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_chunked</span><span class="p">(</span><span class="n">amt</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">573</span>                 <span class="k">yield</span> <span class="n">line</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span>         <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/urllib3/response.py</span> in <span class="ni">read_chunked</span><span class="nt">(self, amt, decode_content)</span>
+<span class="g g-Whitespace">    </span><span class="mi">765</span>                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span>                     <span class="k">break</span>
+<span class="ne">--&gt; </span><span class="mi">767</span>                 <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_chunk</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span>                 <span class="n">decoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span>                     <span class="n">chunk</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span> <span class="n">flush_decoder</span><span class="o">=</span><span class="kc">False</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/urllib3/response.py</span> in <span class="ni">_handle_chunk</span><span class="nt">(self, amt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">709</span>             <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">710</span>         <span class="k">elif</span> <span class="n">amt</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">711</span>             <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">_safe_read</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">712</span>             <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">-</span> <span class="n">amt</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span>             <span class="n">returned_chunk</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/http/client.py</span> in <span class="ni">_safe_read</span><span class="nt">(self, amt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span>         <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span>         <span class="k">while</span> <span class="n">amt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">628</span>             <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">amt</span><span class="p">,</span> <span class="n">MAXAMOUNT</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">chunk</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">630</span>                 <span class="k">raise</span> <span class="n">IncompleteRead</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">amt</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span>         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">589</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span>             <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span>                   <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span>                   <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1071</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1072</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1073</span>             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">927</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">928</span>             <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">929</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

@@ -387,32 +387,32 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Technology           Multi-c-Si
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Technology            Mono-c-Si
 Bifacial                      0
-STC                     229.878
-PTC                       206.9
-A_c                       1.637
-Length                     1.65
-Width                     0.992
-N_s                          60
-I_sc_ref                   8.34
-V_oc_ref                   37.2
-I_mp_ref                   7.74
-V_mp_ref                   29.7
-alpha_sc               0.008307
-beta_oc               -0.137789
-T_NOCT                     46.3
-a_ref                  1.617702
-I_L_ref                8.354697
+STC                    175.0914
+PTC                       151.2
+A_c                         1.3
+Length                    1.576
+Width                     0.825
+N_s                          72
+I_sc_ref                   5.17
+V_oc_ref                  43.99
+I_mp_ref                   4.78
+V_mp_ref                  36.63
+alpha_sc               0.002146
+beta_oc               -0.159068
+T_NOCT                     49.9
+a_ref                  1.981696
+I_L_ref                5.175703
 I_o_ref                     0.0
-R_s                    0.366789
-R_sh_ref             208.143845
-Adjust                 5.566926
-gamma_r                 -0.4419
+R_s                    0.316688
+R_sh_ref             287.102203
+Adjust                16.057121
+gamma_r                 -0.5072
 BIPV                          N
 Version       SAM 2018.11.11 r2
 Date                   1/3/2019
-Name: Aavid_Solar_ASMS_230M, dtype: object
+Name: A10Green_Technology_A10J_S72_175, dtype: object
 </pre></div>
 </div>
 </div>
@@ -552,9 +552,9 @@ Vdcmax                     480.0
 Idcmax                 10.136456
 Mppt_low                   100.0
 Mppt_high                  480.0
-CEC_Date                     NaN
+CEC_Date              10/15/2018
 CEC_Type     Utility Interactive
-Name: ABB__PVI_3_0_OUTD_S_US__208V_, dtype: object
+Name: ABB__PVI_3_0_OUTD_S_US_A__208V_, dtype: object
 </pre></div>
 </div>
 </div>
@@ -590,33 +590,7 @@ Name: ABB__PVI_3_0_OUTD_S_US__208V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pvlib/ivtools/sdm.py</span> in <span class="ni">fit_cec_sam</span><span class="nt">(celltype, v_mp, i_mp, v_oc, i_sc, alpha_sc, beta_voc, gamma_pmp, cells_in_series, temp_ref)</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">97</span>         <span class="kn">from</span> <span class="nn">PySAM</span> <span class="kn">import</span> <span class="n">PySSC</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;PySAM&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1796</span><span class="o">/</span><span class="mf">1379621200.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>                                   <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;v_oc&#39;</span><span class="p">],</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;i_sc&#39;</span><span class="p">],</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;alpha_sc&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>                                   <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;beta_voc&#39;</span><span class="p">],</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;gamma_pmp&#39;</span><span class="p">],</span>
-<span class="ne">----&gt; </span><span class="mi">8</span>                                   <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;cells_in_series&#39;</span><span class="p">],</span> <span class="n">module_data</span><span class="p">[</span><span class="s1">&#39;temp_ref&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> 
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Let&#39;s have a look to the output</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pvlib/ivtools/sdm.py</span> in <span class="ni">fit_cec_sam</span><span class="nt">(celltype, v_mp, i_mp, v_oc, i_sc, alpha_sc, beta_voc, gamma_pmp, cells_in_series, temp_ref)</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span>         <span class="kn">from</span> <span class="nn">PySAM</span> <span class="kn">import</span> <span class="n">PySSC</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">99</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Requires NREL&#39;s PySAM package at &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span>                           <span class="s2">&quot;https://pypi.org/project/NREL-PySAM/.&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">101</span> 
-
-<span class="ne">ImportError</span>: Requires NREL&#39;s PySAM package at https://pypi.org/project/NREL-PySAM/.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8.202934969951475, 1.0116474863781549e-10, 0.357990198237105, 127.6810002117698, 1.4711220130107323, 1.0522776754347636)
 </pre></div>
 </div>
 </div>
@@ -663,9 +637,9 @@ Name: ABB__PVI_3_0_OUTD_S_US__208V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1.64544335, 3.2908867 , 4.93633004, 6.58177339, 8.22721674]), array([1.1196491e-09, 1.1196491e-09, 1.1196491e-09, 1.1196491e-09,
-       1.1196491e-09]), 0.35799019877176264, array([638.40499973, 319.20249986, 212.80166658, 159.60124993,
-       127.68099995]), array([1.54513452, 1.54513452, 1.54513452, 1.54513452, 1.54513452]))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1.64544335, 3.2908867 , 4.93633004, 6.58177339, 8.22721674]), array([1.11964914e-09, 1.11964914e-09, 1.11964914e-09, 1.11964914e-09,
+       1.11964914e-09]), 0.357990198237105, array([638.40500106, 319.20250053, 212.80166702, 159.60125026,
+       127.68100021]), array([1.54513452, 1.54513452, 1.54513452, 1.54513452, 1.54513452]))
 </pre></div>
 </div>
 </div>
@@ -713,7 +687,7 @@ Name: ABB__PVI_3_0_OUTD_S_US__208V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x298305d7d68&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f04cda20b50&gt;
 </pre></div>
 </div>
 <img alt="../_images/solar_power_modeling_24_1.png" src="../_images/solar_power_modeling_24_1.png" />
@@ -756,7 +730,7 @@ Name: ABB__PVI_3_0_OUTD_S_US__208V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x298306b7828&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f04c97ba910&gt;
 </pre></div>
 </div>
 <img alt="../_images/solar_power_modeling_26_1.png" src="../_images/solar_power_modeling_26_1.png" />
@@ -843,8 +817,8 @@ Name: ABB__PVI_3_0_OUTD_S_US__208V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 39.16721703,  81.25576537, 122.67628941, 163.04035011,
-       202.17677308])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 28.16133774,  70.58616218, 112.54344311, 153.62860514,
+       193.65563637])
 </pre></div>
 </div>
 </div>
@@ -858,7 +832,7 @@ Name: ABB__PVI_3_0_OUTD_S_US__208V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7694439999999998
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.166279
 </pre></div>
 </div>
 </div>
@@ -1749,17 +1723,17 @@ Name: ABB__PVI_3_0_OUTD_S_US__208V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-06-01 00:00:00-08:00   -0.09
-2021-06-01 00:01:00-08:00   -0.09
-2021-06-01 00:02:00-08:00   -0.09
-2021-06-01 00:03:00-08:00   -0.09
-2021-06-01 00:04:00-08:00   -0.09
-                             ... 
-2021-06-01 23:55:00-08:00   -0.09
-2021-06-01 23:56:00-08:00   -0.09
-2021-06-01 23:57:00-08:00   -0.09
-2021-06-01 23:58:00-08:00   -0.09
-2021-06-01 23:59:00-08:00   -0.09
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-06-01 00:00:00-08:00   -0.1
+2021-06-01 00:01:00-08:00   -0.1
+2021-06-01 00:02:00-08:00   -0.1
+2021-06-01 00:03:00-08:00   -0.1
+2021-06-01 00:04:00-08:00   -0.1
+                            ... 
+2021-06-01 23:55:00-08:00   -0.1
+2021-06-01 23:56:00-08:00   -0.1
+2021-06-01 23:57:00-08:00   -0.1
+2021-06-01 23:58:00-08:00   -0.1
+2021-06-01 23:59:00-08:00   -0.1
 Length: 1437, dtype: float64
 </pre></div>
 </div>
@@ -1840,7 +1814,7 @@ Length: 1437, dtype: float64
 	POA irradiation:  8.11 kWh
 	Installed PV Capacity:  175.09 W
 	DC generation: 1.20 kWh ( 6.88 kWh/kWp)
-	AC generation: 1.15 kWh ( 6.55 kWh/kWp)
+	AC generation: 1.01 kWh ( 5.79 kWh/kWp)
 --------------------------------------------------
 </pre></div>
 </div>
