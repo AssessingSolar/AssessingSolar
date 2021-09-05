@@ -18,6 +18,10 @@ latex:
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
   - references.bib
+# Set reference style
+sphinx:
+  config:
+    bibtex_reference_style: author_year
 
 # Information about where the book exists on the web
 repository:
@@ -30,7 +34,6 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
-
 
 # Information about where the book exists on the web
 repository:
