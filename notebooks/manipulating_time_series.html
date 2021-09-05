@@ -267,10 +267,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-series-handling-a-id-timeseries-handling-a">
+  <a class="reference internal nav-link" href="#time-series-handling">
    1 Time-series handling
-   <a id="timeseries_handling">
-   </a>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -301,10 +299,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#down-and-up-sampling-time-series-data-a-id-timeseries-downup-sampling-a">
+  <a class="reference internal nav-link" href="#down-and-up-sampling-time-series-data">
    2 Down and up-sampling time-series data
-   <a id="timeseries_downup_sampling">
-   </a>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -344,17 +340,13 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpolating-time-series-data-a-id-timeseries-interpolation-a">
+  <a class="reference internal nav-link" href="#interpolating-time-series-data">
    3 Interpolating time-series data
-   <a id="timeseries_interpolation">
-   </a>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-time-series-data-a-id-timeseries-visualization-a">
+  <a class="reference internal nav-link" href="#visualizing-time-series-data">
    4 Visualizing time-series data
-   <a id="timeseries_visualization">
-   </a>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -405,17 +397,17 @@
   <div class="section" id="manipulating-time-series">
 <h1>Manipulating Time-series<a class="headerlink" href="#manipulating-time-series" title="Permalink to this headline">¶</a></h1>
 <p>Time-series are a key element when assessing solar resource data. In this section, we present several examples to learn how to deal with different formats in the data and few common tasks to prepare our time-series for later analysis, such as down and up-sampling data when we need different temporal resolution than that initially available or interpolating missing values in the data.</p>
-<p>The dataset used in the examples of this section is a customized dataset using solar radiation measurements from the Measurement and Instrumentation Data Center (MIDC) of the U.S. National Renewable Energy Laboratory (NREL). The station selected is located at the University of Nevada - Las Vegas (UNLV) and the data used are 1-minute GHI, DHI and DNI measurements for the year 2020 (Andreas and Stoffel, 2006).</p>
-<p>In this section, we cover: <br></p>
+<p>The dataset used in the examples of this section is a customized dataset using solar radiation measurements from the Measurement and Instrumentation Data Center (MIDC) of the U.S. National Renewable Energy Laboratory (NREL). The station selected is located at the University of Nevada - Las Vegas (UNLV) and the data used are 1-minute GHI, DHI and DNI measurements for the year 2020 <span id="id1">[]</span>.</p>
+<p>In this section, we cover:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#timeseries_handling">1 Time-series handling</a> <br></p></li>
-<li><p><a class="reference external" href="#timeseries_downup_sampling">2 Down and up-sampling time-series data</a> <br></p></li>
-<li><p><a class="reference external" href="#timeseries_interpolation">3 Interpolating time-series data</a> <br></p></li>
+<li><p><a class="reference external" href="#1-Time-series-handling">1 Time-series handling</a></p></li>
+<li><p><a class="reference external" href="#2-Down-and-up-sampling-time-series-data">2 Down and up-sampling time-series data</a></p></li>
+<li><p><a class="reference external" href="#timeseries_interpolation">3 Interpolating time-series data</a></p></li>
 <li><p><a class="reference external" href="#timeseries_visualization">4 Visualizating time-series data</a></p></li>
 </ul>
 <hr class="docutils" />
-<div style="text-align: right"> <i>Content by Javier Lopez Lorente</i> </div><div class="section" id="time-series-handling-a-id-timeseries-handling-a">
-<h2>1 Time-series handling <a id='timeseries_handling'></a><a class="headerlink" href="#time-series-handling-a-id-timeseries-handling-a" title="Permalink to this headline">¶</a></h2>
+<div style="text-align: right"> <i>Content by Javier Lopez Lorente</i> </div><div class="section" id="time-series-handling">
+<h2>1 Time-series handling<a class="headerlink" href="#time-series-handling" title="Permalink to this headline">¶</a></h2>
 <p>Datasets often come in different formats depending on the source. Those formats sometimes cannot be used straightaway to build a time-series and may require additional processing steps before building the time-series. For example:  <br></p>
 <ul class="simple">
 <li><p><strong>What if date and time are in different columns?</strong> <br></p></li>
@@ -459,100 +451,138 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1858</span><span class="o">/</span><span class="mf">3986636639.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>                                                     <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;20200101&#39;</span><span class="p">),</span>   <span class="c1"># Start date YYYYMMDD</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>                                                     <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;20201231&#39;</span><span class="p">),</span>   <span class="c1"># End date  YYYYMMDD</span>
+<span class="ne">---&gt; </span><span class="mi">11</span>                                                     <span class="n">variable_map</span><span class="o">=</span><span class="n">var_map</span><span class="p">)</span>       <span class="c1"># Variable Map</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># Let&#39;s have a look to the first 2 rows of the dataset</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">df_ref</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pvlib/iotools/midc.py</span> in <span class="ni">read_midc_raw_data_from_nrel</span><span class="nt">(site, start, end, variable_map, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span>     <span class="c1"># so first parse the header to determine the number of data columns</span>
+<span class="g g-Whitespace">    </span><span class="mi">256</span>     <span class="c1"># to parse</span>
+<span class="ne">--&gt; </span><span class="mi">257</span>     <span class="n">csv_request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span>     <span class="n">csv_request</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span>     <span class="n">raw_csv</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">csv_request</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>year</th>
-      <th>DOY</th>
-      <th>PST</th>
-      <th>dni</th>
-      <th>ghi</th>
-      <th>Global UVA [W/m^2]</th>
-      <th>Global UVE [W/m^2]</th>
-      <th>Global UVE [Index]</th>
-      <th>Dry Bulb Temp [deg C]</th>
-      <th>...</th>
-      <th>Avg Wind Direction @ 30ft [deg from N]</th>
-      <th>Peak Wind Speed @ 30ft [m/s]</th>
-      <th>UVSAET Temp [deg C]</th>
-      <th>Logger Temp [deg C]</th>
-      <th>Logger Battery [VDC]</th>
-      <th>Wind Chill Temp [deg C]</th>
-      <th>dhi</th>
-      <th>Zenith Angle [degrees]</th>
-      <th>Azimuth Angle [degrees]</th>
-      <th>Airmass</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2020-01-01 00:00:00-08:00</th>
-      <td>0</td>
-      <td>2020</td>
-      <td>1</td>
-      <td>0</td>
-      <td>-1.67051</td>
-      <td>-2.53035</td>
-      <td>-0.005</td>
-      <td>0.0</td>
-      <td>0.002</td>
-      <td>6.004</td>
-      <td>...</td>
-      <td>17.67</td>
-      <td>0.098</td>
-      <td>24.9</td>
-      <td>22.25</td>
-      <td>13.28</td>
-      <td>6.004</td>
-      <td>0.0</td>
-      <td>166.494</td>
-      <td>16.4003</td>
-      <td>-7999.0</td>
-    </tr>
-    <tr>
-      <th>2020-01-01 00:01:00-08:00</th>
-      <td>0</td>
-      <td>2020</td>
-      <td>1</td>
-      <td>1</td>
-      <td>-1.64962</td>
-      <td>-2.53035</td>
-      <td>-0.007</td>
-      <td>0.0</td>
-      <td>0.003</td>
-      <td>6.210</td>
-      <td>...</td>
-      <td>8.79</td>
-      <td>1.176</td>
-      <td>24.9</td>
-      <td>22.26</td>
-      <td>13.28</td>
-      <td>6.210</td>
-      <td>0.0</td>
-      <td>166.435</td>
-      <td>17.3510</td>
-      <td>-7999.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>2 rows × 21 columns</p>
-</div></div></div>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="sd"> </span>
+<span class="ne">---&gt; </span><span class="mi">75</span><span class="sd">     return request(&#39;get&#39;, url, params=params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span><span class="sd"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span><span class="sd">     # cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="sd">     with sessions.Session() as session:</span>
+<span class="ne">---&gt; </span><span class="mi">61</span><span class="sd">         return session.request(method=method, url=url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="sd"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span><span class="sd">         }</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span><span class="sd">         send_kwargs.update(settings)</span>
+<span class="ne">--&gt; </span><span class="mi">542</span><span class="sd">         resp = self.send(prep, **send_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span><span class="sd">         return resp</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span><span class="sd">             # Redirect resolving generator.</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span><span class="sd">             gen = self.resolve_redirects(r, request, **kwargs)</span>
+<span class="ne">--&gt; </span><span class="mi">677</span><span class="sd">             history = [resp for resp in gen]</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span><span class="sd">             history = []</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span><span class="sd">             # Redirect resolving generator.</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span><span class="sd">             gen = self.resolve_redirects(r, request, **kwargs)</span>
+<span class="ne">--&gt; </span><span class="mi">677</span><span class="sd">             history = [resp for resp in gen]</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span><span class="sd">             history = []</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">resolve_redirects</span><span class="nt">(self, resp, req, stream, timeout, verify, cert, proxies, yield_requests, **adapter_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span><span class="sd">                     proxies=proxies,</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span><span class="sd">                     allow_redirects=False,</span>
+<span class="ne">--&gt; </span><span class="mi">245</span><span class="sd">                     **adapter_kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span><span class="sd">                 )</span>
+<span class="g g-Whitespace">    </span><span class="mi">247</span><span class="sd"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">696</span><span class="sd">         if not stream:</span>
+<span class="ne">--&gt; </span><span class="mi">697</span><span class="sd">             r.content</span>
+<span class="g g-Whitespace">    </span><span class="mi">698</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">699</span><span class="sd">         return r</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/models.py</span> in <span class="ni">content</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">834</span><span class="sd">                 self._content = None</span>
+<span class="g g-Whitespace">    </span><span class="mi">835</span><span class="sd">             else:</span>
+<span class="ne">--&gt; </span><span class="mi">836</span><span class="sd">                 self._content = b&#39;&#39;.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b&#39;&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">837</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">838</span><span class="sd">         self._content_consumed = True</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/requests/models.py</span> in <span class="ni">generate</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">756</span><span class="sd">             if hasattr(self.raw, &#39;stream&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">757</span><span class="sd">                 try:</span>
+<span class="ne">--&gt; </span><span class="mi">758</span><span class="sd">                     for chunk in self.raw.stream(chunk_size, decode_content=True):</span>
+<span class="g g-Whitespace">    </span><span class="mi">759</span><span class="sd">                         yield chunk</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span><span class="sd">                 except ProtocolError as e:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/urllib3/response.py</span> in <span class="ni">stream</span><span class="nt">(self, amt, decode_content)</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunked</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">supports_chunked_reads</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">572</span>             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_chunked</span><span class="p">(</span><span class="n">amt</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">573</span>                 <span class="k">yield</span> <span class="n">line</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span>         <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/urllib3/response.py</span> in <span class="ni">read_chunked</span><span class="nt">(self, amt, decode_content)</span>
+<span class="g g-Whitespace">    </span><span class="mi">765</span>                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span>                     <span class="k">break</span>
+<span class="ne">--&gt; </span><span class="mi">767</span>                 <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_chunk</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span>                 <span class="n">decoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span>                     <span class="n">chunk</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span> <span class="n">flush_decoder</span><span class="o">=</span><span class="kc">False</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/urllib3/response.py</span> in <span class="ni">_handle_chunk</span><span class="nt">(self, amt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">709</span>             <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">710</span>         <span class="k">elif</span> <span class="n">amt</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">711</span>             <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">_safe_read</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">712</span>             <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">-</span> <span class="n">amt</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span>             <span class="n">returned_chunk</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/http/client.py</span> in <span class="ni">_safe_read</span><span class="nt">(self, amt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span>         <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span>         <span class="k">while</span> <span class="n">amt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">628</span>             <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">amt</span><span class="p">,</span> <span class="n">MAXAMOUNT</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">chunk</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">630</span>                 <span class="k">raise</span> <span class="n">IncompleteRead</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">amt</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span>         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">589</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span>             <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span>                   <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span>                   <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1071</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1072</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1073</span>             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">927</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">928</span>             <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">929</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -685,10 +715,6 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/ipykernel_launcher.py:14: FutureWarning: casting datetime64[ns, Etc/GMT+8] values to int64 with .astype(...) is deprecated and will raise in a future version. Use .view(...) instead.
-  
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;ghi&#39;, &#39;dni&#39;, &#39;dhi&#39;, &#39;year&#39;, &#39;month&#39;, &#39;day&#39;, &#39;hour&#39;, &#39;minute&#39;, &#39;date&#39;,
        &#39;time&#39;, &#39;timestamp&#39;, &#39;epoch&#39;],
       dtype=&#39;object&#39;)
@@ -751,7 +777,7 @@
       <td>2020-01-01</td>
       <td>00:00:00</td>
       <td>2020-01-01 00:00:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865600</td>
     </tr>
     <tr>
       <th>1</th>
@@ -766,7 +792,7 @@
       <td>2020-01-01</td>
       <td>00:01:00</td>
       <td>2020-01-01 00:01:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865660</td>
     </tr>
     <tr>
       <th>2</th>
@@ -781,7 +807,7 @@
       <td>2020-01-01</td>
       <td>00:02:00</td>
       <td>2020-01-01 00:02:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865720</td>
     </tr>
   </tbody>
 </table>
@@ -868,7 +894,7 @@
       <td>2020-01-01</td>
       <td>00:00:00</td>
       <td>2020-01-01 00:00:00-08:00</td>
-      <td>1.577866e+09</td>
+      <td>1577865600</td>
     </tr>
     <tr>
       <th>2020-01-01 00:01:00-08:00</th>
@@ -883,7 +909,7 @@
       <td>2020-01-01</td>
       <td>00:01:00</td>
       <td>2020-01-01 00:01:00-08:00</td>
-      <td>1.577866e+09</td>
+      <td>1577865660</td>
     </tr>
     <tr>
       <th>2020-01-01 00:02:00-08:00</th>
@@ -898,7 +924,7 @@
       <td>2020-01-01</td>
       <td>00:02:00</td>
       <td>2020-01-01 00:02:00-08:00</td>
-      <td>1.577866e+09</td>
+      <td>1577865720</td>
     </tr>
   </tbody>
 </table>
@@ -979,7 +1005,7 @@
       <td>2020-01-01</td>
       <td>00:00:00</td>
       <td>2020-01-01 00:00:00-08:00</td>
-      <td>1.577866e+09</td>
+      <td>1577865600</td>
       <td>2020-01-01 08:00:00+00:00</td>
     </tr>
     <tr>
@@ -995,7 +1021,7 @@
       <td>2020-01-01</td>
       <td>00:01:00</td>
       <td>2020-01-01 00:01:00-08:00</td>
-      <td>1.577866e+09</td>
+      <td>1577865660</td>
       <td>2020-01-01 08:01:00+00:00</td>
     </tr>
     <tr>
@@ -1011,7 +1037,7 @@
       <td>2020-01-01</td>
       <td>00:02:00</td>
       <td>2020-01-01 00:02:00-08:00</td>
-      <td>1.577866e+09</td>
+      <td>1577865720</td>
       <td>2020-01-01 08:02:00+00:00</td>
     </tr>
   </tbody>
@@ -1102,7 +1128,7 @@
       <td>2020-01-01</td>
       <td>00:00:00</td>
       <td>2020-01-01 00:00:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865600</td>
       <td>2020-01-01 00:00:00</td>
     </tr>
     <tr>
@@ -1118,7 +1144,7 @@
       <td>2020-01-01</td>
       <td>00:01:00</td>
       <td>2020-01-01 00:01:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865660</td>
       <td>2020-01-01 00:01:00</td>
     </tr>
     <tr>
@@ -1134,7 +1160,7 @@
       <td>2020-01-01</td>
       <td>00:02:00</td>
       <td>2020-01-01 00:02:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865720</td>
       <td>2020-01-01 00:02:00</td>
     </tr>
   </tbody>
@@ -1225,7 +1251,7 @@
       <td>2020-01-01</td>
       <td>00:00:00</td>
       <td>2020-01-01 00:00:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865600</td>
       <td>2020-01-01 00:00:00</td>
     </tr>
     <tr>
@@ -1241,7 +1267,7 @@
       <td>2020-01-01</td>
       <td>00:01:00</td>
       <td>2020-01-01 00:01:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865660</td>
       <td>2020-01-01 00:01:00</td>
     </tr>
     <tr>
@@ -1257,7 +1283,7 @@
       <td>2020-01-01</td>
       <td>00:02:00</td>
       <td>2020-01-01 00:02:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865720</td>
       <td>2020-01-01 00:02:00</td>
     </tr>
   </tbody>
@@ -1345,7 +1371,7 @@
       <td>2020-01-01</td>
       <td>00:00:00</td>
       <td>2020-01-01 00:00:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865600</td>
       <td>2020-01-01 08:00:00+00:00</td>
     </tr>
     <tr>
@@ -1361,7 +1387,7 @@
       <td>2020-01-01</td>
       <td>00:01:00</td>
       <td>2020-01-01 00:01:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865660</td>
       <td>2020-01-01 08:01:00+00:00</td>
     </tr>
     <tr>
@@ -1377,7 +1403,7 @@
       <td>2020-01-01</td>
       <td>00:02:00</td>
       <td>2020-01-01 00:02:00-0800</td>
-      <td>1.577866e+09</td>
+      <td>1577865720</td>
       <td>2020-01-01 08:02:00+00:00</td>
     </tr>
   </tbody>
@@ -1388,8 +1414,8 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="down-and-up-sampling-time-series-data-a-id-timeseries-downup-sampling-a">
-<h2>2 Down and up-sampling time-series data<a id='timeseries_downup_sampling'></a><a class="headerlink" href="#down-and-up-sampling-time-series-data-a-id-timeseries-downup-sampling-a" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="down-and-up-sampling-time-series-data">
+<h2>2 Down and up-sampling time-series data<a class="headerlink" href="#down-and-up-sampling-time-series-data" title="Permalink to this headline">¶</a></h2>
 <p>When assessing solar resource, you may need a different time-resolution than your data for a particular part of the analysis. In those cases, it is possible to <strong>down-sample and up-sample the data at different temporal resolutions</strong> using two different methods within <a class="reference external" href="https://pandas.pydata.org/">pandas library</a> called <em>resample</em> and <em>asfreq</em>. Depending on your needs, you will opt for one or the other. Regardless of the method, both of them require a DataFrame with <em>datetimeindex</em> either time-aware (localized) or time-naive (not localized).</p>
 <div class="section" id="method-asfreq-vs-resample">
 <h3>2.1 Method ‘asfreq’ vs. ‘resample’<a class="headerlink" href="#method-asfreq-vs-resample" title="Permalink to this headline">¶</a></h3>
@@ -1709,7 +1735,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.resample.DatetimeIndexResampler object at 0x7f6ab02e7690&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.resample.DatetimeIndexResampler object at 0x00000213CAB87C18&gt;
 </pre></div>
 </div>
 </div>
@@ -2507,8 +2533,8 @@ dtype: float64
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="interpolating-time-series-data-a-id-timeseries-interpolation-a">
-<h2>3 Interpolating time-series data<a id='timeseries_interpolation'></a><a class="headerlink" href="#interpolating-time-series-data-a-id-timeseries-interpolation-a" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="interpolating-time-series-data">
+<h2>3 Interpolating time-series data<a class="headerlink" href="#interpolating-time-series-data" title="Permalink to this headline">¶</a></h2>
 <p>When up-sampling the data series, it can happen that back-filling, forward-filling and constant replacement does not necessarily work for your analysis/application. An alternative approach is interpolating the replacing the NaN values with an interpolated result. Interpolation in Pandas DataFrames with <em>DatetimeIndex</em> is done with the <em>interpolate</em> method.</p>
 <p>The mathematical interpolation method in <em>interpolate</em> is defined with the argument called <em>‘method’</em>. Pandas permits several interpolation methods, such as ‘linear’, ‘cubic’, ‘quadratic’, ‘spline’, ‘polynomial’ and others. All the interpolation options can be found in the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.interpolate.html">documentation</a> of the <em>interpolate</em> method.</p>
 <p>Following the previous example, let’s implement interpolation in the missing values of the half-hourly timestamps using ‘linear’, ‘cubic’ and ‘polynomial’ methods:</p>
@@ -2830,8 +2856,8 @@ dtype: float64
 </div>
 <p>The interpolation of NaN values when up-sampling time-series data can help overcome the issues of using back or forward filling, specially if you aim to up-sample at higher frequencies than the example shown (e.g. 1-hour to 15-minute resolution series). The mathematical methods available for interpolation within Pandas are diverse and cover beyond the most common interpolation functions.</p>
 </div>
-<div class="section" id="visualizing-time-series-data-a-id-timeseries-visualization-a">
-<h2>4 Visualizing time-series data<a id='timeseries_visualization'></a><a class="headerlink" href="#visualizing-time-series-data-a-id-timeseries-visualization-a" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="visualizing-time-series-data">
+<h2>4 Visualizing time-series data<a class="headerlink" href="#visualizing-time-series-data" title="Permalink to this headline">¶</a></h2>
 <p>It is often useful to visualize the data to grasp insighs and observe trends about the data. This section shows few examples to visualize time-series data.</p>
 <div class="section" id="plotting-a-time-series-for-a-day-of-interest">
 <h3>4.1 Plotting a time-series for a day of interest<a class="headerlink" href="#plotting-a-time-series-for-a-day-of-interest" title="Permalink to this headline">¶</a></h3>
@@ -2848,11 +2874,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/ipykernel_launcher.py:2: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
-  
-</pre></div>
-</div>
-<img alt="../_images/manipulating_time_series_57_1.png" src="../_images/manipulating_time_series_57_1.png" />
+<img alt="../_images/manipulating_time_series_57_0.png" src="../_images/manipulating_time_series_57_0.png" />
 </div>
 </div>
 <p>We can visualize the effect of using average (<em>resample</em>) vs. instantaneous (<em>asfreq</em>) measurements when down-sampling our data.</p>
@@ -2871,15 +2893,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/ipykernel_launcher.py:2: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
-  
-/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/ipykernel_launcher.py:3: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
-  This is separate from the ipykernel package so we can avoid doing imports until
-/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/ipykernel_launcher.py:4: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
-  after removing the cwd from sys.path.
-</pre></div>
-</div>
-<img alt="../_images/manipulating_time_series_59_1.png" src="../_images/manipulating_time_series_59_1.png" />
+<img alt="../_images/manipulating_time_series_59_0.png" src="../_images/manipulating_time_series_59_0.png" />
 </div>
 </div>
 </div>
@@ -2935,11 +2949,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/ipykernel_launcher.py:5: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
-  &quot;&quot;&quot;
-</pre></div>
-</div>
-<img alt="../_images/manipulating_time_series_63_1.png" src="../_images/manipulating_time_series_63_1.png" />
+<img alt="../_images/manipulating_time_series_63_0.png" src="../_images/manipulating_time_series_63_0.png" />
 </div>
 </div>
 </div>
