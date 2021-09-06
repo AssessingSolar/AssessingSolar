@@ -17,9 +17,11 @@ parts:
     - file: notebooks/satellite_data
     - file: notebooks/reanalysis_data
     - file: notebooks/ground_measurements
+      title: Ground measurements
     - file: notebooks/quality_asessment
       title: Quality assessment
     - file: notebooks/benchmarking
+      title: Benchmarking
 #  - caption: Forecasting
 #    chapters:
 #    - file: notebooks/forecasting_overview
