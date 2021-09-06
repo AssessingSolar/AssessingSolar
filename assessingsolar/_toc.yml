@@ -13,7 +13,7 @@ parts:
     - file: notebooks/solar_components
       title: Solar Components
     - file: notebooks/solar_radiation_modeling
-      title Solar radiation modeling
+      title: Solar radiation modeling
     - file: notebooks/manipulating_time_series
       title: Manipulating Time-Series
   - caption: Solar resource data
