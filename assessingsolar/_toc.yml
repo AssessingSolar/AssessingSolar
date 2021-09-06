@@ -18,6 +18,7 @@ parts:
     - file: notebooks/reanalysis_data
     - file: notebooks/ground_measurements
     - file: notebooks/quality_asessment
+      title: Quality assessment
     - file: notebooks/benchmarking
 #  - caption: Forecasting
 #    chapters:
