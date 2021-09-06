@@ -44,3 +44,7 @@ repository:
 # Add launch button for Theme - making it possible to execute "live" code in the document
 launch_buttons:
   thebe                  : true
+
+# Set the execution timeout (default=30 seconds)
+execute:
+  timeout: 100
