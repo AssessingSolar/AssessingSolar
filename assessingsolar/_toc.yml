@@ -3,14 +3,19 @@
 
 format: jb-book
 root: intro
+title: Introduction
 
 parts:
   - caption: Solar radiation modeling
     chapters:
     - file: notebooks/solar_position
+      title: Solar Position
     - file: notebooks/solar_components
+      title: Solar Components
     - file: notebooks/solar_radiation_modeling
+      title Solar radiation modeling
     - file: notebooks/manipulating_time_series
+      title: Manipulating Time-Series
   - caption: Solar resource data
     chapters:
     - file: notebooks/solar_resource_data_overview
