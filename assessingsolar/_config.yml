@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Solar Resource Assessment in Python
-author: The Assessing Solar contributors
+author: The Assessing Solar Community
 logo: graphics/assessing_solar_logo.png
 
 # Force re-execution of notebooks on each build.
@@ -32,8 +32,8 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  use_issues_button: true
-  use_repository_button: true
+  use_issues_button         : true
+  favicon                   : "graphics/assessing_solar_favicon.ico"  # A path to a favicon image
 
 # Information about where the book exists on the web
 repository:
