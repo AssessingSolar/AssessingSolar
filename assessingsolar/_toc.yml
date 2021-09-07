@@ -37,5 +37,7 @@ parts:
   - caption: Applications
     chapters:
     - file: notebooks/solar_power_modeling
-#- url: https://iea-pvps.org/research-tasks/solar-resource-for-high-penetration-and-large-scale-applications/
-#  title: IEA PVPS Task 16
+  - caption: Appendix
+    - file: glossary
+    - url: https://iea-pvps.org/research-tasks/solar-resource-for-high-penetration-and-large-scale-applications/
+      title: IEA PVPS Task 16
