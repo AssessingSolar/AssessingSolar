@@ -13,18 +13,20 @@ parts:
     - file: notebooks/solar_components
       title: Solar Components
     - file: notebooks/solar_radiation_modeling
-      title: Solar radiation modeling
+      title: Solar Radiation Modeling
     - file: notebooks/manipulating_time_series
       title: Manipulating Time-Series
   - caption: Solar resource data
     chapters:
     - file: notebooks/solar_resource_data_overview
     - file: notebooks/satellite_data
-    - file: notebooks/reanalysis_data
     - file: notebooks/ground_measurements
-      title: Ground measurements
+      title: Ground Measurements
+      title: Satellite Data
+    - file: notebooks/reanalysis_data
+      title: Reanalysis Data
     - file: notebooks/quality_asessment
-      title: Quality assessment
+      title: Quality Assessment
     - file: notebooks/benchmarking
       title: Benchmarking
 #  - caption: Forecasting
@@ -32,7 +34,7 @@ parts:
 #    - file: notebooks/forecasting_overview
 #    - file: notebooks/persistent_forecasting
 #    - file: notebooks/satellite_forecasting
-  - caption: Solar power modeling
+  - caption: Applications
     chapters:
     - file: notebooks/solar_power_modeling
 #- url: https://iea-pvps.org/research-tasks/solar-resource-for-high-penetration-and-large-scale-applications/

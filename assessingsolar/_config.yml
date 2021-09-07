@@ -5,6 +5,9 @@ title: Solar Resource Assessment in Python
 author: The Assessing Solar Community
 logo: graphics/assessing_solar_logo.png
 
+# Auto-exclude files not in the toc
+only_build_toc_files: true
+
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
@@ -34,6 +37,7 @@ repository:
 html:
   use_issues_button         : true
   favicon                   : "graphics/assessing_solar_favicon.ico"  # A path to a favicon image
+  baseurl                   : https://assessingsolar.org
 
 # Information about where the book exists on the web
 repository:
