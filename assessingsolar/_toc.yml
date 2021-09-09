@@ -17,13 +17,14 @@ parts:
   - caption: Solar radiation modeling
     chapters:
     - file: notebooks/solar_radiation_modeling
+    - file notesboos/
   - caption: Solar resource data
     chapters:
     - file: notebooks/solar_resource_data_overview
     - file: notebooks/satellite_data
+      title: Satellite Data
     - file: notebooks/ground_measurements
       title: Ground Measurements
-      title: Satellite Data
     - file: notebooks/reanalysis_data
       title: Reanalysis Data
     - file: notebooks/quality_asessment
