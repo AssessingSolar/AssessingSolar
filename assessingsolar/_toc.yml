@@ -17,7 +17,6 @@ parts:
   - caption: Solar radiation modeling
     chapters:
     - file: notebooks/solar_radiation_modeling
-    - file notesboos/
   - caption: Solar resource data
     chapters:
     - file: notebooks/solar_resource_data_overview
@@ -39,8 +38,10 @@ parts:
   - caption: Applications
     chapters:
     - file: notebooks/solar_power_modeling
+    - file: glossary
   - caption: Appendix
     chapters:
-    - file: glossary
-    - url: https://iea-pvps.org/research-tasks/solar-resource-for-high-penetration-and-large-scale-applications/
-      title: IEA PVPS Task 16
+    - title: IEA PVPS Task 16
+      url: https://iea-pvps.org/research-tasks/solar-resource-for-high-penetration-and-large-scale-applications/
+      external: true
+      
