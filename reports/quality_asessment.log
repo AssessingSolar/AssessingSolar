@@ -35,7 +35,7 @@ df.head()  # Print the first five lines of the DataFrame
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mHTTPError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1757/3120581524.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1724/3120581524.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      8[0m [0mdata_path[0m [0;34m=[0m [0;34m'https://www.dropbox.com/s/qd8aw2ug8s7dq4u/solar_irradiance_dtu_2019_extended.csv?dl=1'[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      9[0m [0;34m[0m[0m
 [0;32m---> 10[0;31m [0mdf[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0mdata_path[0m[0;34m,[0m [0mindex_col[0m[0;34m=[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m,[0m [0mparse_dates[0m[0;34m=[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
