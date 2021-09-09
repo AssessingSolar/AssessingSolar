@@ -36,8 +36,9 @@ repository:
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
   use_issues_button         : true
-  favicon                   : "graphics/assessing_solar_favicon.ico"  # A path to a favicon image
+  favicon                   : graphics/assessing_solar_favicon.ico  # A path to a favicon image
   baseurl                   : https://assessingsolar.org
+  google_analytics_id       : UA-207152593-1
 
 # Information about where the book exists on the web
 repository:
