@@ -6,6 +6,6 @@ lxml
 folium
 seaborn
 #git+https://git@github.com/pvlib/pvlib-python@master#egg=pvlib
-git+https://git@github.com/AdamRJensen/tree/pvlib-python@era5#egg=pvlib
+git+https://git@github.com/AdamRJensen/pvlib-python@era5#egg=pvlib
 # Solar Power Modeling
 NREL-PySAM
