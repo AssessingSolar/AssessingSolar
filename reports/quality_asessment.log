@@ -35,7 +35,7 @@ df.head()  # Print the first five lines of the DataFrame
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mHTTPError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1724/3120581524.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1738/3120581524.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      8[0m [0mdata_path[0m [0;34m=[0m [0;34m'https://www.dropbox.com/s/qd8aw2ug8s7dq4u/solar_irradiance_dtu_2019_extended.csv?dl=1'[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      9[0m [0;34m[0m[0m
 [0;32m---> 10[0;31m [0mdf[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0mdata_path[0m[0;34m,[0m [0mindex_col[0m[0;34m=[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m,[0m [0mparse_dates[0m[0;34m=[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
@@ -92,25 +92,25 @@ df.head()  # Print the first five lines of the DataFrame
 [1;32m    231[0m [0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pandas/io/common.py[0m in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
-[1;32m    611[0m         [0mcompression[0m[0;34m=[0m[0mcompression[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    612[0m         [0mmode[0m[0;34m=[0m[0mmode[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 613[0;31m         [0mstorage_options[0m[0;34m=[0m[0mstorage_options[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    614[0m     )
-[1;32m    615[0m [0;34m[0m[0m
+[1;32m    612[0m         [0mcompression[0m[0;34m=[0m[0mcompression[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    613[0m         [0mmode[0m[0;34m=[0m[0mmode[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 614[0;31m         [0mstorage_options[0m[0;34m=[0m[0mstorage_options[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    615[0m     )
+[1;32m    616[0m [0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pandas/io/common.py[0m in [0;36m_get_filepath_or_buffer[0;34m(filepath_or_buffer, encoding, compression, mode, storage_options)[0m
-[1;32m    309[0m         [0;31m# assuming storage_options is to be interpreted as headers[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    310[0m         [0mreq_info[0m [0;34m=[0m [0murllib[0m[0;34m.[0m[0mrequest[0m[0;34m.[0m[0mRequest[0m[0;34m([0m[0mfilepath_or_buffer[0m[0;34m,[0m [0mheaders[0m[0;34m=[0m[0mstorage_options[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 311[0;31m         [0;32mwith[0m [0murlopen[0m[0;34m([0m[0mreq_info[0m[0;34m)[0m [0;32mas[0m [0mreq[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    312[0m             [0mcontent_encoding[0m [0;34m=[0m [0mreq[0m[0;34m.[0m[0mheaders[0m[0;34m.[0m[0mget[0m[0;34m([0m[0;34m"Content-Encoding"[0m[0;34m,[0m [0;32mNone[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    313[0m             [0;32mif[0m [0mcontent_encoding[0m [0;34m==[0m [0;34m"gzip"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    310[0m         [0;31m# assuming storage_options is to be interpreted as headers[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    311[0m         [0mreq_info[0m [0;34m=[0m [0murllib[0m[0;34m.[0m[0mrequest[0m[0;34m.[0m[0mRequest[0m[0;34m([0m[0mfilepath_or_buffer[0m[0;34m,[0m [0mheaders[0m[0;34m=[0m[0mstorage_options[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 312[0;31m         [0;32mwith[0m [0murlopen[0m[0;34m([0m[0mreq_info[0m[0;34m)[0m [0;32mas[0m [0mreq[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    313[0m             [0mcontent_encoding[0m [0;34m=[0m [0mreq[0m[0;34m.[0m[0mheaders[0m[0;34m.[0m[0mget[0m[0;34m([0m[0;34m"Content-Encoding"[0m[0;34m,[0m [0;32mNone[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    314[0m             [0;32mif[0m [0mcontent_encoding[0m [0;34m==[0m [0;34m"gzip"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/pandas/io/common.py[0m in [0;36murlopen[0;34m(*args, **kwargs)[0m
-[1;32m    209[0m     [0;32mimport[0m [0murllib[0m[0;34m.[0m[0mrequest[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    210[0m [0;34m[0m[0m
-[0;32m--> 211[0;31m     [0;32mreturn[0m [0murllib[0m[0;34m.[0m[0mrequest[0m[0;34m.[0m[0murlopen[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    212[0m [0;34m[0m[0m
-[1;32m    213[0m [0;34m[0m[0m
+[1;32m    210[0m     [0;32mimport[0m [0murllib[0m[0;34m.[0m[0mrequest[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    211[0m [0;34m[0m[0m
+[0;32m--> 212[0;31m     [0;32mreturn[0m [0murllib[0m[0;34m.[0m[0mrequest[0m[0;34m.[0m[0murlopen[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    213[0m [0;34m[0m[0m
+[1;32m    214[0m [0;34m[0m[0m
 
 [0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/urllib/request.py[0m in [0;36murlopen[0;34m(url, data, timeout, cafile, capath, cadefault, context)[0m
 [1;32m    220[0m     [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
