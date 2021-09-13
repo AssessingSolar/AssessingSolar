@@ -2,11 +2,10 @@ jupyter-book
 matplotlib
 numpy
 pandas
+lxml
 folium
 seaborn
 git+https://git@github.com/pvlib/pvlib-python@master#egg=pvlib
-lxml
+git+https://git@github.com/AdamRJensen/tree/pvlib-python@era5#egg=pvlib_era5
 # Solar Power Modeling
 NREL-PySAM
-pip:
-git+https://git@github.com/AdamRJensen/tree/pvlib-python@era5#egg=pvlib_era5
