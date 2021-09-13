@@ -5,6 +5,7 @@ pandas
 folium
 seaborn
 git+https://git@github.com/pvlib/pvlib-python@master#egg=pvlib
+git+https://git@github.com/AdamRJensen/pvlib-python@era5#egg=pvlib_era5
 lxml
 # Solar Power Modeling
 NREL-PySAM
