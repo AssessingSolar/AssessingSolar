@@ -6,7 +6,7 @@ root: intro
 title: Introduction
 
 parts:
-  - caption: Solar radiation fundamentals
+  - caption: Solar fundamentals
     chapters:
     - file: notebooks/solar_position
       title: Solar Position
