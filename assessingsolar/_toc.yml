@@ -25,6 +25,8 @@ parts:
       sections:
       - file: notebooks/bsrn
         title: BSRN
+      - file: notebooks/srml
+        title: SRML
     - file: notebooks/satellite_data
       title: Satellite Data
     - file: notebooks/reanalysis_data
