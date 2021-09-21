@@ -5,6 +5,7 @@ pandas
 lxml
 folium
 seaborn
+pandas_bokeh
 #git+https://git@github.com/pvlib/pvlib-python@master#egg=pvlib
 git+https://git@github.com/AdamRJensen/pvlib-python@era5#egg=pvlib
 # Solar Power Modeling
