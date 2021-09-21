@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reanalysis data &#8212; Solar Resource Assessment in Python</title>
+    <title>University of Oregon - Solar Radiation Monitoring Laboratory (SRML) &#8212; Solar Resource Assessment in Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -49,12 +49,12 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://assessingsolar.org/notebooks/reanalysis_data.html" />
+    <link rel="canonical" href="https://assessingsolar.org/notebooks/srml.html" />
     <link rel="shortcut icon" href="../_static/assessing_solar_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quality assessment of solar irradiance data" href="quality_asessment.html" />
-    <link rel="prev" title="Satellite data" href="satellite_data.html" />
+    <link rel="next" title="Satellite data" href="satellite_data.html" />
+    <link rel="prev" title="Baseline Surface Radiation Network (BSRN)" href="bsrn.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -140,23 +140,23 @@
    Overview
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="ground_measurements.html">
    Ground Measurements
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="bsrn.html">
      BSRN
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="srml.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      SRML
     </a>
    </li>
@@ -167,8 +167,8 @@
    Satellite Data
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="reanalysis_data.html">
    Reanalysis Data
   </a>
  </li>
@@ -252,9 +252,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/reanalysis_data.rst"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/srml.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.rst</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -269,7 +269,7 @@
     <div class="dropdown-buttons sourcebuttons">
         
         <a class="issues-button"
-            href="https://github.com/AssessingSolar/AssessingSolar/issues/new?title=Issue%20on%20page%20%2Fnotebooks/reanalysis_data.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/AssessingSolar/AssessingSolar/issues/new?title=Issue%20on%20page%20%2Fnotebooks/srml.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -285,11 +285,44 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AssessingSolar/AssessingSolar/main?urlpath=tree/AssessingSolar/notebooks/srml.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#future-updates">
+   Future updates
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -298,9 +331,218 @@
         
               <div>
                 
-  <div class="section" id="reanalysis-data">
-<h1>Reanalysis data<a class="headerlink" href="#reanalysis-data" title="Permalink to this headline">¶</a></h1>
-<p>This site is under construction.</p>
+  <div class="section" id="university-of-oregon-solar-radiation-monitoring-laboratory-srml">
+<h1>University of Oregon - Solar Radiation Monitoring Laboratory (SRML)<a class="headerlink" href="#university-of-oregon-solar-radiation-monitoring-laboratory-srml" title="Permalink to this headline">¶</a></h1>
+<p>The University of Oregon’s Solar Radiation Monitoring Laboratory (SRML) operates a network of station in the Northwestern United States.</p>
+<p>This notebook will demonstrate how pvlib-python can be used to retrieve ground measured solar radiation data form the SRML network. The specific example extracts data from the Hermiston station for the month of June 2020.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pvlib.iotools.read_srml_month_from_solardat</span></code> function retrieves data from the SRML archive, which stores data in monthly files for each station. A list of the station abbreviations can be found <a class="reference external" href="http://solardat.uoregon.edu/StationIDCodes.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pvlib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">read_srml_month_from_solardat</span><span class="p">(</span>
+    <span class="n">station</span><span class="o">=</span><span class="s1">&#39;HE&#39;</span><span class="p">,</span>
+    <span class="n">year</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span>
+    <span class="n">month</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  <span class="c1"># print the first 5 rows of data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ghi_0</th>
+      <th>ghi_0_flag</th>
+      <th>dni_0</th>
+      <th>dni_0_flag</th>
+      <th>dhi_3</th>
+      <th>dhi_3_flag</th>
+      <th>ghi_2</th>
+      <th>ghi_2_flag</th>
+      <th>dni_2</th>
+      <th>dni_2_flag</th>
+      <th>...</th>
+      <th>relative_humidity_1</th>
+      <th>relative_humidity_1_flag</th>
+      <th>9151</th>
+      <th>9151_flag</th>
+      <th>wind_dir_1</th>
+      <th>wind_dir_1_flag</th>
+      <th>wind_speed_1</th>
+      <th>wind_speed_1_flag</th>
+      <th>dhi_0</th>
+      <th>dhi_0_flag</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2020-06-01 00:00:00-08:00</th>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>...</td>
+      <td>55.3</td>
+      <td>12</td>
+      <td>0.0</td>
+      <td>11</td>
+      <td>172.5</td>
+      <td>11</td>
+      <td>1.3</td>
+      <td>12</td>
+      <td>0</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>2020-06-01 00:01:00-08:00</th>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>...</td>
+      <td>55.5</td>
+      <td>12</td>
+      <td>0.0</td>
+      <td>11</td>
+      <td>180.7</td>
+      <td>11</td>
+      <td>1.3</td>
+      <td>12</td>
+      <td>0</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>2020-06-01 00:02:00-08:00</th>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>...</td>
+      <td>55.6</td>
+      <td>12</td>
+      <td>0.0</td>
+      <td>11</td>
+      <td>128.9</td>
+      <td>11</td>
+      <td>0.4</td>
+      <td>12</td>
+      <td>0</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>2020-06-01 00:03:00-08:00</th>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>...</td>
+      <td>55.4</td>
+      <td>12</td>
+      <td>0.0</td>
+      <td>11</td>
+      <td>141.6</td>
+      <td>11</td>
+      <td>1.2</td>
+      <td>12</td>
+      <td>0</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>2020-06-01 00:04:00-08:00</th>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>...</td>
+      <td>55.6</td>
+      <td>12</td>
+      <td>0.0</td>
+      <td>11</td>
+      <td>186.3</td>
+      <td>11</td>
+      <td>0.8</td>
+      <td>12</td>
+      <td>0</td>
+      <td>71</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 30 columns</p>
+</div></div></div>
+</div>
+<p>The output above shows the first five rows of the extracted data. We can now plot the parameters of interest, e.g., the three components of solar radiation; GHI, DNI, and DHI.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axes</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;ghi_0&#39;</span><span class="p">,</span> <span class="s1">&#39;dni_0&#39;</span><span class="p">,</span> <span class="s1">&#39;dhi_3&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;GHI [W/m$^2$]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;DNI [W/m$^2$]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;DHI [W/m$^2$]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;DHI [W/m$^2$]&#39;)
+</pre></div>
+</div>
+<img alt="../_images/srml_4_1.png" src="../_images/srml_4_1.png" />
+</div>
+</div>
+<div class="section" id="future-updates">
+<h2>Future updates<a class="headerlink" href="#future-updates" title="Permalink to this headline">¶</a></h2>
+<p>It is planned to update the SRML pvlib retrieval function to access the newest version of the SRML data format in order for metadata also to be available. Also, it is planned for the new function to accept a start and end date to get more than one month of data for a single station.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -333,19 +575,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="satellite_data.html" title="previous page">
+        <a class="left-prev" href="bsrn.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Satellite data</p>
+                <p class="prevnext-title">Baseline Surface Radiation Network (BSRN)</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="quality_asessment.html" title="next page">
+        <a class="right-next" href="satellite_data.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Quality assessment of solar irradiance data</p>
+                <p class="prevnext-title">Satellite data</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
