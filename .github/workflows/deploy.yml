@@ -32,6 +32,9 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
+        export BSRN_FTP_USERNAME=$(BSRN_FTP_USERNAME)
+        export BSRN_FTP_PASSWORD=$(BSRN_FTP_PASSWORD)
+        export SODA_USERNAME=$(SODA_USERNAME)
         jupyter-book build assessingsolar
 
     # Push the book's HTML to github-pages

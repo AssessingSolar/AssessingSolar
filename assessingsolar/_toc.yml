@@ -22,6 +22,9 @@ parts:
     - file: notebooks/solar_resource_data_overview
     - file: notebooks/ground_measurements
       title: Ground Measurements
+      sections:
+      - file: notebooks/bsrn
+        title: BSRN
     - file: notebooks/satellite_data
       title: Satellite Data
     - file: notebooks/reanalysis_data
