@@ -31,7 +31,7 @@ ghi_hr=ghi_obs.resample('60min').mean()
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31merror_perm[0m                                Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1835/1608150326.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1934/1608150326.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      2[0m data_obs, metadata = pvlib.iotools.get_bsrn(  
 [1;32m      3[0m     [0mstart[0m[0;34m=[0m[0mpd[0m[0;34m.[0m[0mTimestamp[0m[0;34m([0m[0;36m2015[0m[0;34m,[0m[0;36m1[0m[0;34m,[0m[0;36m1[0m[0;34m)[0m[0;34m,[0m [0mend[0m[0;34m=[0m[0mpd[0m[0;34m.[0m[0mTimestamp[0m[0;34m([0m[0;36m2015[0m[0;34m,[0m[0;36m12[0m[0;34m,[0m[0;36m1[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 4[0;31m     station='tam', username='YourUserName', password='YourPassword')  
