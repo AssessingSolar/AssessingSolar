@@ -10,4 +10,4 @@ Contrary to traditional textbooks or scientific articles, this guide presents th
 We happily welcome contributions! You can either make a pull request, open an issue, or write to assessingsolar@gmail.com with any comments or suggestions.
 
 ## Feedback
-We're always looking for ways to improve this website, so we hope that you will help us out by filling out this [1-min user survey](https://forms.gle/pdfSskT7LYN5L5do9). You can write any suggestions for improvements or corrections. Even if you don't have any comments, we would highly appriciate getting some statistics on our users so we can target our content.
+We're always looking for ways to improve this website, so we hope that you will help us out by filling out this [1-min user survey](https://forms.gle/pdfSskT7LYN5L5do9). You can write any suggestions for improvements or corrections. Even if you don't have any comments, we would highly appreciate getting some statistics on our users to target our content.
