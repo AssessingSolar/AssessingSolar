@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site Adaptation &#8212; Solar Resource Assessment in Python</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://assessingsolar.org/notebooks/site_adaptation.html" />
+    <link rel="shortcut icon" href="../_static/assessing_solar_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="Solar Power Modelling" href="solar_power_modeling.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/assessing_solar_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Solar Resource Assessment in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Solar fundamentals
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_position.html">
+   Solar Position
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_components.html">
+   Solar Components
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="manipulating_time_series.html">
+   Manipulating Time-Series
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Solar radiation modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="decomposition_models.html">
+   Solar Decomposition Models
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Solar resource data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_resource_data_overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ground_measurements.html">
+   Ground Measurements
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bsrn.html">
+     BSRN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="srml.html">
+     SRML
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="satellite_data.html">
+   Satellite Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reanalysis_data.html">
+   Reanalysis Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quality_asessment.html">
+   Quality Assessment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="benchmarking.html">
+   Benchmarking
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_power_modeling.html">
+   Solar Power Modelling
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Site Adaptation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://iea-pvps.org/research-tasks/solar-resource-for-high-penetration-and-large-scale-applications/">
+   IEA PVPS Task 16
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/site_adaptation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/AssessingSolar/AssessingSolar/issues/new?title=Issue%20on%20page%20%2Fnotebooks/site_adaptation.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AssessingSolar/AssessingSolar/main?urlpath=tree/AssessingSolar/notebooks/site_adaptation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantile-mapping-for-site-adaptation">
+   Quantile mapping for site adaptation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-of-site-adaptation">
+   Example of site adaptation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-summary">
+   Section summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="site-adaptation">
+<h1>Site Adaptation<a class="headerlink" href="#site-adaptation" title="Permalink to this headline">¶</a></h1>
+<p><strong>Site adaptation</strong> is a process in which long term time series of a modeled variable (i.e., solar irradiance) is improved in accuracy by using short term of observations of the variable (for instance, one year of ground measurements in solar irradiance). One of the site adaptation methods is Quantile Mapping. In this section, an example for site adaptation using this technique is presented.</p>
+<hr class="docutils" />
+<div style="text-align: right"> <i>Content by Jesús Polo</i> </div>
+<p>Let’s import the required libraries for this example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pvlib</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="quantile-mapping-for-site-adaptation">
+<h2>Quantile mapping for site adaptation<a class="headerlink" href="#quantile-mapping-for-site-adaptation" title="Permalink to this headline">¶</a></h2>
+<p>Quantile mapping (QM) is a simple technique used in climate modeling and meteorology for correcting the distribution of a modeled parameter by comparing it against the empirical distribution of observations. The methodology consists of transforming the data into the probability domain (quantiles) and reverses the transformation using the cumulative distribution function (CDF) as an operator.</p>
+<div class="math notranslate nohighlight">
+\[ y_c = CDF_0^{-1}[CDF_m(x_m)],\]</div>
+<p>where <span class="math notranslate nohighlight">\(CDF_0\)</span> and <span class="math notranslate nohighlight">\(CDF_m\)</span> are the cumulative distribution functions of the observed and modeled data, respectively.</p>
+<p>The function for correcting data using quantile mapping is
+<em>QuantileMappinBR(y_obs,y_mod)</em>, which has 2 inputs:</p>
+<ul class="simple">
+<li><p><em>y_obs</em> :  an array with the observational data;</p></li>
+<li><p><em>y_mod</em> :  an array with the modeled data to be corrected.</p></li>
+</ul>
+<p>The function returns an array <em>y_cor</em>  of the same length of <em>y_mod</em> with the new modeled values that fits the cumulative distribution function of the observed values.</p>
+<p>To implement QM, we also use an auxiliary function <em>ecdf</em> to empirically compute CDF. These functions implemented in Python would look like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ecdf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># empirical CDF computation</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span>
+
+<span class="k">def</span> <span class="nf">QuantileMappinBR</span><span class="p">(</span><span class="n">y_obs</span><span class="p">,</span><span class="n">y_mod</span><span class="p">):</span> <span class="c1"># Bias Removal using empirical quantile mapping</span>
+    <span class="n">y_cor</span><span class="o">=</span><span class="n">y_mod</span>
+    <span class="n">x_obs</span><span class="p">,</span><span class="n">cdf_obs</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">y_obs</span><span class="p">[</span><span class="n">y_obs</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">x_mod</span><span class="p">,</span><span class="n">cdf_mod</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">y_mod</span><span class="p">[</span><span class="n">y_mod</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># Translate data to the quantile domain, apply the CDF operator</span>
+    <span class="n">cdf</span><span class="o">=</span><span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">x_mod</span><span class="p">,</span><span class="n">cdf_mod</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;extrapolate&#39;</span><span class="p">)</span>
+    <span class="n">qtile</span><span class="o">=</span><span class="n">cdf</span><span class="p">(</span><span class="n">y_mod</span><span class="p">)</span>
+    <span class="c1"># Apply de CDF^-1 operator to reverse the operation to radiation domain</span>
+    <span class="n">cdfinv</span><span class="o">=</span><span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">cdf_obs</span><span class="p">,</span><span class="n">x_obs</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;extrapolate&#39;</span><span class="p">)</span>
+    <span class="n">y_cor</span> <span class="o">=</span> <span class="n">cdfinv</span><span class="p">(</span><span class="n">qtile</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y_cor</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-of-site-adaptation">
+<h2>Example of site adaptation<a class="headerlink" href="#example-of-site-adaptation" title="Permalink to this headline">¶</a></h2>
+<p>In the example for the implementation of site adaptation, ground-based data for 2015 in Tamanrasset BSRN station in Algeria are used as observations and <a class="reference external" href="https://ec.europa.eu/jrc/en/pvgis">PVGIS</a> hourly data from 2005 to 2015 are used as modeled data.</p>
+<p>Let’s query the data from those stations. First for the BSRN station:</p>
+<p><em>NOTE - You will need to have credentials for the BSRN FTP server in order to run the query of data from a BSRN station. It is freely available under request. Check the <a class="reference external" href="https://bsrn.awi.de/">BSRN site</a>.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get One year of observations of solar radiation </span>
+<span class="n">data_obs</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_bsrn</span><span class="p">(</span>  
+    <span class="n">start</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>   
+    <span class="n">station</span><span class="o">=</span><span class="s1">&#39;tam&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s1">&#39;YourUserName&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;YourPassword&#39;</span><span class="p">)</span>  
+<span class="c1"># Extract positive values of GHI observations</span>
+<span class="n">ghi_obs</span><span class="o">=</span><span class="n">data_obs</span><span class="o">.</span><span class="n">ghi</span>
+<span class="n">ghi_obs</span><span class="p">[</span><span class="n">ghi_obs</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="c1"># Resample to hourly means</span>
+<span class="n">ghi_hr</span><span class="o">=</span><span class="n">ghi_obs</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;60min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">error_perm</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1835</span><span class="o">/</span><span class="mf">1608150326.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">data_obs</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_bsrn</span><span class="p">(</span>  
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">start</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">station</span><span class="o">=</span><span class="s1">&#39;tam&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s1">&#39;YourUserName&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;YourPassword&#39;</span><span class="p">)</span>  
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Extract positive values of GHI observations</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">ghi_obs</span><span class="o">=</span><span class="n">data_obs</span><span class="o">.</span><span class="n">ghi</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pvlib/iotools/bsrn.py</span> in <span class="ni">get_bsrn</span><span class="nt">(station, start, end, username, password, logical_records, save_path)</span>
+<span class="g g-Whitespace">    </span><span class="mi">161</span> 
+<span class="g g-Whitespace">    </span><span class="mi">162</span>     <span class="c1"># Create FTP connection</span>
+<span class="ne">--&gt; </span><span class="mi">163</span>     <span class="k">with</span> <span class="n">ftplib</span><span class="o">.</span><span class="n">FTP</span><span class="p">(</span><span class="n">BSRN_FTP_URL</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span> <span class="k">as</span> <span class="n">ftp</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span>         <span class="c1"># Change to station sub-directory (checks that the station exists)</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span>         <span class="k">try</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ftplib.py</span> in <span class="ni">__init__</span><span class="nt">(self, host, user, passwd, acct, timeout, source_address)</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>             <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>             <span class="k">if</span> <span class="n">user</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">121</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">acct</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span> 
+<span class="g g-Whitespace">    </span><span class="mi">123</span>     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ftplib.py</span> in <span class="ni">login</span><span class="nt">(self, user, passwd, acct)</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span>         <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sendcmd</span><span class="p">(</span><span class="s1">&#39;USER &#39;</span> <span class="o">+</span> <span class="n">user</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span>         <span class="k">if</span> <span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">427</span>             <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sendcmd</span><span class="p">(</span><span class="s1">&#39;PASS &#39;</span> <span class="o">+</span> <span class="n">passwd</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span>         <span class="k">if</span> <span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">429</span>             <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sendcmd</span><span class="p">(</span><span class="s1">&#39;ACCT &#39;</span> <span class="o">+</span> <span class="n">acct</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ftplib.py</span> in <span class="ni">sendcmd</span><span class="nt">(self, cmd)</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span>         <span class="sd">&#39;&#39;&#39;Send a command and return the response.&#39;&#39;&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">274</span>         <span class="bp">self</span><span class="o">.</span><span class="n">putcmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">275</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getresp</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">276</span> 
+<span class="g g-Whitespace">    </span><span class="mi">277</span>     <span class="k">def</span> <span class="nf">voidcmd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ftplib.py</span> in <span class="ni">getresp</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span>             <span class="k">raise</span> <span class="n">error_temp</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">247</span>         <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s1">&#39;5&#39;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">248</span>             <span class="k">raise</span> <span class="n">error_perm</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span>         <span class="k">raise</span> <span class="n">error_proto</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span> 
+
+<span class="ne">error_perm</span>: 530 Login incorrect.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, the PVGIS modeled data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get modeled data from pvgis</span>
+<span class="n">latitude</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+<span class="n">longitude</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+<span class="c1"># pvgis hourly data from 2005 to 2016</span>
+<span class="n">data_model</span><span class="o">=</span><span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_pvgis_hourly</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">2015</span><span class="p">,</span> <span class="n">raddatabase</span><span class="o">=</span><span class="s1">&#39;PVGIS-SARAH&#39;</span><span class="p">,</span>
+                                    <span class="n">components</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">surface_tilt</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">surface_azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                    <span class="n">outputformat</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="n">usehorizon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">userhorizon</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                    <span class="n">pvcalculation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">peakpower</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pvtechchoice</span><span class="o">=</span><span class="s1">&#39;crystSi&#39;</span><span class="p">,</span>
+                                    <span class="n">mountingplace</span><span class="o">=</span><span class="s1">&#39;free&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">trackingtype</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">optimal_surface_tilt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                    <span class="n">optimalangles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://re.jrc.ec.europa.eu/api/&#39;</span><span class="p">,</span>
+                                    <span class="n">map_variables</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Estimate the GHI values from the data queried</span>
+<span class="n">dni</span><span class="o">=</span><span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">poa_direct</span><span class="o">.</span><span class="n">values</span>
+<span class="n">diff</span><span class="o">=</span><span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">poa_sky_diffuse</span><span class="o">.</span><span class="n">values</span>
+<span class="n">cosazen</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="mi">90</span><span class="o">-</span><span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">solar_elevation</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
+<span class="n">ghi</span><span class="o">=</span><span class="n">dni</span><span class="o">*</span><span class="n">cosazen</span><span class="o">+</span><span class="n">diff</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now apply the site adaptation following the QM method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Site adaptation, is applied only to positive values</span>
+<span class="n">ghi_adapted</span><span class="o">=</span><span class="n">QuantileMappinBR</span><span class="p">(</span><span class="n">ghi_hr</span><span class="p">,</span><span class="n">ghi</span><span class="p">)</span>
+
+<span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ghi&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">ghi</span>
+<span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ghi_adapted&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">ghi_adapted</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can visualize the results in a time-series:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ghi</span><span class="p">,</span>  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ghi_hr</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ghi_adapted</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Global Horizontal Irradiance [W/m$^2$]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Modeled&#39;</span><span class="p">,</span><span class="s1">&#39;Observations&#39;</span><span class="p">,</span><span class="s1">&#39;Adapted&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2827035aeb0&gt;
+</pre></div>
+</div>
+<img alt="../_images/site_adaptation_12_1.png" src="../_images/site_adaptation_12_1.png" />
+</div>
+</div>
+<p>Hourly values are a great number of datapoints. Thus, we can better see the effect of site adaptation for shorter timeseries, for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ghi</span><span class="p">[</span><span class="s1">&#39;2015-06-22&#39;</span><span class="p">:</span><span class="s1">&#39;2015-06-27&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ghi_hr</span><span class="p">[</span><span class="s1">&#39;2015-06-22&#39;</span><span class="p">:</span><span class="s1">&#39;2015-06-27&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ghi_adapted</span><span class="p">[</span><span class="s1">&#39;2015-06-22&#39;</span><span class="p">:</span><span class="s1">&#39;2015-06-27&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Global Horizontal Irradiance [W/m$^2$]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Global Horizontal Irradiance [W/m$^2$]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Modeled&#39;</span><span class="p">,</span><span class="s1">&#39;Observations&#39;</span><span class="p">,</span><span class="s1">&#39;Adapted&#39;</span><span class="p">],</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2827795bdc0&gt;
+</pre></div>
+</div>
+<img alt="../_images/site_adaptation_14_1.png" src="../_images/site_adaptation_14_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="section-summary">
+<h2>Section summary<a class="headerlink" href="#section-summary" title="Permalink to this headline">¶</a></h2>
+<p>This section has introduced site adaptation as a technique to adjust long-term satellite observations using short-term ground-based observations. The functions to implement site adaptation with the quantile mapping methods have been provided and an example of use has been illustrated.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AssessingSolar/AssessingSolar",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="solar_power_modeling.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Solar Power Modelling</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="glossary.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Glossary</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Assessing Solar Community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-207152593-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </body>
+</html>

@@ -1,0 +1,78 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Get One year of observations of solar radiation 
+data_obs, metadata = pvlib.iotools.get_bsrn(  
+    start=pd.Timestamp(2015,1,1), end=pd.Timestamp(2015,12,1),   
+    station='tam', username='YourUserName', password='YourPassword')  
+# Extract positive values of GHI observations
+ghi_obs=data_obs.ghi
+ghi_obs[ghi_obs<0]=0
+
+# Resample to hourly means
+ghi_hr=ghi_obs.resample('60min').mean()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31merror_perm[0m                                Traceback (most recent call last)
+[0;32m/tmp/ipykernel_1835/1608150326.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      2[0m data_obs, metadata = pvlib.iotools.get_bsrn(  
+[1;32m      3[0m     [0mstart[0m[0;34m=[0m[0mpd[0m[0;34m.[0m[0mTimestamp[0m[0;34m([0m[0;36m2015[0m[0;34m,[0m[0;36m1[0m[0;34m,[0m[0;36m1[0m[0;34m)[0m[0;34m,[0m [0mend[0m[0;34m=[0m[0mpd[0m[0;34m.[0m[0mTimestamp[0m[0;34m([0m[0;36m2015[0m[0;34m,[0m[0;36m12[0m[0;34m,[0m[0;36m1[0m[0;34m)[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m     station='tam', username='YourUserName', password='YourPassword')  
+[0m[1;32m      5[0m [0;31m# Extract positive values of GHI observations[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0mghi_obs[0m[0;34m=[0m[0mdata_obs[0m[0;34m.[0m[0mghi[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pvlib/iotools/bsrn.py[0m in [0;36mget_bsrn[0;34m(station, start, end, username, password, logical_records, save_path)[0m
+[1;32m    161[0m [0;34m[0m[0m
+[1;32m    162[0m     [0;31m# Create FTP connection[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 163[0;31m     [0;32mwith[0m [0mftplib[0m[0;34m.[0m[0mFTP[0m[0;34m([0m[0mBSRN_FTP_URL[0m[0;34m,[0m [0musername[0m[0;34m,[0m [0mpassword[0m[0;34m)[0m [0;32mas[0m [0mftp[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    164[0m         [0;31m# Change to station sub-directory (checks that the station exists)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    165[0m         [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ftplib.py[0m in [0;36m__init__[0;34m(self, host, user, passwd, acct, timeout, source_address)[0m
+[1;32m    119[0m             [0mself[0m[0;34m.[0m[0mconnect[0m[0;34m([0m[0mhost[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    120[0m             [0;32mif[0m [0muser[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 121[0;31m                 [0mself[0m[0;34m.[0m[0mlogin[0m[0;34m([0m[0muser[0m[0;34m,[0m [0mpasswd[0m[0;34m,[0m [0macct[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    122[0m [0;34m[0m[0m
+[1;32m    123[0m     [0;32mdef[0m [0m__enter__[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ftplib.py[0m in [0;36mlogin[0;34m(self, user, passwd, acct)[0m
+[1;32m    425[0m         [0mresp[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0msendcmd[0m[0;34m([0m[0;34m'USER '[0m [0;34m+[0m [0muser[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    426[0m         [0;32mif[0m [0mresp[0m[0;34m[[0m[0;36m0[0m[0;34m][0m [0;34m==[0m [0;34m'3'[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 427[0;31m             [0mresp[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0msendcmd[0m[0;34m([0m[0;34m'PASS '[0m [0;34m+[0m [0mpasswd[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    428[0m         [0;32mif[0m [0mresp[0m[0;34m[[0m[0;36m0[0m[0;34m][0m [0;34m==[0m [0;34m'3'[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    429[0m             [0mresp[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0msendcmd[0m[0;34m([0m[0;34m'ACCT '[0m [0;34m+[0m [0macct[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ftplib.py[0m in [0;36msendcmd[0;34m(self, cmd)[0m
+[1;32m    273[0m         [0;34m'''Send a command and return the response.'''[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    274[0m         [0mself[0m[0;34m.[0m[0mputcmd[0m[0;34m([0m[0mcmd[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 275[0;31m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mgetresp[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    276[0m [0;34m[0m[0m
+[1;32m    277[0m     [0;32mdef[0m [0mvoidcmd[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mcmd[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/ftplib.py[0m in [0;36mgetresp[0;34m(self)[0m
+[1;32m    246[0m             [0;32mraise[0m [0merror_temp[0m[0;34m([0m[0mresp[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    247[0m         [0;32mif[0m [0mc[0m [0;34m==[0m [0;34m'5'[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 248[0;31m             [0;32mraise[0m [0merror_perm[0m[0;34m([0m[0mresp[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    249[0m         [0;32mraise[0m [0merror_proto[0m[0;34m([0m[0mresp[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    250[0m [0;34m[0m[0m
+
+[0;31merror_perm[0m: 530 Login incorrect.
+error_perm: 530 Login incorrect.
+
