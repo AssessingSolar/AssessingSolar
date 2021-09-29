@@ -43,6 +43,7 @@ parts:
   - caption: Applications
     chapters:
     - file: notebooks/solar_power_modeling
+    - file: notebooks/site_adaptation
   - caption: Appendix
     chapters:
     - file: notebooks/glossary
