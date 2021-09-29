@@ -387,8 +387,6 @@
 <p>The diffuse fraction is defined as:</p>
 <div class="math notranslate nohighlight">
 \[ k_d = \frac{DHI}{GHI} \]</div>
-<p>The role of solar decomposition models is illustrated in the diagram below:</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="https://github.com/AssessingSolar/AssessingSolar/blob/main/assessingsolar/notebooks/graphics/decomposition_models.png"><img alt="https://github.com/AssessingSolar/AssessingSolar/blob/main/assessingsolar/notebooks/graphics/decomposition_models.png" class="bg-primary mb-1 align-center" src="https://github.com/AssessingSolar/AssessingSolar/blob/main/assessingsolar/notebooks/graphics/decomposition_models.png" style="width: 600px;" /></a>
 <p>Multiple models have been proposed for the decomposition of global horizontal radiation/irradiance into its direct normal and diffuse horizontal components in the academic literature. Below, the implementation in Python of some of these methods will be shown. The following methods will be modelled and compared:</p>
 <ul class="simple">
 <li><p>DISC model (Maxwell, 1987)</p></li>
@@ -681,10 +679,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7052dc0210&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f424261ac10&gt;
 </pre></div>
 </div>
-<img alt="../_images/decomposition_models_13_1.png" src="../_images/decomposition_models_13_1.png" />
+<img alt="../_images/decomposition_models_12_1.png" src="../_images/decomposition_models_12_1.png" />
 </div>
 </div>
 <p><strong>Estimating other input variables:</strong></p>
@@ -881,10 +879,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7054cf5910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f424413d6d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/decomposition_models_27_1.png" src="../_images/decomposition_models_27_1.png" />
+<img alt="../_images/decomposition_models_26_1.png" src="../_images/decomposition_models_26_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -902,10 +900,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7054c19490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4243ec3310&gt;
 </pre></div>
 </div>
-<img alt="../_images/decomposition_models_28_1.png" src="../_images/decomposition_models_28_1.png" />
+<img alt="../_images/decomposition_models_27_1.png" src="../_images/decomposition_models_27_1.png" />
 </div>
 </div>
 <p>The correlation between the obtained models and the measured observations can be also presented in <strong>scatter plots</strong>:</p>
@@ -938,7 +936,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/decomposition_models_30_0.png" src="../_images/decomposition_models_30_0.png" />
+<img alt="../_images/decomposition_models_29_0.png" src="../_images/decomposition_models_29_0.png" />
 </div>
 </div>
 <p>The evaluation cannot be only based on a visual inspection. For solar resource assessment, there are a number of common metrics to evaluate the error and performance, which we will use below. These metrics are the mean bias error (MBE) and the root mean square error (RMSE). The MBE is the average error representing a systematic error to under- or overestimate and the RMSE is a measure of the dispersion of the deviations.</p>
