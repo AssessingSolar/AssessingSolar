@@ -392,14 +392,14 @@
     <span class="k">return</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span>
 
 <span class="k">def</span> <span class="nf">QuantileMappinBR</span><span class="p">(</span><span class="n">y_obs</span><span class="p">,</span><span class="n">y_mod</span><span class="p">):</span> <span class="c1"># Bias Removal using empirical quantile mapping</span>
-    <span class="n">y_cor</span><span class="o">=</span><span class="n">y_mod</span>
-    <span class="n">x_obs</span><span class="p">,</span><span class="n">cdf_obs</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">y_obs</span><span class="p">[</span><span class="n">y_obs</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">x_mod</span><span class="p">,</span><span class="n">cdf_mod</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">y_mod</span><span class="p">[</span><span class="n">y_mod</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">y_cor</span> <span class="o">=</span> <span class="n">y_mod</span>
+    <span class="n">x_obs</span><span class="p">,</span><span class="n">cdf_obs</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">y_obs</span><span class="p">)</span>
+    <span class="n">x_mod</span><span class="p">,</span><span class="n">cdf_mod</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">y_mod</span><span class="p">)</span>
     <span class="c1"># Translate data to the quantile domain, apply the CDF operator</span>
-    <span class="n">cdf</span><span class="o">=</span><span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">x_mod</span><span class="p">,</span><span class="n">cdf_mod</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;extrapolate&#39;</span><span class="p">)</span>
-    <span class="n">qtile</span><span class="o">=</span><span class="n">cdf</span><span class="p">(</span><span class="n">y_mod</span><span class="p">)</span>
+    <span class="n">cdf</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">x_mod</span><span class="p">,</span><span class="n">cdf_mod</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;extrapolate&#39;</span><span class="p">)</span>
+    <span class="n">qtile</span> <span class="o">=</span> <span class="n">cdf</span><span class="p">(</span><span class="n">y_mod</span><span class="p">)</span>
     <span class="c1"># Apply de CDF^-1 operator to reverse the operation to radiation domain</span>
-    <span class="n">cdfinv</span><span class="o">=</span><span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">cdf_obs</span><span class="p">,</span><span class="n">x_obs</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;extrapolate&#39;</span><span class="p">)</span>
+    <span class="n">cdfinv</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">cdf_obs</span><span class="p">,</span><span class="n">x_obs</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;extrapolate&#39;</span><span class="p">)</span>
     <span class="n">y_cor</span> <span class="o">=</span> <span class="n">cdfinv</span><span class="p">(</span><span class="n">qtile</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">y_cor</span>
 </pre></div>
@@ -419,14 +419,28 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get One year of observations of solar radiation </span>
 <span class="n">data_obs</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_bsrn</span><span class="p">(</span>  
-    <span class="n">start</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>   
-    <span class="n">station</span><span class="o">=</span><span class="s1">&#39;tam&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">YourUserName</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">YourPassword</span><span class="p">)</span>  
+    <span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>   
+    <span class="n">station</span> <span class="o">=</span><span class="s1">&#39;tam&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">bsrn_username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">bsrn_password</span><span class="p">)</span>  
 <span class="c1"># Extract positive values of GHI observations</span>
-<span class="n">ghi_obs</span><span class="o">=</span><span class="n">data_obs</span><span class="o">.</span><span class="n">ghi</span>
+<span class="n">ghi_obs</span> <span class="o">=</span> <span class="n">data_obs</span><span class="o">.</span><span class="n">ghi</span>
 <span class="n">ghi_obs</span><span class="p">[</span><span class="n">ghi_obs</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
 
 <span class="c1"># Resample to hourly means</span>
-<span class="n">ghi_hr</span><span class="o">=</span><span class="n">ghi_obs</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;60min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">ghi_hr</span> <span class="o">=</span> <span class="n">ghi_obs</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;60min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1802</span><span class="o">/</span><span class="mf">3610107613.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">data_obs</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_bsrn</span><span class="p">(</span>  
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">station</span> <span class="o">=</span><span class="s1">&#39;tam&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">bsrn_username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">bsrn_password</span><span class="p">)</span>  
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Extract positive values of GHI observations</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">ghi_obs</span> <span class="o">=</span> <span class="n">data_obs</span><span class="o">.</span><span class="n">ghi</span>
+
+<span class="ne">NameError</span>: name &#39;bsrn_username&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -435,10 +449,10 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get modeled data from pvgis</span>
-<span class="n">latitude</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
-<span class="n">longitude</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
 <span class="c1"># pvgis hourly data from 2005 to 2016</span>
-<span class="n">data_model</span><span class="o">=</span><span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_pvgis_hourly</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">2015</span><span class="p">,</span> <span class="n">raddatabase</span><span class="o">=</span><span class="s1">&#39;PVGIS-SARAH&#39;</span><span class="p">,</span>
+<span class="n">data_model</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_pvgis_hourly</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">2015</span><span class="p">,</span> <span class="n">raddatabase</span><span class="o">=</span><span class="s1">&#39;PVGIS-SARAH&#39;</span><span class="p">,</span>
                                     <span class="n">components</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">surface_tilt</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">surface_azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                     <span class="n">outputformat</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="n">usehorizon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">userhorizon</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                     <span class="n">pvcalculation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">peakpower</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pvtechchoice</span><span class="o">=</span><span class="s1">&#39;crystSi&#39;</span><span class="p">,</span>
@@ -447,10 +461,10 @@
                                     <span class="n">map_variables</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 
 <span class="c1"># Estimate the GHI values from the data queried</span>
-<span class="n">dni</span><span class="o">=</span><span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">poa_direct</span><span class="o">.</span><span class="n">values</span>
-<span class="n">diff</span><span class="o">=</span><span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">poa_sky_diffuse</span><span class="o">.</span><span class="n">values</span>
-<span class="n">cosazen</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="mi">90</span><span class="o">-</span><span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">solar_elevation</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
-<span class="n">ghi</span><span class="o">=</span><span class="n">dni</span><span class="o">*</span><span class="n">cosazen</span><span class="o">+</span><span class="n">diff</span>
+<span class="n">dni</span> <span class="o">=</span> <span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">poa_direct</span><span class="o">.</span><span class="n">values</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">poa_sky_diffuse</span><span class="o">.</span><span class="n">values</span>
+<span class="n">cosazen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="mi">90</span><span class="o">-</span><span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">solar_elevation</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
+<span class="n">ghi</span> <span class="o">=</span> <span class="n">dni</span><span class="o">*</span><span class="n">cosazen</span><span class="o">+</span><span class="n">diff</span>
 </pre></div>
 </div>
 </div>
@@ -458,11 +472,11 @@
 <p>We can now apply the site adaptation following the QM method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Site adaptation, is applied only to positive values</span>
-<span class="n">ghi_adapted</span><span class="o">=</span><span class="n">QuantileMappinBR</span><span class="p">(</span><span class="n">ghi_hr</span><span class="p">,</span><span class="n">ghi</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Site adaptation</span>
+<span class="n">ghi_adapted</span> <span class="o">=</span> <span class="n">QuantileMappinBR</span><span class="p">(</span><span class="n">ghi_hr</span><span class="p">,</span><span class="n">ghi</span><span class="p">)</span>
 
-<span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ghi&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">ghi</span>
-<span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ghi_adapted&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">ghi_adapted</span>
+<span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ghi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ghi</span>
+<span class="n">data_model</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ghi_adapted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ghi_adapted</span>
 </pre></div>
 </div>
 </div>
@@ -480,10 +494,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f535a5be710&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x28309c27ac0&gt;
 </pre></div>
 </div>
-<img alt="../_images/site_adaptation_13_1.png" src="../_images/site_adaptation_13_1.png" />
+<img alt="../_images/site_adaptation_12_1.png" src="../_images/site_adaptation_12_1.png" />
 </div>
 </div>
 <p>Hourly values are a great number of datapoints. Thus, we can better see the effect of site adaptation for shorter timeseries, for example:</p>
@@ -499,12 +513,39 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f536378fe90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x283003c5340&gt;
 </pre></div>
 </div>
-<img alt="../_images/site_adaptation_15_1.png" src="../_images/site_adaptation_15_1.png" />
+<img alt="../_images/site_adaptation_14_1.png" src="../_images/site_adaptation_14_1.png" />
 </div>
 </div>
+<p>The <strong>effect of the QM technique</strong> can be observed by observing the CDF of original and adapted GHI:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definition of variables to plot</span>
+<span class="n">x_obs</span><span class="p">,</span><span class="n">cdf_obs</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">ghi_hr</span><span class="p">)</span>
+<span class="n">x_mod</span><span class="p">,</span><span class="n">cdf_mod</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">ghi</span><span class="p">)</span>
+<span class="n">x_adp</span><span class="p">,</span><span class="n">cdf_adp</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">ghi_adapted</span><span class="p">)</span>
+
+<span class="c1"># Figure definition</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_mod</span><span class="p">,</span><span class="n">cdf_mod</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_obs</span><span class="p">,</span><span class="n">cdf_obs</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_adp</span><span class="p">,</span><span class="n">cdf_adp</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;CDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;GHI (W/m$^2$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Modeled&#39;</span><span class="p">,</span><span class="s1">&#39;Observations&#39;</span><span class="p">,</span><span class="s1">&#39;Adapted&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x28302ede310&gt;
+</pre></div>
+</div>
+<img alt="../_images/site_adaptation_16_1.png" src="../_images/site_adaptation_16_1.png" />
+</div>
+</div>
+<p>With the CDF plot we can observe that the adapted timeseries resulted from the QM site adaptation method has higher agreement with the ground-based observations than the modeled satellite-based data.</p>
 </div>
 <div class="section" id="section-summary">
 <h2>Section summary<a class="headerlink" href="#section-summary" title="Permalink to this headline">¶</a></h2>
