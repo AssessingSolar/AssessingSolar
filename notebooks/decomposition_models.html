@@ -679,7 +679,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f437c63a990&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd7ba78c750&gt;
 </pre></div>
 </div>
 <img alt="../_images/decomposition_models_12_1.png" src="../_images/decomposition_models_12_1.png" />
@@ -711,7 +711,7 @@
                                                <span class="n">longitude</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span>
                                                <span class="n">altitude</span><span class="o">=</span><span class="n">alt</span><span class="p">,</span>
                                                <span class="n">temperature</span><span class="o">=</span><span class="n">decomp</span><span class="p">[</span><span class="s1">&#39;tamb_degC&#39;</span><span class="p">],</span>
-                                               <span class="n">pressure</span><span class="o">=</span><span class="n">decomp</span><span class="p">[</span><span class="s1">&#39;P_mbar&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># pressure in Pascal</span>
+                                               <span class="n">pressure</span><span class="o">=</span><span class="n">decomp</span><span class="p">[</span><span class="s1">&#39;P_mbar&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># pressure in Pascal (1 mbar = 100 Pa)</span>
 
 <span class="c1"># Let&#39;s have a look to the output</span>
 <span class="n">solpos</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -805,7 +805,7 @@
 <span class="n">disc</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">disc</span><span class="p">(</span><span class="n">decomp</span><span class="p">[</span><span class="s1">&#39;ghi&#39;</span><span class="p">],</span> 
                              <span class="n">solpos</span><span class="p">[</span><span class="s1">&#39;apparent_zenith&#39;</span><span class="p">],</span> 
                              <span class="n">decomp</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
-                             <span class="n">pressure</span><span class="o">=</span><span class="n">decomp</span><span class="p">[</span><span class="s1">&#39;P_mbar&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># Pressure in Pascal (1 mbar = 100 Pa)</span>
+                             <span class="n">pressure</span><span class="o">=</span><span class="n">decomp</span><span class="p">[</span><span class="s1">&#39;P_mbar&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># Pressure in Pascal </span>
 </pre></div>
 </div>
 </div>
@@ -879,7 +879,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f437c48f290&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd7bc77c650&gt;
 </pre></div>
 </div>
 <img alt="../_images/decomposition_models_26_1.png" src="../_images/decomposition_models_26_1.png" />
@@ -900,7 +900,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f437c494150&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd7bc5a5f10&gt;
 </pre></div>
 </div>
 <img alt="../_images/decomposition_models_27_1.png" src="../_images/decomposition_models_27_1.png" />
@@ -973,8 +973,8 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DISC Decomposition Method:
-MBE -8.70 W/m²
-RMSE 87.27 W/m²
+MBE -3.14 W/m²
+RMSE 89.20 W/m²
 </pre></div>
 </div>
 </div>
@@ -993,8 +993,8 @@ RMSE 87.27 W/m²
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DIRINT Decomposition Method:
-MBE 11.08 W/m²
-RMSE 90.95 W/m²
+MBE 19.11 W/m²
+RMSE 92.48 W/m²
 </pre></div>
 </div>
 </div>
@@ -1013,8 +1013,8 @@ RMSE 90.95 W/m²
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Erbs Decomposition Method:
-MBE 2.73 W/m²
-RMSE 81.29 W/m²
+MBE 7.15 W/m²
+RMSE 80.76 W/m²
 </pre></div>
 </div>
 </div>
