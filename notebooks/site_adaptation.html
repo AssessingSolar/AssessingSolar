@@ -430,20 +430,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1802</span><span class="o">/</span><span class="mf">3610107613.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">data_obs</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_bsrn</span><span class="p">(</span>  
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">station</span> <span class="o">=</span><span class="s1">&#39;tam&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">bsrn_username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">bsrn_password</span><span class="p">)</span>  
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Extract positive values of GHI observations</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">ghi_obs</span> <span class="o">=</span> <span class="n">data_obs</span><span class="o">.</span><span class="n">ghi</span>
-
-<span class="ne">NameError</span>: name &#39;bsrn_username&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now, the PVGIS modeled data:</p>
 <div class="cell docutils container">
@@ -469,7 +455,7 @@
 </div>
 </div>
 </div>
-<p>We can now apply the site adaptation following the QM method:</p>
+<p>We can now <strong>apply the QM method for site adaptation</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Site adaptation</span>
@@ -494,10 +480,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x28309c27ac0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1e403c94d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/site_adaptation_12_1.png" src="../_images/site_adaptation_12_1.png" />
+<img alt="../_images/site_adaptation_13_1.png" src="../_images/site_adaptation_13_1.png" />
 </div>
 </div>
 <p>Hourly values are a great number of datapoints. Thus, we can better see the effect of site adaptation for shorter timeseries, for example:</p>
@@ -513,10 +499,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x283003c5340&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1e489bdf50&gt;
 </pre></div>
 </div>
-<img alt="../_images/site_adaptation_14_1.png" src="../_images/site_adaptation_14_1.png" />
+<img alt="../_images/site_adaptation_15_1.png" src="../_images/site_adaptation_15_1.png" />
 </div>
 </div>
 <p>The <strong>effect of the QM technique</strong> can be observed by observing the CDF of original and adapted GHI:</p>
@@ -539,10 +525,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x28302ede310&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1e438baf50&gt;
 </pre></div>
 </div>
-<img alt="../_images/site_adaptation_16_1.png" src="../_images/site_adaptation_16_1.png" />
+<img alt="../_images/site_adaptation_17_1.png" src="../_images/site_adaptation_17_1.png" />
 </div>
 </div>
 <p>With the CDF plot we can observe that the adapted timeseries resulted from the QM site adaptation method has higher agreement with the ground-based observations than the modeled satellite-based data.</p>
