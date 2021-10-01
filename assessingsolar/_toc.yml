@@ -17,6 +17,8 @@ parts:
   - caption: Solar radiation modeling
     chapters:
     - file: notebooks/decomposition_models
+      title: Decomposition
+      title: Transposition
   - caption: Solar resource data
     chapters:
     - file: notebooks/solar_resource_data_overview
