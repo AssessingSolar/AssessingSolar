@@ -18,7 +18,8 @@ parts:
     chapters:
     - file: notebooks/decomposition_models
       title: Decomposition
-      title: Transposition
+#    - file: notebooks/transposition_models
+
   - caption: Solar resource data
     chapters:
     - file: notebooks/solar_resource_data_overview
@@ -29,14 +30,14 @@ parts:
         title: BSRN
       - file: notebooks/srml
         title: SRML
-    - file: notebooks/satellite_data
-      title: Satellite Data
-    - file: notebooks/reanalysis_data
-      title: Reanalysis Data
+#    - file: notebooks/satellite_data
+#      title: Satellite Data
+#    - file: notebooks/reanalysis_data
+#      title: Reanalysis Data
     - file: notebooks/quality_asessment
       title: Quality Assessment
-    - file: notebooks/benchmarking
-      title: Benchmarking
+#    - file: notebooks/benchmarking
+#      title: Benchmarking
 #  - caption: Forecasting
 #    chapters:
 #    - file: notebooks/forecasting_overview
