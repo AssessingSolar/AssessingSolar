@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solar position &#8212; Solar Resource Assessment in Python</title>
+    <title>Solar Position &#8212; Solar Resource Assessment in Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -242,9 +244,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/solar_position.rst"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/solar_position.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.rst</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -275,11 +277,76 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AssessingSolar/AssessingSolar/main?urlpath=tree/AssessingSolar/notebooks/solar_position.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solar-position-system">
+   Solar position system
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solar-position-algorithms">
+   Solar position algorithms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications-of-solar-position">
+   Applications of solar position
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-solar-analemma">
+     The solar analemma
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-applications">
+     Other applications
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -289,8 +356,483 @@
               <div>
                 
   <div class="section" id="solar-position">
-<h1>Solar position<a class="headerlink" href="#solar-position" title="Permalink to this headline">¶</a></h1>
-<p>This site is under construction.</p>
+<h1>Solar Position<a class="headerlink" href="#solar-position" title="Permalink to this headline">¶</a></h1>
+<p>Solar position is a fundamental aspect of solar resource assessment. The different angles used in the reference system to locate the sun at a particular time and location are probably the most common input in solar resource modelling and assessment.</p>
+<p>In this section, we cover: <br></p>
+<ul class="simple">
+<li><p>Solar position system; <br></p></li>
+<li><p>Solar position algorithms; and <br></p></li>
+<li><p>Applications of solar position. <br></p></li>
+</ul>
+<hr class="docutils" />
+<div style="text-align: right"> <i>Content by Jesus Polo & Javier Lopez Lorente</i> </div><div class="section" id="solar-position-system">
+<h2>Solar position system<a class="headerlink" href="#solar-position-system" title="Permalink to this headline">¶</a></h2>
+<p>The reference solar position system used for solar systems is usually a horizontal coordinate system focused on the observer. In this system, any observed placed at a given latitude and longitude is completeley determined by the zenith (<span class="math notranslate nohighlight">\(\theta\)</span>) and azimuth angles <span class="math notranslate nohighlight">\(\phi\)</span> (see Figure). The solar elevation angle (<span class="math notranslate nohighlight">\(\alpha\)</span>) is the complementary of the zenith solar angle (<span class="math notranslate nohighlight">\(\alpha\)</span> = 90 - <span class="math notranslate nohighlight">\(\theta\)</span>).</p>
+<a class="bg-white mb-1 reference internal image-reference" href="../_images/solar_position_system.png"><img alt="decomposition_flowchart" class="bg-white mb-1 align-center" src="../_images/solar_position_system.png" style="width: 500px;" /></a>
+<p>In Python, the solar position angles can be easily calculated at any site using the solar position algorithm (SPA) of <em>pvlib</em>, which has implemented by default with NREL’s SPA algorithm (Reda and Andreas, 2003). We will show and compare the different solar position algorithms available in <em>pvlib</em> and show how solar position angles can be estimated in several ways.</p>
+<p>Let’s import the required libraries and see an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Libraries </span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pvlib</span>
+<span class="kn">from</span> <span class="nn">pvlib.location</span> <span class="kn">import</span> <span class="n">Location</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A way to estimate the solar position is through the object <em>pvlib.location.Location</em> in the library <em><a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/index.html">pvlib</a></em>, which helps defining its particular geographic location (e.g., latitude, longitude, timezone, and altitude).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definition of Location oject. Coordinates and elevation of Madrid Ciemat Headquarters (Spain)</span>
+<span class="n">site</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="mf">40.456</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.73</span><span class="p">,</span> <span class="s1">&#39;Etc/GMT+1&#39;</span><span class="p">,</span> <span class="mi">651</span><span class="p">,</span> <span class="s1">&#39;Ciemat (Madrid, ES)&#39;</span><span class="p">)</span> <span class="c1"># latitude, longitude, time_zone, altitude, name</span>
+
+<span class="c1"># Definition of a time range of simulation</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2018-01-01 00:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-31 23:59:00&#39;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">site</span><span class="o">.</span><span class="n">tz</span><span class="p">)</span>
+
+<span class="c1"># Estimate Solar Position with the &#39;Location&#39; object</span>
+<span class="n">solpos</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+
+<span class="c1"># Visualize the resulting DataFrame</span>
+<span class="n">solpos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>apparent_zenith</th>
+      <th>zenith</th>
+      <th>apparent_elevation</th>
+      <th>elevation</th>
+      <th>azimuth</th>
+      <th>equation_of_time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018-01-01 00:00:00-01:00</th>
+      <td>160.468395</td>
+      <td>160.468395</td>
+      <td>-70.468395</td>
+      <td>-70.468395</td>
+      <td>29.900075</td>
+      <td>-3.346090</td>
+    </tr>
+    <tr>
+      <th>2018-01-01 01:00:00-01:00</th>
+      <td>152.396698</td>
+      <td>152.396698</td>
+      <td>-62.396698</td>
+      <td>-62.396698</td>
+      <td>58.528284</td>
+      <td>-3.365720</td>
+    </tr>
+    <tr>
+      <th>2018-01-01 02:00:00-01:00</th>
+      <td>141.889229</td>
+      <td>141.889229</td>
+      <td>-51.889229</td>
+      <td>-51.889229</td>
+      <td>75.239601</td>
+      <td>-3.385340</td>
+    </tr>
+    <tr>
+      <th>2018-01-01 03:00:00-01:00</th>
+      <td>130.627975</td>
+      <td>130.627975</td>
+      <td>-40.627975</td>
+      <td>-40.627975</td>
+      <td>86.856662</td>
+      <td>-3.404951</td>
+    </tr>
+    <tr>
+      <th>2018-01-01 04:00:00-01:00</th>
+      <td>119.234764</td>
+      <td>119.234764</td>
+      <td>-29.234764</td>
+      <td>-29.234764</td>
+      <td>96.389095</td>
+      <td>-3.424553</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Alternatively, the function <em>pvlib.solarposition.get_solarposition()</em> can be used to obtain the same result:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alternative method using the &#39;solarposition.get_solarposition&#39; function</span>
+<span class="n">solpos</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">altitude</span><span class="p">)</span>
+
+<span class="n">solpos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>apparent_zenith</th>
+      <th>zenith</th>
+      <th>apparent_elevation</th>
+      <th>elevation</th>
+      <th>azimuth</th>
+      <th>equation_of_time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018-01-01 00:00:00-01:00</th>
+      <td>160.468395</td>
+      <td>160.468395</td>
+      <td>-70.468395</td>
+      <td>-70.468395</td>
+      <td>29.900075</td>
+      <td>-3.346090</td>
+    </tr>
+    <tr>
+      <th>2018-01-01 01:00:00-01:00</th>
+      <td>152.396698</td>
+      <td>152.396698</td>
+      <td>-62.396698</td>
+      <td>-62.396698</td>
+      <td>58.528284</td>
+      <td>-3.365720</td>
+    </tr>
+    <tr>
+      <th>2018-01-01 02:00:00-01:00</th>
+      <td>141.889229</td>
+      <td>141.889229</td>
+      <td>-51.889229</td>
+      <td>-51.889229</td>
+      <td>75.239601</td>
+      <td>-3.385340</td>
+    </tr>
+    <tr>
+      <th>2018-01-01 03:00:00-01:00</th>
+      <td>130.627975</td>
+      <td>130.627975</td>
+      <td>-40.627975</td>
+      <td>-40.627975</td>
+      <td>86.856662</td>
+      <td>-3.404951</td>
+    </tr>
+    <tr>
+      <th>2018-01-01 04:00:00-01:00</th>
+      <td>119.234764</td>
+      <td>119.234764</td>
+      <td>-29.234764</td>
+      <td>-29.234764</td>
+      <td>96.389095</td>
+      <td>-3.424553</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We observe that both lines of code return the same output. After the solar angles are estimated, these can be visualized:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+
+<span class="c1"># Plots for solar zenith and solar azimuth angles</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Solar Position Estimation in &#39;</span> <span class="o">+</span> <span class="n">site</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; 21st June&#39;</span><span class="p">)</span>
+
+<span class="c1"># plot for solar zenith angle</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solpos</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2018-06-21&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">zenith</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Solar zenith angle (degree)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (hour)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%H&#39;</span><span class="p">))</span>
+
+<span class="c1"># plot for solar azimuth angle</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solpos</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2018-06-21&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">azimuth</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Solar azimuth angle (degree)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (hour)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%H&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/solar_position_8_0.png" src="../_images/solar_position_8_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="solar-position-algorithms">
+<h2>Solar position algorithms<a class="headerlink" href="#solar-position-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>In the example above, we used the default SPA available in <em>pvlib</em>. However, there are several algorithms for estimating the solar position implemented in <em>pvlib</em>. You can use your preferred algorithm by defining the argument <em>method</em> when calling the function <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.solarposition.get_solarposition.html"><em>get_solarposition()</em></a>. The 5 avaiable SPAs are:</p>
+<ul class="simple">
+<li><p>nrel_numpy: based on NREL SPA method where pvlib uses the function ‘spa_python()’.</p></li>
+<li><p>nrel_numba: simular to ‘nrel_numpy’, but the code is compiled first.</p></li>
+<li><p>pyephem: based on the <a class="reference external" href="https://rhodesmill.org/pyephem/">PyEphem package</a>, pvlib uses the function ‘pyephem()’.</p></li>
+<li><p>ephemeris: based on the pvlib ephemeris code, uses the function ‘ephemeris()’.</p></li>
+<li><p>nrel_c: based on NREL SPA code in C language: spa_c()</p></li>
+</ul>
+<p>There are other solar position algorithms available in the literature, for example, the Solar Geometry 2 (SG2) model (Blanc and Wald, 2012), which is available in <a class="reference external" href="https://www.oie.minesparis.psl.eu/Valorisation/Outils/Solar-Geometry/">Matlab and C language</a>.</p>
+<p>Below, we will compare some of these methods, namely: NREL SPA (‘nrel_numpy’), PyEphem (‘pyephem’) and Ephemeris (‘ephemeris’).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate the solar position with a specific SPA defined with the argument &#39;method&#39; </span>
+<span class="n">solpos_nrel</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">altitude</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nrel_numpy&#39;</span><span class="p">)</span>
+<span class="n">solpos_pyephem</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">altitude</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pyephem&#39;</span><span class="p">)</span>
+<span class="n">solpos_ephemeris</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">altitude</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ephemeris&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pvlib/solarposition.py</span> in <span class="ni">pyephem</span><span class="nt">(time, latitude, longitude, altitude, pressure, temperature, horizon)</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">634</span>         <span class="kn">import</span> <span class="nn">ephem</span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span>     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;ephem&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1939</span><span class="o">/</span><span class="mf">800067987.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Estimate the solar position with a specific SPA defined with the argument &#39;method&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">solpos_nrel</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">altitude</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nrel_numpy&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">solpos_pyephem</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">altitude</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pyephem&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">solpos_ephemeris</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">altitude</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ephemeris&#39;</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pvlib/solarposition.py</span> in <span class="ni">get_solarposition</span><span class="nt">(time, latitude, longitude, altitude, pressure, method, temperature, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>                            <span class="n">altitude</span><span class="o">=</span><span class="n">altitude</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>                            <span class="n">pressure</span><span class="o">=</span><span class="n">pressure</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">121</span>                            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>     <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;ephemeris&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>         <span class="n">ephem_df</span> <span class="o">=</span> <span class="n">ephemeris</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">pressure</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pvlib/solarposition.py</span> in <span class="ni">pyephem</span><span class="nt">(time, latitude, longitude, altitude, pressure, temperature, horizon)</span>
+<span class="g g-Whitespace">    </span><span class="mi">634</span>         <span class="kn">import</span> <span class="nn">ephem</span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span>     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">636</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;PyEphem must be installed&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">637</span> 
+<span class="g g-Whitespace">    </span><span class="mi">638</span>     <span class="c1"># if localized, convert to UTC. otherwise, assume UTC.</span>
+
+<span class="ne">ImportError</span>: PyEphem must be installed
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can visualize the differences in the estimations of the <strong>solar zenith angle</strong>:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">.001</span><span class="p">)</span>
+
+<span class="c1"># Wrap the axes</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="c1"># Plot</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solpos_nrel</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_pyephem</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solpos_nrel</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_ephemeris</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solpos_pyephem</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_ephemeris</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">])</span>
+
+<span class="c1"># Add characteristics to each subplot in a loop</span>
+<span class="n">plots</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NREL SPA (&#39;nrel_numpy&#39;) &amp; PyEphem&quot;</span><span class="p">,</span> <span class="s2">&quot;NREL SPA (&#39;nrel_numpy&#39;) &amp; Ephemeris&quot;</span><span class="p">,</span> <span class="s2">&quot;PyEphem &amp; Ephemeris&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Difference (degree)&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">plots</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%b&#39;</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/solar_position_12_0.png" src="../_images/solar_position_12_0.png" />
+</div>
+</div>
+<p>We can visualize the differences in the estimations of the <strong>solar azimuth angle</strong>:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">.001</span><span class="p">)</span>
+
+<span class="c1"># Wrap the axes</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="c1"># Plot</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solpos_nrel</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_pyephem</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solpos_nrel</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_ephemeris</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solpos_pyephem</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_ephemeris</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">])</span>
+
+<span class="c1"># Add characteristics to each subplot in a loop</span>
+<span class="n">plots</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NREL SPA (&#39;nrel_numpy&#39;) &amp; PyEphem&quot;</span><span class="p">,</span> <span class="s2">&quot;NREL SPA (&#39;nrel_numpy&#39;) &amp; Ephemeris&quot;</span><span class="p">,</span> <span class="s2">&quot;PyEphem &amp; Ephemeris&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Difference (degree)&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">plots</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%b&#39;</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/solar_position_14_0.png" src="../_images/solar_position_14_0.png" />
+</div>
+</div>
+<p>The absolute differences between methods can then be computed:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute the absolute difference in Solar Zenith Angle between SPA methods</span>
+<span class="n">nrel_pyephem</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">solpos_nrel</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_pyephem</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">nrel_ephemeris</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">solpos_nrel</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_ephemeris</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">pyephem_ephemeris</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">solpos_pyephem</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_ephemeris</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># list of variables </span>
+<span class="n">spa_methods_sza</span> <span class="o">=</span> <span class="p">[</span><span class="n">nrel_pyephem</span><span class="p">,</span> <span class="n">nrel_ephemeris</span><span class="p">,</span> <span class="n">pyephem_ephemeris</span><span class="p">]</span> <span class="c1"># Solar Zenith Angle</span>
+
+<span class="c1"># compute the absolute difference in Solar Zenith Angle between SPA methods</span>
+<span class="n">nrel_pyephem</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">solpos_nrel</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_pyephem</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">nrel_ephemeris</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">solpos_nrel</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_ephemeris</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">pyephem_ephemeris</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">solpos_pyephem</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">solpos_ephemeris</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># list of variables </span>
+<span class="n">spa_methods_azi</span> <span class="o">=</span> <span class="p">[</span><span class="n">nrel_pyephem</span><span class="p">,</span> <span class="n">nrel_ephemeris</span><span class="p">,</span> <span class="n">pyephem_ephemeris</span><span class="p">]</span> <span class="c1"># Solar Azimuth Angle</span>
+
+<span class="n">spa_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NREL &amp; PyEphem&#39;</span><span class="p">,</span><span class="s1">&#39;NREL &amp; Ephemeris&#39;</span><span class="p">,</span><span class="s1">&#39;PyEphem &amp; Ephemeris&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Absolute differences between solar position algorithms:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">55</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solar Zenith Angle&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">spa_names</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">spa_names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;: </span><span class="si">{:.5f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spa_methods_sza</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Solar Azimuth Angle&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">spa_names</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">spa_names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;: </span><span class="si">{:.5f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">spa_methods_azi</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Absolute differences between solar position algorithms:
+-------------------------------------------------------
+Solar Zenith Angle
+- NREL &amp; PyEphem : 0.00013
+- NREL &amp; Ephemeris : 0.00835
+- PyEphem &amp; Ephemeris : 0.00843
+
+Solar Azimuth Angle
+- NREL &amp; PyEphem : 0.00047
+- NREL &amp; Ephemeris : 0.01666
+- PyEphem &amp; Ephemeris : 0.01713
+</pre></div>
+</div>
+</div>
+</div>
+<p>We observe that the differences among methods are small in the range of 0.01 degree.</p>
+</div>
+<div class="section" id="applications-of-solar-position">
+<h2>Applications of solar position<a class="headerlink" href="#applications-of-solar-position" title="Permalink to this headline">¶</a></h2>
+<p>The use of solar position algorithms in solar resource can have several direct applications. For example, the visualization of sun path diagrams or the estimation of sunrise, sunset and solar transit time.</p>
+<div class="section" id="the-solar-analemma">
+<h3>The solar analemma<a class="headerlink" href="#the-solar-analemma" title="Permalink to this headline">¶</a></h3>
+<p>One of the applications of solar position can creating the solar analemman. An analemma is a diagram showing the position of the Sun in the sky as seen from a fixed location on Earth at the same mean solar time. In Python, we could implement the analemma as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definition of a times (noon)</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2020-01-01 12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-01-01 12:00:00&#39;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span>
+<span class="c1"># Solar Position Estimation for the object &#39;site&#39; (CIEMAT, Madrid (Spain))</span>
+<span class="n">solpos</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+
+<span class="c1"># Plotting the Analemma</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">solpos</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">],</span> <span class="n">solpos</span><span class="p">[</span><span class="s1">&#39;apparent_elevation&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">times</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Week of Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Solar Azimuth Angle (degree)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Solar Elevation Angle (degree)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Solar Analemma in &#39;</span> <span class="o">+</span> <span class="n">site</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; at noon (UTC)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/solar_position_19_0.png" src="../_images/solar_position_19_0.png" />
+</div>
+</div>
+<p><strong>Sun path diagrams throughout the day</strong> are another application of the solar angles. There are some well documented examples availabe for <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/auto_examples/plot_sunpath_diagrams.html">sun path diagrams</a> in the documentation of <em>pvlib</em>.</p>
+</div>
+<div class="section" id="other-applications">
+<h3>Other applications<a class="headerlink" href="#other-applications" title="Permalink to this headline">¶</a></h3>
+<p>Solar position angles can also be used to estimate the <strong>sunrise, sunset and solar transit time</strong>. <em>pvlib</em> has specific functions to estimate these times with different methods: <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.solarposition.sun_rise_set_transit_spa.html">NREL’s SPA</a>, <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.solarposition.sun_rise_set_transit_ephem.html">PyEphem package</a> and <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.solarposition.sun_rise_set_transit_geometric.html">geometric calculation</a>.</p>
+<p>The <strong>Equation of Time</strong> can also be estimated using the available <em>pvlib</em> functions related to solar position. In fact, it is one of the available outputs when using the NREL’s SPA method. The equation of time is the difference apparent solar time minus mean solar time. In other words, if the sun is ahead of the clock the sign is positive, and if the clock is ahead of the sun the sign is negative. Let’s see how the equation of time looks:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">solpos_nrel</span><span class="p">[</span><span class="s1">&#39;equation_of_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">solpos_nrel</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">solpos_nrel</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Minutes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Equation of Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/solar_position_22_0.png" src="../_images/solar_position_22_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This section has introduced the basics of solar position and how to estimate in Python the characteristic angles used in solar energy applications. Particularly, the following examples have been covered: <br></p>
+<ul class="simple">
+<li><p>The estimation of solar angles using function-based and object-oriented code. <br></p></li>
+<li><p>The estimation solar angles attending to several solar position algorithms currently available in <em>pvlib</em>. Comparison of the methods: NREL SPA, PyEphem and Ephemeris. <br></p></li>
+<li><p>Several applications in the use of solar angles (e.g., solar analemma) have been shown.</p></li>
+</ul>
+<p>Solar angles are typically used as input to multiple solar resource modelling techniques and you will find in other sections of <a class="reference external" href="http://AssessingSolar.org">AssessingSolar.org</a>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>Blanc, P.; Wald, L. (2012). The SG2 algorithm for a fast and accurate computation of the position of the Sun for multi-decadal time period. Solar Energy, Elsevier, 88 (10), pp. 3072-3083. doi:<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0038092X12002800">10.1016/j.solener.2012.07.018</a></p>
+<p>Reda, I.; Andreas, A. (2003). Solar Position Algorithm for Solar Radiation Applications. 55 pp.; NREL Report No. TP-560-34302, Revised January 2008. <a class="reference external" href="https://www.nrel.gov/docs/fy08osti/34302.pdf">https://www.nrel.gov/docs/fy08osti/34302.pdf</a></p>
+<p>Rhodes B. C. (2011). PyEphem: Astronomical Ephemeris for Python
+(ascl:1112.014) <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2011ascl.soft12014R">https://ui.adsabs.harvard.edu/abs/2011ascl.soft12014R</a></p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
