@@ -613,43 +613,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pvlib/solarposition.py</span> in <span class="ni">pyephem</span><span class="nt">(time, latitude, longitude, altitude, pressure, temperature, horizon)</span>
-<span class="g g-Whitespace">    </span><span class="mi">633</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">634</span>         <span class="kn">import</span> <span class="nn">ephem</span>
-<span class="g g-Whitespace">    </span><span class="mi">635</span>     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;ephem&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1939</span><span class="o">/</span><span class="mf">800067987.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Estimate the solar position with a specific SPA defined with the argument &#39;method&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">solpos_nrel</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">altitude</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nrel_numpy&#39;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">solpos_pyephem</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">altitude</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pyephem&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">solpos_ephemeris</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">altitude</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ephemeris&#39;</span><span class="p">)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pvlib/solarposition.py</span> in <span class="ni">get_solarposition</span><span class="nt">(time, latitude, longitude, altitude, pressure, method, temperature, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span>                            <span class="n">altitude</span><span class="o">=</span><span class="n">altitude</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span>                            <span class="n">pressure</span><span class="o">=</span><span class="n">pressure</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">121</span>                            <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">122</span>     <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;ephemeris&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">123</span>         <span class="n">ephem_df</span> <span class="o">=</span> <span class="n">ephemeris</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">pressure</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/pvlib/solarposition.py</span> in <span class="ni">pyephem</span><span class="nt">(time, latitude, longitude, altitude, pressure, temperature, horizon)</span>
-<span class="g g-Whitespace">    </span><span class="mi">634</span>         <span class="kn">import</span> <span class="nn">ephem</span>
-<span class="g g-Whitespace">    </span><span class="mi">635</span>     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">636</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;PyEphem must be installed&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">637</span> 
-<span class="g g-Whitespace">    </span><span class="mi">638</span>     <span class="c1"># if localized, convert to UTC. otherwise, assume UTC.</span>
-
-<span class="ne">ImportError</span>: PyEphem must be installed
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can visualize the differences in the estimations of the <strong>solar zenith angle</strong>:</p>
 <div class="cell tag_hide-input docutils container">
@@ -749,14 +712,14 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Absolute differences between solar position algorithms:
 -------------------------------------------------------
 Solar Zenith Angle
-- NREL &amp; PyEphem : 0.00013
+- NREL &amp; PyEphem : 0.00014
 - NREL &amp; Ephemeris : 0.00835
-- PyEphem &amp; Ephemeris : 0.00843
+- PyEphem &amp; Ephemeris : 0.00844
 
 Solar Azimuth Angle
-- NREL &amp; PyEphem : 0.00047
+- NREL &amp; PyEphem : 0.00049
 - NREL &amp; Ephemeris : 0.01666
-- PyEphem &amp; Ephemeris : 0.01713
+- PyEphem &amp; Ephemeris : 0.01715
 </pre></div>
 </div>
 </div>
