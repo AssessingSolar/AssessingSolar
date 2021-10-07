@@ -10,3 +10,4 @@ pandas_bokeh
 git+https://git@github.com/AdamRJensen/pvlib-python@era5#egg=pvlib
 # Solar Power Modeling
 NREL-PySAM
+pyephem
