@@ -22,7 +22,7 @@ parts:
 
   - caption: Solar resource data
     chapters:
-    - file: notebooks/solar_resource_data_overview
+#    - file: notebooks/solar_resource_data_overview
     - file: notebooks/ground_measurements
       title: Ground Measurements
       sections:
