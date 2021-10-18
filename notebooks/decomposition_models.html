@@ -330,6 +330,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dirindex-model">
+   DIRINDEX model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#erbs-model">
    Erbs model
   </a>
@@ -401,14 +406,14 @@
 </div>
 <div class="section" id="retrieving-weather-data">
 <h3>Retrieving weather data<a class="headerlink" href="#retrieving-weather-data" title="Permalink to this headline">¶</a></h3>
-<p>The irradiance data used is from the <a class="reference external" href="https://bsrn.awi.de/">BSRN</a> Cabauw station operated by the Royal Netherlands Meteorological Institute (KNMI). The data is retrieved from the BSRN FTP server using the <code class="docutils literal notranslate"><span class="pre">get_bsrn</span></code> function from pvlib-python. The Cabauw station is located at latitude 51.9711° and longitude 4.9267°, at an elevation of 0 m AMSL. The data used are 1-minute global, direct, and diffuse irradiance measurements for July 2021.</p>
+<p>The irradiance data used is from the <a class="reference external" href="https://bsrn.awi.de/">BSRN</a> Cabauw station operated by the Royal Netherlands Meteorological Institute (KNMI). The data is retrieved from the BSRN FTP server using the <code class="docutils literal notranslate"><span class="pre">get_bsrn</span></code> function from pvlib-python. The Cabauw station is located at latitude 51.9711° and longitude 4.9267°, at an elevation of 0 m AMSL. The reason for choosing the Cabauw station is that the data has already been extensively quality checked, hence in this example this step is skipped. The data used are 1-minute global, direct, and diffuse irradiance measurements for July 2021.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieving the measurement data</span>
 <span class="n">df</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_bsrn</span><span class="p">(</span>
     <span class="n">station</span><span class="o">=</span><span class="s1">&#39;CAB&#39;</span><span class="p">,</span>
-    <span class="n">start</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2021-07-01&#39;</span><span class="p">),</span>
-    <span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2021-07-01&#39;</span><span class="p">),</span>
+    <span class="n">start</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">),</span>
+    <span class="n">end</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2021-07-31&#39;</span><span class="p">),</span>
     <span class="n">username</span><span class="o">=</span><span class="n">bsrn_username</span><span class="p">,</span>
     <span class="n">password</span><span class="o">=</span><span class="n">bsrn_password</span><span class="p">)</span>
 
@@ -462,114 +467,114 @@
   </thead>
   <tbody>
     <tr>
-      <th>2021-07-01 00:00:00+00:00</th>
-      <td>0.000000</td>
+      <th>2021-01-01 00:00:00+00:00</th>
+      <td>-1.150000</td>
+      <td>0.076667</td>
+      <td>-1.366667</td>
+      <td>-1.033333</td>
+      <td>1.000000</td>
+      <td>0.008333</td>
+      <td>1.000000</td>
+      <td>1.133333</td>
+      <td>-1.000000</td>
+      <td>0.050000</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>242.133333</td>
+      <td>0.288333</td>
+      <td>241.666667</td>
+      <td>242.633333</td>
+      <td>-1.531667</td>
+      <td>99.360000</td>
+      <td>1006.000000</td>
+    </tr>
+    <tr>
+      <th>2021-01-01 01:00:00+00:00</th>
+      <td>-1.000000</td>
+      <td>0.078333</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>1.150000</td>
+      <td>0.005000</td>
+      <td>1.050000</td>
+      <td>1.550000</td>
+      <td>-1.000000</td>
+      <td>0.051667</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>243.666667</td>
+      <td>0.253333</td>
+      <td>243.216667</td>
+      <td>244.100000</td>
+      <td>-2.320000</td>
+      <td>98.990000</td>
+      <td>1006.000000</td>
+    </tr>
+    <tr>
+      <th>2021-01-01 02:00:00+00:00</th>
+      <td>-1.000000</td>
       <td>0.081667</td>
-      <td>-0.066667</td>
-      <td>0.000000</td>
-      <td>1.0</td>
-      <td>0.001667</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>-0.100000</td>
-      <td>0.058333</td>
-      <td>-0.566667</td>
-      <td>-0.033333</td>
-      <td>371.750000</td>
-      <td>0.088333</td>
-      <td>371.666667</td>
-      <td>371.866667</td>
-      <td>13.496667</td>
-      <td>94.756667</td>
-      <td>1015.000000</td>
-    </tr>
-    <tr>
-      <th>2021-07-01 01:00:00+00:00</th>
-      <td>-0.300000</td>
-      <td>0.066667</td>
-      <td>-0.316667</td>
-      <td>-0.216667</td>
-      <td>1.0</td>
-      <td>0.011667</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>-0.383333</td>
-      <td>0.075000</td>
-      <td>-0.583333</td>
-      <td>-0.333333</td>
-      <td>371.133333</td>
-      <td>0.091667</td>
-      <td>371.000000</td>
-      <td>371.333333</td>
-      <td>13.253333</td>
-      <td>91.963333</td>
-      <td>1014.800000</td>
-    </tr>
-    <tr>
-      <th>2021-07-01 02:00:00+00:00</th>
-      <td>0.000000</td>
-      <td>0.073333</td>
-      <td>-0.050000</td>
-      <td>0.000000</td>
-      <td>1.0</td>
-      <td>0.003333</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>-0.150000</td>
-      <td>0.053333</td>
-      <td>-0.733333</td>
-      <td>-0.033333</td>
-      <td>370.583333</td>
-      <td>0.101667</td>
-      <td>370.533333</td>
-      <td>370.666667</td>
-      <td>13.185000</td>
-      <td>88.803333</td>
-      <td>1014.683333</td>
-    </tr>
-    <tr>
-      <th>2021-07-01 03:00:00+00:00</th>
-      <td>1.633333</td>
-      <td>0.095000</td>
-      <td>1.533333</td>
-      <td>1.750000</td>
-      <td>1.0</td>
-      <td>0.006667</td>
-      <td>1.000000</td>
-      <td>1.0</td>
+      <td>-1.016667</td>
+      <td>-0.900000</td>
+      <td>1.266667</td>
+      <td>0.016667</td>
+      <td>1.050000</td>
       <td>1.516667</td>
-      <td>0.081667</td>
-      <td>1.466667</td>
-      <td>1.566667</td>
-      <td>370.300000</td>
-      <td>0.105000</td>
-      <td>370.116667</td>
-      <td>370.533333</td>
-      <td>13.091667</td>
-      <td>90.606667</td>
-      <td>1014.150000</td>
+      <td>-0.600000</td>
+      <td>0.051667</td>
+      <td>-0.683333</td>
+      <td>-0.500000</td>
+      <td>265.950000</td>
+      <td>0.603333</td>
+      <td>264.983333</td>
+      <td>267.066667</td>
+      <td>-0.808333</td>
+      <td>98.183333</td>
+      <td>1006.066667</td>
     </tr>
     <tr>
-      <th>2021-07-01 04:00:00+00:00</th>
-      <td>18.600000</td>
-      <td>0.298333</td>
-      <td>18.133333</td>
-      <td>19.283333</td>
-      <td>1.0</td>
-      <td>0.011667</td>
-      <td>0.933333</td>
-      <td>1.0</td>
-      <td>18.533333</td>
-      <td>0.295000</td>
-      <td>18.083333</td>
-      <td>19.050000</td>
-      <td>372.750000</td>
-      <td>0.145000</td>
-      <td>372.516667</td>
-      <td>373.083333</td>
-      <td>13.050000</td>
-      <td>93.396667</td>
-      <td>1014.916667</td>
+      <th>2021-01-01 03:00:00+00:00</th>
+      <td>-1.000000</td>
+      <td>0.075000</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
+      <td>1.583333</td>
+      <td>0.006667</td>
+      <td>1.383333</td>
+      <td>1.616667</td>
+      <td>-0.533333</td>
+      <td>0.065000</td>
+      <td>-0.833333</td>
+      <td>-0.333333</td>
+      <td>271.800000</td>
+      <td>0.578333</td>
+      <td>270.800000</td>
+      <td>272.733333</td>
+      <td>-0.930000</td>
+      <td>98.736667</td>
+      <td>1006.216667</td>
+    </tr>
+    <tr>
+      <th>2021-01-01 04:00:00+00:00</th>
+      <td>-0.966667</td>
+      <td>0.076667</td>
+      <td>-1.000000</td>
+      <td>-0.850000</td>
+      <td>1.316667</td>
+      <td>0.005000</td>
+      <td>1.233333</td>
+      <td>1.500000</td>
+      <td>0.000000</td>
+      <td>0.061667</td>
+      <td>-0.350000</td>
+      <td>0.000000</td>
+      <td>291.933333</td>
+      <td>0.231667</td>
+      <td>291.500000</td>
+      <td>292.266667</td>
+      <td>-0.171667</td>
+      <td>97.960000</td>
+      <td>1006.050000</td>
     </tr>
   </tbody>
 </table>
@@ -604,7 +609,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f493ef647d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3e4d028650&gt;
 </pre></div>
 </div>
 <img alt="../_images/decomposition_models_11_1.png" src="../_images/decomposition_models_11_1.png" />
@@ -647,75 +652,75 @@
   <tbody>
     <tr>
       <th>count</th>
-      <td>744.000000</td>
-      <td>744.000000</td>
-      <td>744.000000</td>
-      <td>744.000000</td>
-      <td>744.000000</td>
-      <td>744.000000</td>
+      <td>5088.000000</td>
+      <td>5021.000000</td>
+      <td>5006.000000</td>
+      <td>5088.000000</td>
+      <td>5088.000000</td>
+      <td>5088.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>202.480422</td>
-      <td>138.395231</td>
-      <td>116.982810</td>
-      <td>17.854637</td>
-      <td>82.072552</td>
-      <td>1014.696438</td>
+      <td>150.154482</td>
+      <td>129.608143</td>
+      <td>78.730762</td>
+      <td>9.613794</td>
+      <td>81.598316</td>
+      <td>1016.147409</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>246.797927</td>
-      <td>232.219321</td>
-      <td>131.685652</td>
-      <td>2.838482</td>
-      <td>13.726766</td>
-      <td>6.274412</td>
+      <td>223.501191</td>
+      <td>244.733398</td>
+      <td>109.759797</td>
+      <td>7.098631</td>
+      <td>14.189124</td>
+      <td>10.043831</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>-1.616667</td>
-      <td>0.016667</td>
-      <td>-1.250000</td>
-      <td>11.378333</td>
-      <td>42.376667</td>
-      <td>1000.783333</td>
+      <td>-2.033333</td>
+      <td>-0.316667</td>
+      <td>-1.827586</td>
+      <td>-8.151667</td>
+      <td>32.516667</td>
+      <td>981.450000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>-0.358333</td>
+      <td>-1.000000</td>
       <td>1.000000</td>
-      <td>-0.220833</td>
-      <td>15.839167</td>
-      <td>71.942500</td>
-      <td>1009.000000</td>
+      <td>-0.783333</td>
+      <td>4.133750</td>
+      <td>72.566667</td>
+      <td>1009.945833</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>97.341667</td>
-      <td>1.975000</td>
-      <td>72.108333</td>
-      <td>17.556667</td>
-      <td>85.485000</td>
-      <td>1014.075000</td>
+      <td>21.075000</td>
+      <td>1.316667</td>
+      <td>18.233333</td>
+      <td>8.776667</td>
+      <td>84.843333</td>
+      <td>1016.675000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>358.691667</td>
-      <td>176.204167</td>
-      <td>202.495833</td>
-      <td>19.829167</td>
-      <td>93.760833</td>
-      <td>1021.000000</td>
+      <td>234.120833</td>
+      <td>117.466667</td>
+      <td>125.820833</td>
+      <td>15.312083</td>
+      <td>93.289167</td>
+      <td>1023.575000</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>890.366667</td>
-      <td>857.200000</td>
-      <td>518.416667</td>
-      <td>25.615000</td>
+      <td>926.033333</td>
+      <td>958.500000</td>
+      <td>568.216667</td>
+      <td>29.330000</td>
       <td>100.000000</td>
-      <td>1027.000000</td>
+      <td>1042.000000</td>
     </tr>
   </tbody>
 </table>
@@ -741,7 +746,9 @@
 <span class="n">location</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mf">51.9711</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="mf">4.9267</span><span class="p">,</span> <span class="n">altitude</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Cabauw&#39;</span><span class="p">)</span>
 
 <span class="c1"># Calculate the solar position for each index in the datarame for the specific location</span>
-<span class="n">solpos</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="c1"># The 30 minute shift is applied in order to calculate the solar position at the middle of the hour!</span>
+<span class="n">solpos</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">+</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
+<span class="n">solpos</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">solpos</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 
 <span class="c1"># Let&#39;s have a look to the output</span>
 <span class="n">solpos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -777,49 +784,49 @@
   </thead>
   <tbody>
     <tr>
-      <th>2021-07-01 00:00:00+00:00</th>
-      <td>104.846052</td>
-      <td>104.846052</td>
-      <td>-14.846052</td>
-      <td>-14.846052</td>
-      <td>3.778868</td>
-      <td>-3.817087</td>
+      <th>2021-01-01 00:00:00+00:00</th>
+      <td>149.693651</td>
+      <td>149.693651</td>
+      <td>-59.693651</td>
+      <td>-59.693651</td>
+      <td>21.451575</td>
+      <td>-3.441097</td>
     </tr>
     <tr>
-      <th>2021-07-01 01:00:00+00:00</th>
-      <td>103.112107</td>
-      <td>103.112107</td>
-      <td>-13.112107</td>
-      <td>-13.112107</td>
-      <td>17.878551</td>
-      <td>-3.825129</td>
+      <th>2021-01-01 01:00:00+00:00</th>
+      <td>144.585022</td>
+      <td>144.585022</td>
+      <td>-54.585022</td>
+      <td>-54.585022</td>
+      <td>45.257706</td>
+      <td>-3.460697</td>
     </tr>
     <tr>
-      <th>2021-07-01 02:00:00+00:00</th>
-      <td>99.263802</td>
-      <td>99.263802</td>
-      <td>-9.263802</td>
-      <td>-9.263802</td>
-      <td>31.380446</td>
-      <td>-3.833164</td>
+      <th>2021-01-01 02:00:00+00:00</th>
+      <td>137.059810</td>
+      <td>137.059810</td>
+      <td>-47.059810</td>
+      <td>-47.059810</td>
+      <td>63.685127</td>
+      <td>-3.480288</td>
     </tr>
     <tr>
-      <th>2021-07-01 03:00:00+00:00</th>
-      <td>93.616677</td>
-      <td>93.616677</td>
-      <td>-3.616677</td>
-      <td>-3.616677</td>
-      <td>44.046233</td>
-      <td>-3.841192</td>
+      <th>2021-01-01 03:00:00+00:00</th>
+      <td>128.334219</td>
+      <td>128.334219</td>
+      <td>-38.334219</td>
+      <td>-38.334219</td>
+      <td>78.296833</td>
+      <td>-3.499870</td>
     </tr>
     <tr>
-      <th>2021-07-01 04:00:00+00:00</th>
-      <td>86.342329</td>
-      <td>86.550407</td>
-      <td>3.657671</td>
-      <td>3.449593</td>
-      <td>55.895646</td>
-      <td>-3.849214</td>
+      <th>2021-01-01 04:00:00+00:00</th>
+      <td>119.152361</td>
+      <td>119.152361</td>
+      <td>-29.152361</td>
+      <td>-29.152361</td>
+      <td>90.721936</td>
+      <td>-3.519442</td>
     </tr>
   </tbody>
 </table>
@@ -858,7 +865,7 @@
 </div>
 <div class="section" id="dirint-model">
 <h2>DIRINT model<a class="headerlink" href="#dirint-model" title="Permalink to this headline">¶</a></h2>
-<p>The DIRINT model (Pérez et al., 1992) has also already been implemented pvlib-python. The model requires the following inputs: GHI, solar zenith angle, atmospheric pressure, and dew (wet-bulb) temperature.</p>
+<p>An implementatin of the DIRINT model (Pérez et al., 1992)  is also available in pvlib-python. The model requires the following inputs: GHI, solar zenith angle, atmospheric pressure, and dew (wet-bulb) temperature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimation of the DIRINT model</span>
@@ -873,9 +880,37 @@
 </div>
 </div>
 </div>
+<div class="section" id="dirindex-model">
+<h2>DIRINDEX model<a class="headerlink" href="#dirindex-model" title="Permalink to this headline">¶</a></h2>
+<p>The DIRINDEX model was found to be one of the two best decomposition models in an extensive study by Gueymard (2016). The models is an enhancement of the DIRINT model by considering clearsky data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve clear-sky irradiance from CAMS McClear</span>
+<span class="n">clearsky</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_cams</span><span class="p">(</span>
+    <span class="n">latitude</span><span class="o">=</span><span class="n">location</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+    <span class="n">longitude</span><span class="o">=</span><span class="n">location</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+    <span class="n">altitude</span><span class="o">=</span><span class="n">location</span><span class="o">.</span><span class="n">altitude</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">end</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">email</span><span class="o">=</span><span class="n">sodapro_username</span><span class="p">)</span>
+
+<span class="c1"># Estimation of the DIRINDEX model</span>
+<span class="n">dirindex</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">dirindex</span><span class="p">(</span>
+    <span class="n">ghi</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ghi&#39;</span><span class="p">],</span>
+    <span class="n">ghi_clearsky</span><span class="o">=</span><span class="n">clearsky</span><span class="p">[</span><span class="s1">&#39;ghi_clear&#39;</span><span class="p">],</span>
+    <span class="n">dni_clearsky</span><span class="o">=</span><span class="n">clearsky</span><span class="p">[</span><span class="s1">&#39;dni_clear&#39;</span><span class="p">],</span>
+    <span class="n">zenith</span><span class="o">=</span><span class="n">solpos</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">],</span>
+    <span class="n">times</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+    <span class="n">pressure</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="c1"># atmospheric pressure in Pascal </span>
+    <span class="n">temp_dew</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;temp_dew&#39;</span><span class="p">])</span> <span class="c1"># Dew temperature in Degree Celsius</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="erbs-model">
 <h2>Erbs model<a class="headerlink" href="#erbs-model" title="Permalink to this headline">¶</a></h2>
-<p>The Erbs model (Erbs et al., 1982) is a simple model that only requires GHI and the solar position through the solar zenith angle. This model is also available in pvlib and the implementation is equally straight-forward:</p>
+<p>The Erbs model (Erbs et al., 1982) is a simple and very popular model that only requires GHI and the solar zenith angle. This model is also available in pvlib and the implementation is equally straight-forward:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">erbs</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">erbs</span><span class="p">(</span>
@@ -902,12 +937,13 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot of models for a single day</span>
 <span class="n">date</span> <span class="o">=</span> <span class="s1">&#39;2021-07-18&#39;</span>
 
-<span class="n">disc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DISC&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># format of date YYYYMMDD</span>
-<span class="n">dirint</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DIRINT&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">erbs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Erbs&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Reference&#39;</span><span class="p">)</span>
+<span class="n">disc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DISC&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">dirint</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DIRINT&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">dirindex</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DIRINDEX&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">erbs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Erbs&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Reference&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Direct Normal Irradiance [W/m$^2$]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [HH:MM]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparison of decomposition models</span><span class="se">\n</span><span class="s1">(July 18th 2021)&#39;</span><span class="p">)</span>
@@ -916,10 +952,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f492a6a1150&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3e4fb7df90&gt;
 </pre></div>
 </div>
-<img alt="../_images/decomposition_models_27_1.png" src="../_images/decomposition_models_27_1.png" />
+<img alt="../_images/decomposition_models_29_1.png" src="../_images/decomposition_models_29_1.png" />
 </div>
 </div>
 <div class="cell tag_hide-cell docutils container">
@@ -927,6 +963,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot of models for several days on an hourly basis</span>
 <span class="n">disc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20210709&#39;</span><span class="p">:</span><span class="s1">&#39;20210718&#39;</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;1h&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DISC&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># format of date YYYYMMDD</span>
 <span class="n">dirint</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20210709&#39;</span><span class="p">:</span><span class="s1">&#39;20210718&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;1h&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DIRINT&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">dirindex</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20210709&#39;</span><span class="p">:</span><span class="s1">&#39;20210718&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;1h&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DIRINDEX&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">erbs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20210709&#39;</span><span class="p">:</span><span class="s1">&#39;20210718&#39;</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;1h&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Erbs&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20210709&#39;</span><span class="p">:</span><span class="s1">&#39;20210718&#39;</span><span class="p">,</span> <span class="s1">&#39;dni&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;1h&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Reference&#39;</span><span class="p">)</span>
 
@@ -938,29 +975,31 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f492a96b450&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3e4f9b7590&gt;
 </pre></div>
 </div>
-<img alt="../_images/decomposition_models_28_1.png" src="../_images/decomposition_models_28_1.png" />
+<img alt="../_images/decomposition_models_30_1.png" src="../_images/decomposition_models_30_1.png" />
 </div>
 </div>
 <p>The correlation between the obtained models and the measured observations can be also presented in <strong>scatter plots</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create multiple plots</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Plot</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">dirint</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">disc</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">erbs</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">disc</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">dirint</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">dirindex</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">erbs</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 
 <span class="c1"># Add characteristics to each subplot in a loop</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Modelled DNI [W/m$^2$]&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1100</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;DIRINT&#39;</span><span class="p">,</span> <span class="s1">&#39;DISC&#39;</span><span class="p">,</span> <span class="s1">&#39;ERBS&#39;</span><span class="p">]):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;DISC&#39;</span><span class="p">,</span> <span class="s1">&#39;DIRINT&#39;</span><span class="p">,</span> <span class="s1">&#39;DIRINDEX&#39;</span><span class="p">,</span> <span class="s1">&#39;ERBS&#39;</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1200</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1200</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Observed DNI [W/m$^2$]&#39;</span><span class="p">)</span>
 
@@ -970,7 +1009,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/decomposition_models_30_0.png" src="../_images/decomposition_models_30_0.png" />
+<img alt="../_images/decomposition_models_32_0.png" src="../_images/decomposition_models_32_0.png" />
 </div>
 </div>
 <p>The evaluation cannot be only based on a visual inspection. For solar resource assessment, there are a number of common metrics to evaluate the error and performance, which we will use below. These metrics are the mean bias error (MBE) and the root mean square error (RMSE). The MBE is the average error representing a systematic error to under- or overestimate and the RMSE is a measure of the dispersion of the deviations.</p>
@@ -992,7 +1031,18 @@
 </div>
 </div>
 </div>
-<p>The performance metrics for DNI estimations can be obtained using these functions.</p>
+<p>For the comparison of evaluation metrics, only measurement for periods where the solar elevation is greater than 5 degrees are used:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">solpos</span><span class="p">[</span><span class="s1">&#39;elevation&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">erbs</span> <span class="o">=</span> <span class="n">erbs</span><span class="p">[</span><span class="n">solpos</span><span class="p">[</span><span class="s1">&#39;elevation&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">disc</span> <span class="o">=</span> <span class="n">disc</span><span class="p">[</span><span class="n">solpos</span><span class="p">[</span><span class="s1">&#39;elevation&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">dirint</span> <span class="o">=</span> <span class="n">dirint</span><span class="p">[</span><span class="n">solpos</span><span class="p">[</span><span class="s1">&#39;elevation&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">dirindex</span> <span class="o">=</span> <span class="n">dirindex</span><span class="p">[</span><span class="n">solpos</span><span class="p">[</span><span class="s1">&#39;elevation&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>For the DISC method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1007,8 +1057,8 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DISC Decomposition Method:
-MBE 22.57 W/m²
-RMSE 124.58 W/m²
+MBE 41.68 W/m²
+RMSE 90.00 W/m²
 </pre></div>
 </div>
 </div>
@@ -1027,8 +1077,28 @@ RMSE 124.58 W/m²
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DIRINT Decomposition Method:
-MBE 8.01 W/m²
-RMSE 122.37 W/m²
+MBE 18.26 W/m²
+RMSE 76.04 W/m²
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the DIRINDEX method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mbe_dirindex</span> <span class="o">=</span> <span class="n">mbe</span><span class="p">(</span><span class="n">dirindex</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">])</span>
+<span class="n">rmse_dirindex</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">dirindex</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dni&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DIRINDEX Decomposition Method:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MBE &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mbe_dirindex</span> <span class="o">+</span> <span class="s2">&quot; W/m</span><span class="se">\u00b2</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse_dirindex</span> <span class="o">+</span> <span class="s2">&quot; W/m</span><span class="se">\u00b2</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DIRINDEX Decomposition Method:
+MBE -3.45 W/m²
+RMSE 68.51 W/m²
 </pre></div>
 </div>
 </div>
@@ -1047,8 +1117,8 @@ RMSE 122.37 W/m²
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Erbs Decomposition Method:
-MBE 25.89 W/m²
-RMSE 138.94 W/m²
+MBE 14.06 W/m²
+RMSE 81.79 W/m²
 </pre></div>
 </div>
 </div>
