@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,19 +33,19 @@
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
@@ -97,7 +97,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Solar fundamentals
  </span>
@@ -119,7 +119,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Solar radiation modeling
  </span>
@@ -131,17 +131,12 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Solar resource data
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="solar_resource_data_overview.html">
-   Overview
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="ground_measurements.html">
    Ground Measurements
@@ -170,7 +165,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Applications
  </span>
@@ -187,7 +182,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Appendix
  </span>
@@ -375,7 +370,7 @@
         
               <div>
                 
-  <div class="section" id="solar-power-modelling">
+  <div class="tex2jax_ignore mathjax_ignore section" id="solar-power-modelling">
 <h1>Solar Power Modelling<a class="headerlink" href="#solar-power-modelling" title="Permalink to this headline">¶</a></h1>
 <p>The conversion of <strong>solar irradiance to electric power output</strong> as observed in photovoltaic (PV) systems is covered in this chapter of <a class="reference external" href="https://assessingsolar.org/"><em>AssessingSolar.org</em></a>. Other chapters facilitate best practices in how to obtain solar radiation data, how to apply certain quality checks to the data or how to manipulate and assess timeseries of solar data for solar resource assessment. However, for PV applications it is important that we consider the conversion from irradiance to power output occuring between the different components of a PV system and of the PV system as a whole.</p>
 <p>The several sections of this chapter aim to illustrate the conversion from irradiance to power step by step:</p>
@@ -424,30 +419,30 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Technology            Mono-c-Si
 Bifacial                      0
-STC                    184.7016
-PTC                       160.2
+STC                    175.0914
+PTC                       151.2
 A_c                         1.3
 Length                    1.576
 Width                     0.825
 N_s                          72
-I_sc_ref                   5.43
-V_oc_ref                  44.14
-I_mp_ref                   5.03
-V_mp_ref                  36.72
-alpha_sc               0.002253
-beta_oc                -0.15961
+I_sc_ref                   5.17
+V_oc_ref                  43.99
+I_mp_ref                   4.78
+V_mp_ref                  36.63
+alpha_sc               0.002146
+beta_oc               -0.159068
 T_NOCT                     49.9
-a_ref                  1.984817
-I_L_ref                5.435676
+a_ref                  1.981696
+I_L_ref                5.175703
 I_o_ref                     0.0
-R_s                    0.311962
-R_sh_ref             298.424438
-Adjust                15.688233
+R_s                    0.316688
+R_sh_ref             287.102203
+Adjust                16.057121
 gamma_r                 -0.5072
 BIPV                          N
 Version       SAM 2018.11.11 r2
 Date                   1/3/2019
-Name: Ablytek_5MN6C185_A0, dtype: object
+Name: Ablytek_5MN6C175_A0, dtype: object
 </pre></div>
 </div>
 </div>
@@ -478,31 +473,31 @@ Name: Ablytek_5MN6C185_A0, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vintage                                                      2002 (E)
-Area                                                             1.12
-Material                                                         c-Si
-Cells_in_Series                                                    42
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vintage                                                      2007 (E)
+Area                                                            1.378
+Material                                                        mc-Si
+Cells_in_Series                                                    50
 Parallel_Strings                                                    1
-Isco                                                              7.6
-Voco                                                             24.6
-Impo                                                              6.9
-Vmpo                                                             18.9
-Aisc                                                         0.000201
-Aimp                                                        -0.000423
-C0                                                              0.995
-C1                                                              0.005
-Bvoco                                                         -0.0954
+Isco                                                              8.2
+Voco                                                             30.5
+Impo                                                             7.67
+Vmpo                                                             24.1
+Aisc                                                           0.0008
+Aimp                                                          -0.0003
+C0                                                               0.99
+C1                                                               0.01
+Bvoco                                                           -0.11
 Mbvoc                                                               0
-Bvmpo                                                         -0.0984
+Bvmpo                                                          -0.115
 Mbvmp                                                               0
-N                                                               1.549
-C2                                                            -0.0665
-C3                                                           -11.4245
-A0                                                              0.918
-A1                                                           0.068713
-A2                                                          -0.010438
-A3                                                           0.000725
-A4                                                           -0.00002
+N                                                                1.35
+C2                                                              -0.12
+C3                                                             -11.08
+A0                                                              0.924
+A1                                                            0.06749
+A2                                                          -0.012549
+A3                                                           0.001005
+A4                                                          -0.000029
 B0                                                                  1
 B1                                                          -0.002438
 B2                                                            0.00031
@@ -513,14 +508,14 @@ DTC                                                               3.0
 FD                                                                  1
 A                                                               -3.56
 B                                                              -0.075
-C4                                                              0.989
-C5                                                              0.011
-IXO                                                              7.51
-IXXO                                                              4.9
-C6                                                              1.118
-C7                                                             -0.118
+C4                                                              0.995
+C5                                                              0.005
+IXO                                                               8.1
+IXXO                                                             5.54
+C6                                                               1.15
+C7                                                              -0.15
 Notes               Source: Sandia National Laboratories Updated 9...
-Name: AstroPower_AP_130__2002__E__, dtype: object
+Name: Aleo_S16_185__2007__E__, dtype: object
 </pre></div>
 </div>
 </div>
@@ -573,23 +568,23 @@ Name: AstroPower_AP_130__2002__E__, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vac                          240
-Pso                     1.843781
-Paco                       300.0
-Pdco                  312.004578
-Vdco                        45.0
-C0                     -0.000035
-C1                     -0.000227
-C2                     -0.000526
-C3                     -0.041214
-Pnt                         0.09
-Vdcmax                      60.0
-Idcmax                  6.933435
-Mppt_low                    30.0
-Mppt_high                   60.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vac                          208
+Pso                    46.863808
+Paco                     10000.0
+Pdco                10488.306641
+Vdco                       320.0
+C0                     -0.000003
+C1                     -0.000036
+C2                      0.000305
+C3                     -0.002351
+Pnt                          0.1
+Vdcmax                     416.0
+Idcmax                 32.775958
+Mppt_low                   220.0
+Mppt_high                  416.0
 CEC_Date                     NaN
 CEC_Type     Utility Interactive
-Name: ABB__MICRO_0_3HV_I_OUTD_US_240__240V_, dtype: object
+Name: ABB__PVI_10_0_I_OUTD_x_US_208_y__208V_, dtype: object
 </pre></div>
 </div>
 </div>
@@ -722,7 +717,7 @@ Name: ABB__MICRO_0_3HV_I_OUTD_US_240__240V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f55b8add950&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f38784015d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/solar_power_modeling_24_1.png" src="../_images/solar_power_modeling_24_1.png" />
@@ -765,7 +760,7 @@ Name: ABB__MICRO_0_3HV_I_OUTD_US_240__240V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f55b48aa310&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3874203b90&gt;
 </pre></div>
 </div>
 <img alt="../_images/solar_power_modeling_26_1.png" src="../_images/solar_power_modeling_26_1.png" />
@@ -852,8 +847,8 @@ Name: ABB__MICRO_0_3HV_I_OUTD_US_240__240V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 39.02982627,  81.14286361, 122.60019857, 163.01367141,
-       202.2105017 ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.00000000e-01,  4.20659909e+01,  8.46553832e+01,  1.26374136e+02,
+        1.67032998e+02])
 </pre></div>
 </div>
 </div>
@@ -867,7 +862,7 @@ Name: ABB__MICRO_0_3HV_I_OUTD_US_240__240V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.843781
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46.863808
 </pre></div>
 </div>
 </div>
@@ -1758,17 +1753,17 @@ Name: ABB__MICRO_0_3HV_I_OUTD_US_240__240V_, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-06-01 00:00:00-08:00   -0.09
-2021-06-01 00:01:00-08:00   -0.09
-2021-06-01 00:02:00-08:00   -0.09
-2021-06-01 00:03:00-08:00   -0.09
-2021-06-01 00:04:00-08:00   -0.09
-                             ... 
-2021-06-01 23:55:00-08:00   -0.09
-2021-06-01 23:56:00-08:00   -0.09
-2021-06-01 23:57:00-08:00   -0.09
-2021-06-01 23:58:00-08:00   -0.09
-2021-06-01 23:59:00-08:00   -0.09
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-06-01 00:00:00-08:00   -0.1
+2021-06-01 00:01:00-08:00   -0.1
+2021-06-01 00:02:00-08:00   -0.1
+2021-06-01 00:03:00-08:00   -0.1
+2021-06-01 00:04:00-08:00   -0.1
+                            ... 
+2021-06-01 23:55:00-08:00   -0.1
+2021-06-01 23:56:00-08:00   -0.1
+2021-06-01 23:57:00-08:00   -0.1
+2021-06-01 23:58:00-08:00   -0.1
+2021-06-01 23:59:00-08:00   -0.1
 Length: 1437, dtype: float64
 </pre></div>
 </div>
@@ -1849,7 +1844,7 @@ Length: 1437, dtype: float64
 	POA irradiation:  8.11 kWh
 	Installed PV Capacity:  175.09 W
 	DC generation: 1.20 kWh ( 6.88 kWh/kWp)
-	AC generation: 1.15 kWh ( 6.55 kWh/kWp)
+	AC generation: 0.70 kWh ( 4.00 kWh/kWp)
 --------------------------------------------------
 </pre></div>
 </div>
