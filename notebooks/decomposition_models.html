@@ -385,9 +385,10 @@
 <ul class="simple">
 <li><p>DISC model (Maxwell, 1987)</p></li>
 <li><p>DIRINT model (Pérez et al., 1992)</p></li>
+<li><p>DIRINDEX model (Pérez et al., 2002)</p></li>
 <li><p>Erbs model (Erbs et al., 1982)</p></li>
 </ul>
-<p>The three decomposition models, among some others, are implemented in the open-source library <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/api.html#dni-estimation-models">pvlib python</a>.</p>
+<p>The four decomposition models, among some others, are implemented in the open-source library <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/api.html#dni-estimation-models">pvlib python</a>.</p>
 <p>Before applying the models in practice, an example irradiance data set will be retrieved.</p>
 </div>
 <div class="section" id="data-preparation">
@@ -406,7 +407,7 @@
 </div>
 <div class="section" id="retrieving-weather-data">
 <h3>Retrieving weather data<a class="headerlink" href="#retrieving-weather-data" title="Permalink to this headline">¶</a></h3>
-<p>The irradiance data used is from the <a class="reference external" href="https://bsrn.awi.de/">BSRN</a> Cabauw station operated by the Royal Netherlands Meteorological Institute (KNMI). The data is retrieved from the BSRN FTP server using the <code class="docutils literal notranslate"><span class="pre">get_bsrn</span></code> function from pvlib-python. The Cabauw station is located at latitude 51.9711° and longitude 4.9267°, at an elevation of 0 m AMSL. The reason for choosing the Cabauw station is that the data has already been extensively quality checked, hence in this example this step is skipped. The data used are 1-minute global, direct, and diffuse irradiance measurements for July 2021.</p>
+<p>The irradiance data used is from the <a class="reference external" href="https://bsrn.awi.de/">BSRN</a> Cabauw station operated by the Royal Netherlands Meteorological Institute (KNMI). The data is retrieved from the BSRN FTP server using the <code class="docutils literal notranslate"><span class="pre">get_bsrn</span></code> function from pvlib-python. The Cabauw station is located at latitude 51.9711° and longitude 4.9267°, at an elevation of 0 m AMSL. The reason for choosing the Cabauw station is that the data has already been extensively quality checked, hence in this example this step is skipped. The data used are 1-minute global, direct, and diffuse irradiance measurements between January and July 2021, which are resampled to hourly observations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieving the measurement data</span>
@@ -598,7 +599,7 @@
 </div>
 </div>
 </div>
-<p>it is often helpful to visuaize the data, in order to check that the measurements are as expected. For example, a plot for a single day (18th July 2021):</p>
+<p>It is often helpful to visualize the data in order to check that the measurements are within the expected ones. For example, a plot for a single day (18th July 2021):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2021-07-18&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;ghi&#39;</span><span class="p">,</span><span class="s1">&#39;dhi&#39;</span><span class="p">,</span><span class="s1">&#39;dni&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -609,7 +610,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3e4d028650&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f777574cc90&gt;
 </pre></div>
 </div>
 <img alt="../_images/decomposition_models_11_1.png" src="../_images/decomposition_models_11_1.png" />
@@ -882,7 +883,7 @@
 </div>
 <div class="section" id="dirindex-model">
 <h2>DIRINDEX model<a class="headerlink" href="#dirindex-model" title="Permalink to this headline">¶</a></h2>
-<p>The DIRINDEX model was found to be one of the two best decomposition models in an extensive study by Gueymard (2016). The models is an enhancement of the DIRINT model by considering clearsky data.</p>
+<p>The DIRINDEX model (Pérez et al., 2002) was found to be one of the two best decomposition models in an extensive study by Gueymard and Ruiz-Arias (2016). The model is an enhancement of the DIRINT model by considering clearsky data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieve clear-sky irradiance from CAMS McClear</span>
@@ -931,7 +932,7 @@
 </div>
 <div class="section" id="comparison-and-evaluation-of-decomposition-models">
 <h2>Comparison and evaluation of decomposition models<a class="headerlink" href="#comparison-and-evaluation-of-decomposition-models" title="Permalink to this headline">¶</a></h2>
-<p>Once the 3 models are estimated, we can evaluate the results of the models against the actual DNI measurements available. For example, below we visualize the results of the models a single day and 1 week in July:</p>
+<p>Once the 4 models are estimated, we can evaluate the results of the models against the actual DNI measurements available. For example, below we visualize the results of the models a single day and a week in July:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot of models for a single day</span>
@@ -952,7 +953,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3e4fb7df90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f77796a1190&gt;
 </pre></div>
 </div>
 <img alt="../_images/decomposition_models_29_1.png" src="../_images/decomposition_models_29_1.png" />
@@ -970,15 +971,13 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1200</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Direct Normal Irradiance [W/m$^2$]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparison of decomposition on an hourly basis</span><span class="se">\n</span><span class="s1"> (9th-18th July 2021)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3e4f9b7590&gt;
-</pre></div>
-</div>
-<img alt="../_images/decomposition_models_30_1.png" src="../_images/decomposition_models_30_1.png" />
+<img alt="../_images/decomposition_models_30_0.png" src="../_images/decomposition_models_30_0.png" />
 </div>
 </div>
 <p>The correlation between the obtained models and the measured observations can be also presented in <strong>scatter plots</strong>:</p>
@@ -1123,27 +1122,28 @@ RMSE 81.79 W/m²
 </div>
 </div>
 </div>
-<p>The performance metrics show that, in this example, the Erbs method reports the lowest error metrics, closely followed by the DISC and the DIRINT methods, respectively.</p>
+<p>The performance metrics show that, in this example, the DIRINDEX method reports the lowest error metrics, followed by the Erbs model, the DISC, and the DIRINT methods, respectively.</p>
 </div>
 <div class="section" id="section-summary">
 <h2>Section summary<a class="headerlink" href="#section-summary" title="Permalink to this headline">¶</a></h2>
 <p>This section has presented the solar radiation decomposition methods, which are a common type of technique to estimate the direct normal or beam irradiance from global horizontal irradiance observations. Particularly, the following examples have been covered: <br></p>
 <ul class="simple">
-<li><p>The Python implementation of three solar radiation decomposition methods have been presented using real data, namely the models used are the DISC, DIRINT and Erbs models. <br></p></li>
+<li><p>The Python implementation of three solar radiation decomposition methods have been presented using real data, namely the models used are the DISC, DIRINT, DIRINDEX and Erbs models. <br></p></li>
 <li><p>Time-series visualization and scatter plots have been introduced to evaluate differences in the models. <br></p></li>
 <li><p>Two common error metrics to evaluate the performance, i.e. MBE and RMSE, have been introduced. <br></p></li>
 </ul>
-<p>Within solar resource assessment, decomposition methods are used as means to estimate the direct irradiance or irradiation for further analysis in particular applications. For example, in solar concentrating power where direct irradiance is essential for power generation availability. There are multiple decomposition methods available in the literature. However, the Python functions for these 3 methods are available in the Python library <em>pvlib</em>.</p>
+<p>Within solar resource assessment, decomposition methods are used as means to estimate the direct irradiance or irradiation for further analysis in particular applications. For example, in solar concentrating power where direct irradiance is essential for power generation availability. There are multiple decomposition methods available in the literature. However, the Python functions for these 4 methods are available in the Python library <em>pvlib</em>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Andreas, A., and Wilcox, S., (2010). ‘Observed atmospheric and solar information system (OASIS)’, Tucson, Arizona (Data), NREL Report No. DA-5500-56494. <a class="reference external" href="http://dx.doi.org/10.5439/1052226">http://dx.doi.org/10.5439/1052226</a></p>
 <p>Erbs, D. G., Klein, S. A., and Duffie, J. A., (1982). ‘Estimation of the diffuse radiation fraction for hourly, daily and monthly-average global radiation’, Solar Energy 28(4), pp 293-302.</p>
-<p>Gueymard, C. A and Ruiz-Arias, J. A., (2016). ‘Extensive worldwide validation and climate sensitivity analysis of direct irradiance predictions from 1-min global irradiance’, Solar Energy 128, pp 1-30.</p>
+<p>Gueymard, C. A and Ruiz-Arias, J. A., (2016). ‘Extensive worldwide validation and climate sensitivity analysis of direct irradiance predictions from 1-min global irradiance’, Solar Energy 128, pp 1-30. <a class="reference external" href="https://doi.org/10.1016/j.solener.2015.10.010">https://doi.org/10.1016/j.solener.2015.10.010</a></p>
 <p>Lawrence, M. G. (2005). ‘The relationship between relative humidity and the dewpoint temperature in moist air: A simple conversion and applications’, Bulletin of the American Meteorological Society, 86(2), pp. 225-234. <a class="reference external" href="https://doi.org/10.1175/BAMS-86-2-225">https://doi.org/10.1175/BAMS-86-2-225</a></p>
 <p>Maxwell, E. L., (1987). ‘A quasi-physical model for converting hourly global horizontal to direct normal insolation’, Technical Report No. SERI/TR-215-3087, Golden, CO: Solar Energy Research Institute.</p>
 <p>Perez, R., Ineichen, P., Maxwell, E.,  Seals, R., and Zelenka, A., (1992). ‘Dynamic global-to-direct irradiance conversion models’. ASHRAE Transactions-Research Series, pp. 354-369</p>
+<p>Perez, R. et al. (2002) ‘A new operational model for satellite-derived irradiances: Description and validation’, Solar Energy, 73(5), pp. 307–317. <a class="reference external" href="https://doi.org/10.1016/S0038-092X(02)00122-6">https://doi.org/10.1016/S0038-092X(02)00122-6</a></p>
 </div>
 </div>
 
