@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Manipulating Time-series &#8212; Solar Resource Assessment in Python</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,36 +20,35 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://assessingsolar.org/notebooks/manipulating_time_series.html" />
     <link rel="shortcut icon" href="../_static/assessing_solar_favicon.ico"/>
@@ -56,10 +57,37 @@
     <link rel="next" title="Solar Decomposition Models" href="decomposition_models.html" />
     <link rel="prev" title="Solar Components" href="solar_components.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
     
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-207152593-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -68,9 +96,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -88,14 +117,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<p class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Solar fundamentals
  </span>
@@ -117,7 +147,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Solar radiation modeling
  </span>
@@ -129,7 +159,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Solar resource data
  </span>
@@ -163,7 +193,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Applications
  </span>
@@ -180,7 +210,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendix
  </span>
@@ -199,107 +229,195 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/manipulating_time_series.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        
-        <a class="issues-button"
-            href="https://github.com/AssessingSolar/AssessingSolar/issues/new?title=Issue%20on%20page%20%2Fnotebooks/manipulating_time_series.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/AssessingSolar/AssessingSolar/main?urlpath=tree/AssessingSolar/notebooks/manipulating_time_series.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AssessingSolar/AssessingSolar/main?urlpath=tree/AssessingSolar/notebooks/manipulating_time_series.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AssessingSolar/AssessingSolar/issues/new?title=Issue%20on%20page%20%2Fnotebooks/manipulating_time_series.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/manipulating_time_series.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#time-series-handling">
    1 Time-series handling
@@ -419,17 +537,152 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Manipulating Time-series</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-handling">
+   1 Time-series handling
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-our-customized-dataset">
+     1.1 Build our customized dataset
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-series-when-timestamps-are-available">
+     1.2 Time-series when timestamps are available:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-series-when-date-and-time-are-available">
+     1.3 Time-series when date and time are available:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-series-when-the-time-data-is-split-in-multiple-columns">
+     1.4 Time-series when the time data is split in multiple columns:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-series-when-the-timestamp-is-given-as-epoch-unix-time">
+     1.5 Time-series when the timestamp is given as epoch (Unix Time)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#down-and-up-sampling-time-series-data">
+   2 Down and up-sampling time-series data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-asfreq-vs-resample">
+     2.1 Method ‘asfreq’ vs. ‘resample’
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#down-sampling-the-data-in-a-time-series">
+     2.2 Down-sampling the data in a time-series
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#producing-hourly-average-irradiance-from-minutely-observations">
+       Producing hourly average irradiance from minutely observations
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#producing-time-series-of-monthly-total-ghi-dhi-dni-irradiation-from-minutely-observations">
+       Producing time-series of monthly total GHI, DHI, DNI irradiation from minutely observations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#up-sampling-the-data-in-a-time-series">
+     2.3 Up-sampling the data in a time-series
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#producing-half-hourly-irradiance-series-from-hourly-observations">
+       Producing half-hourly irradiance series from hourly observations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolating-time-series-data">
+   3 Interpolating time-series data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-time-series-data">
+   4 Visualizing time-series data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-a-time-series-for-a-day-of-interest">
+     4.1 Plotting a time-series for a day of interest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-a-time-series-for-a-few-consecutive-days-of-interest">
+     4.2 Plotting a time-series for a few consecutive days of interest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-a-time-series-for-a-few-non-consecutive-days-of-interest">
+     4.3 Plotting a time-series for a few non-consecutive days of interest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#daily-insolation-throughout-the-year">
+     4.4 Daily insolation throughout the year
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-summary">
+   Section summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references-a-id-references-a">
+   References
+   <a id="references">
+   </a>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="manipulating-time-series">
-<h1>Manipulating Time-series<a class="headerlink" href="#manipulating-time-series" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="manipulating-time-series">
+<h1>Manipulating Time-series<a class="headerlink" href="#manipulating-time-series" title="Permalink to this headline">#</a></h1>
 <p>Time-series are a key element when assessing solar resource data. In this section, we present several examples to learn how to deal with different formats in the data and few common tasks to prepare our time-series for later analysis, such as down and up-sampling data when we need different temporal resolution than that initially available or interpolating missing values in the data.</p>
 <p>The dataset used in the examples of this section is a customized dataset using solar radiation measurements from the Measurement and Instrumentation Data Center (MIDC) of the U.S. National Renewable Energy Laboratory (NREL). The station selected is located at the University of Nevada - Las Vegas (UNLV) and the data used are 1-minute GHI, DHI and DNI measurements for the year 2020 <span id="id1">[]</span>.</p>
 <p>In this section, we cover:</p>
@@ -440,8 +693,8 @@
 <li><p><a class="reference external" href="#visualizing-time-series-data">4 Visualizing time-series data</a></p></li>
 </ul>
 <hr class="docutils" />
-<div style="text-align: right"> <i>Content by Javier Lopez Lorente</i> </div><div class="section" id="time-series-handling">
-<h2>1 Time-series handling<a class="headerlink" href="#time-series-handling" title="Permalink to this headline">¶</a></h2>
+<div style="text-align: right"> <i>Content by Javier Lopez Lorente</i> </div><section id="time-series-handling">
+<h2>1 Time-series handling<a class="headerlink" href="#time-series-handling" title="Permalink to this headline">#</a></h2>
 <p>Datasets often come in different formats depending on the source. Those formats sometimes cannot be used straightaway to build a time-series and may require additional processing steps before building the time-series. For example:  <br></p>
 <ul class="simple">
 <li><p><strong>What if date and time are in different columns?</strong> <br></p></li>
@@ -463,8 +716,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="build-our-customized-dataset">
-<h3>1.1 Build our customized dataset<a class="headerlink" href="#build-our-customized-dataset" title="Permalink to this headline">¶</a></h3>
+<section id="build-our-customized-dataset">
+<h3>1.1 Build our customized dataset<a class="headerlink" href="#build-our-customized-dataset" title="Permalink to this headline">#</a></h3>
 <p>In order to build the customized dataset for this section, we make use of the I/O tools of the Python library <em>pvlib</em> to retrieve the data from the UNLV station in the MIDC. Data from other stations from the MIDC can be also retrieved using this method by adapting the station ID in the query. The different station IDs are available in the <a class="reference external" href="https://midcdmz.nrel.gov/apps/data_api_doc.pl?_idtextlist">MIDC raw data page</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -711,7 +964,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/ipykernel_launcher.py:14: FutureWarning: casting datetime64[ns, Etc/GMT+8] values to int64 with .astype(...) is deprecated and will raise in a future version. Use .view(...) instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/ipykernel_launcher.py:14: FutureWarning: casting datetime64[ns, Etc/GMT+8] values to int64 with .astype(...) is deprecated and will raise in a future version. Use .view(...) instead.
   
 </pre></div>
 </div>
@@ -814,9 +1067,9 @@
 </div></div></div>
 </div>
 <p>Now that we have our customized reference dataset of 1-minute irradiance measurements for 2020 and temporal data, we can start building the timeseries in different ways.</p>
-</div>
-<div class="section" id="time-series-when-timestamps-are-available">
-<h3>1.2 Time-series when timestamps are available:<a class="headerlink" href="#time-series-when-timestamps-are-available" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-series-when-timestamps-are-available">
+<h3>1.2 Time-series when timestamps are available:<a class="headerlink" href="#time-series-when-timestamps-are-available" title="Permalink to this headline">#</a></h3>
 <p>When timestamps are available, the most straightforward way to build the DataFrame with a datetime index is to convert the column with the timestamp into datetime format and set it as index.</p>
 <p>Let’s see how!</p>
 <div class="cell docutils container">
@@ -1045,9 +1298,9 @@
 </div></div></div>
 </div>
 <p>The valid timezone strings for other timezones can be found in this <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/timetimezones.html">link</a>. When the timezone is not provided as part of the timestamp, the function <em>tz_localize</em> can be used to localize the values in a timezone-naive series. <em>tz_localize</em> will be used in the next example.</p>
-</div>
-<div class="section" id="time-series-when-date-and-time-are-available">
-<h3>1.3 Time-series when date and time are available:<a class="headerlink" href="#time-series-when-date-and-time-are-available" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-series-when-date-and-time-are-available">
+<h3>1.3 Time-series when date and time are available:<a class="headerlink" href="#time-series-when-date-and-time-are-available" title="Permalink to this headline">#</a></h3>
 <p>When date and time are available in separate columns, a timestamp can be created in a new column and the new column can then be set as index and localized. Let’s have a look how to do that:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1167,9 +1420,9 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="time-series-when-the-time-data-is-split-in-multiple-columns">
-<h3>1.4 Time-series when the time data is split in multiple columns:<a class="headerlink" href="#time-series-when-the-time-data-is-split-in-multiple-columns" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-series-when-the-time-data-is-split-in-multiple-columns">
+<h3>1.4 Time-series when the time data is split in multiple columns:<a class="headerlink" href="#time-series-when-the-time-data-is-split-in-multiple-columns" title="Permalink to this headline">#</a></h3>
 <p>If time-related data are split across multiple columns, a timestamp can be created in a new column similarly than in the previous case. Let’s imagine our dataset would have the year, month, day, hour, and minute in separate columns. In that case, we could build our time-series as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1290,9 +1543,9 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="time-series-when-the-timestamp-is-given-as-epoch-unix-time">
-<h3>1.5 Time-series when the timestamp is given as epoch (Unix Time)<a class="headerlink" href="#time-series-when-the-timestamp-is-given-as-epoch-unix-time" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="time-series-when-the-timestamp-is-given-as-epoch-unix-time">
+<h3>1.5 Time-series when the timestamp is given as epoch (Unix Time)<a class="headerlink" href="#time-series-when-the-timestamp-is-given-as-epoch-unix-time" title="Permalink to this headline">#</a></h3>
 <p>If the dataset has epoch timestamps, note that the data will have UTC time. However, it can be converted to any timezone using the function <em>tz_convert</em>. If there are epoch timestamps, a datetime series can be formed as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1411,14 +1664,14 @@
 </div></div></div>
 </div>
 <p>We have seen how the same DataFrame with <em>datetimeindex</em> can be obtained in multiple ways depending on the format of time data provided.</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="down-and-up-sampling-time-series-data">
-<h2>2 Down and up-sampling time-series data<a class="headerlink" href="#down-and-up-sampling-time-series-data" title="Permalink to this headline">¶</a></h2>
+<section id="down-and-up-sampling-time-series-data">
+<h2>2 Down and up-sampling time-series data<a class="headerlink" href="#down-and-up-sampling-time-series-data" title="Permalink to this headline">#</a></h2>
 <p>When assessing solar resource, you may need a different time-resolution than your data for a particular part of the analysis. In those cases, it is possible to <strong>down-sample and up-sample the data at different temporal resolutions</strong> using two different methods within <a class="reference external" href="https://pandas.pydata.org/">pandas library</a> called <em>resample</em> and <em>asfreq</em>. Depending on your needs, you will opt for one or the other. Regardless of the method, both of them require a DataFrame with <em>datetimeindex</em> either time-aware (localized) or time-naive (not localized).</p>
-<div class="section" id="method-asfreq-vs-resample">
-<h3>2.1 Method ‘asfreq’ vs. ‘resample’<a class="headerlink" href="#method-asfreq-vs-resample" title="Permalink to this headline">¶</a></h3>
+<section id="method-asfreq-vs-resample">
+<h3>2.1 Method ‘asfreq’ vs. ‘resample’<a class="headerlink" href="#method-asfreq-vs-resample" title="Permalink to this headline">#</a></h3>
 <p>Let’s first create a new DataFrame with only the columns with solar data and see the differences between both methods with examples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1735,16 +1988,16 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.resample.DatetimeIndexResampler object at 0x7fefe2dc0a50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.resample.DatetimeIndexResampler object at 0x7f381bf94450&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p>The <em>resample</em> method accepts multiple <strong>mathematical and statistical operations</strong>. For example: maximum (max), minimum (min), arithmetic mean (mean), standard deviation (std), median (median), mode (mode), addition (sum), among others.</p>
 <p>Both methods allow for multiple <strong>frequencies options</strong>, the available frequency tags within Python can be found <a class="reference external" href="https://stackoverflow.com/questions/35339139/where-is-the-documentation-on-pandas-freq-tags">here</a>.</p>
-</div>
-<div class="section" id="down-sampling-the-data-in-a-time-series">
-<h3>2.2 Down-sampling the data in a time-series<a class="headerlink" href="#down-sampling-the-data-in-a-time-series" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="down-sampling-the-data-in-a-time-series">
+<h3>2.2 Down-sampling the data in a time-series<a class="headerlink" href="#down-sampling-the-data-in-a-time-series" title="Permalink to this headline">#</a></h3>
 <p>Down-sampling permits turning more frequent values into less frequent. In the context of solar resource and considering our 1-minute resolution dataset, down-sampling can be used for:</p>
 <ul class="simple">
 <li><p>Producing a timeseries of hourly/daily average irradiance.</p></li>
@@ -1753,8 +2006,8 @@ dtype: float64
 <li><p>And many more!</p></li>
 </ul>
 <p>Let’s implement some of these listed examples!</p>
-<div class="section" id="producing-hourly-average-irradiance-from-minutely-observations">
-<h4>Producing hourly average irradiance from minutely observations<a class="headerlink" href="#producing-hourly-average-irradiance-from-minutely-observations" title="Permalink to this headline">¶</a></h4>
+<section id="producing-hourly-average-irradiance-from-minutely-observations">
+<h4>Producing hourly average irradiance from minutely observations<a class="headerlink" href="#producing-hourly-average-irradiance-from-minutely-observations" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resampling to hourly mean values</span>
@@ -1885,9 +2138,9 @@ dtype: float64
 </div></div></div>
 </div>
 <p>A time-series with the maximum irradiance would be similar replacing <em>‘mean()’</em> with <em>‘max()’</em>.</p>
-</div>
-<div class="section" id="producing-time-series-of-monthly-total-ghi-dhi-dni-irradiation-from-minutely-observations">
-<h4>Producing time-series of monthly total GHI, DHI, DNI irradiation from minutely observations<a class="headerlink" href="#producing-time-series-of-monthly-total-ghi-dhi-dni-irradiation-from-minutely-observations" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="producing-time-series-of-monthly-total-ghi-dhi-dni-irradiation-from-minutely-observations">
+<h4>Producing time-series of monthly total GHI, DHI, DNI irradiation from minutely observations<a class="headerlink" href="#producing-time-series-of-monthly-total-ghi-dhi-dni-irradiation-from-minutely-observations" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resampling to monthly aggregated values</span>
@@ -2005,13 +2258,13 @@ dtype: float64
 </div></div></div>
 </div>
 <p>It could be done in similar way for other resolutions (e.g. daily or annual irradiation).</p>
-</div>
-</div>
-<div class="section" id="up-sampling-the-data-in-a-time-series">
-<h3>2.3 Up-sampling the data in a time-series<a class="headerlink" href="#up-sampling-the-data-in-a-time-series" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="up-sampling-the-data-in-a-time-series">
+<h3>2.3 Up-sampling the data in a time-series<a class="headerlink" href="#up-sampling-the-data-in-a-time-series" title="Permalink to this headline">#</a></h3>
 <p>Up-sampling permits obtaining more frequent values from less frequent. For solar data, depending on the application up to sub-minutely data could be required and up-sampling is a technique that provides a manner to increase the temporal resolution to adapt it to our needs. For example, turning an hourly time-series into a half-hourly. Let’s see an example using both <em>resample</em> and <em>asfreq</em>.</p>
-<div class="section" id="producing-half-hourly-irradiance-series-from-hourly-observations">
-<h4>Producing half-hourly irradiance series from hourly observations<a class="headerlink" href="#producing-half-hourly-irradiance-series-from-hourly-observations" title="Permalink to this headline">¶</a></h4>
+<section id="producing-half-hourly-irradiance-series-from-hourly-observations">
+<h4>Producing half-hourly irradiance series from hourly observations<a class="headerlink" href="#producing-half-hourly-irradiance-series-from-hourly-observations" title="Permalink to this headline">#</a></h4>
 <p>Using the DataFrame <em>df_hourly</em> created previously, it can be up-sample as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2529,12 +2782,12 @@ dtype: float64
 </div></div></div>
 </div>
 <p>The use of the methods <em>asfreq</em> or <em>resample</em> will depend on your dataset and the analysis you aim to undertake.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="interpolating-time-series-data">
-<h2>3 Interpolating time-series data<a class="headerlink" href="#interpolating-time-series-data" title="Permalink to this headline">¶</a></h2>
+<section id="interpolating-time-series-data">
+<h2>3 Interpolating time-series data<a class="headerlink" href="#interpolating-time-series-data" title="Permalink to this headline">#</a></h2>
 <p>When up-sampling the data series, it can happen that back-filling, forward-filling and constant replacement does not necessarily work for your analysis/application. An alternative approach is interpolating the replacing the NaN values with an interpolated result. Interpolation in Pandas DataFrames with <em>DatetimeIndex</em> is done with the <em>interpolate</em> method.</p>
 <p>The mathematical interpolation method in <em>interpolate</em> is defined with the argument called <em>‘method’</em>. Pandas permits several interpolation methods, such as ‘linear’, ‘cubic’, ‘quadratic’, ‘spline’, ‘polynomial’ and others. All the interpolation options can be found in the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.interpolate.html">documentation</a> of the <em>interpolate</em> method.</p>
 <p>Following the previous example, let’s implement interpolation in the missing values of the half-hourly timestamps using ‘linear’, ‘cubic’ and ‘polynomial’ methods:</p>
@@ -2855,12 +3108,12 @@ dtype: float64
 </div></div></div>
 </div>
 <p>The interpolation of NaN values when up-sampling time-series data can help overcome the issues of using back or forward filling, specially if you aim to up-sample at higher frequencies than the example shown (e.g. 1-hour to 15-minute resolution series). The mathematical methods available for interpolation within Pandas are diverse and cover beyond the most common interpolation functions.</p>
-</div>
-<div class="section" id="visualizing-time-series-data">
-<h2>4 Visualizing time-series data<a class="headerlink" href="#visualizing-time-series-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="visualizing-time-series-data">
+<h2>4 Visualizing time-series data<a class="headerlink" href="#visualizing-time-series-data" title="Permalink to this headline">#</a></h2>
 <p>It is often useful to visualize the data to grasp insighs and observe trends about the data. This section shows few examples to visualize time-series data.</p>
-<div class="section" id="plotting-a-time-series-for-a-day-of-interest">
-<h3>4.1 Plotting a time-series for a day of interest<a class="headerlink" href="#plotting-a-time-series-for-a-day-of-interest" title="Permalink to this headline">¶</a></h3>
+<section id="plotting-a-time-series-for-a-day-of-interest">
+<h3>4.1 Plotting a time-series for a day of interest<a class="headerlink" href="#plotting-a-time-series-for-a-day-of-interest" title="Permalink to this headline">#</a></h3>
 <p>Below there is an example to visualize a single day of interest. With DataFrames using <em>DatetimeIndex</em> it is easy to select a particular day and Pandas interacts with Matplotlib.Pyplot library to plot straight-away.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2874,7 +3127,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/ipykernel_launcher.py:2: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/ipykernel_launcher.py:2: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
   
 </pre></div>
 </div>
@@ -2897,20 +3150,20 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/ipykernel_launcher.py:2: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/ipykernel_launcher.py:2: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
   
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/ipykernel_launcher.py:3: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
+/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/ipykernel_launcher.py:3: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
   This is separate from the ipykernel package so we can avoid doing imports until
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/ipykernel_launcher.py:4: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
+/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/ipykernel_launcher.py:4: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
   after removing the cwd from sys.path.
 </pre></div>
 </div>
 <img alt="../_images/manipulating_time_series_59_1.png" src="../_images/manipulating_time_series_59_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="plotting-a-time-series-for-a-few-consecutive-days-of-interest">
-<h3>4.2 Plotting a time-series for a few consecutive days of interest<a class="headerlink" href="#plotting-a-time-series-for-a-few-consecutive-days-of-interest" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="plotting-a-time-series-for-a-few-consecutive-days-of-interest">
+<h3>4.2 Plotting a time-series for a few consecutive days of interest<a class="headerlink" href="#plotting-a-time-series-for-a-few-consecutive-days-of-interest" title="Permalink to this headline">#</a></h3>
 <p>Below there is an example to visualize a few consecutive days (e.g. 5 days) of interest. By using [‘start date’]:[‘end date’] it is possible to select time ranges easily with a DataFrame having a <em>DatetimeIndex</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2938,9 +3191,9 @@ dtype: float64
 <img alt="../_images/manipulating_time_series_61_0.png" src="../_images/manipulating_time_series_61_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="plotting-a-time-series-for-a-few-non-consecutive-days-of-interest">
-<h3>4.3 Plotting a time-series for a few non-consecutive days of interest<a class="headerlink" href="#plotting-a-time-series-for-a-few-non-consecutive-days-of-interest" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="plotting-a-time-series-for-a-few-non-consecutive-days-of-interest">
+<h3>4.3 Plotting a time-series for a few non-consecutive days of interest<a class="headerlink" href="#plotting-a-time-series-for-a-few-non-consecutive-days-of-interest" title="Permalink to this headline">#</a></h3>
 <p>Below there is an example to visualize a few non-consecutive days of interest, which could be the case when we would like to observe several days scattered throughout the year a single plot. In order to do this, we need to select the day of interest from the DataFrame and then reset its <em>DatetimeIndex</em>. For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2961,16 +3214,16 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/ipykernel_launcher.py:5: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/ipykernel_launcher.py:5: FutureWarning: Indexing a DataFrame with a datetimelike index using a single string to slice the rows, like `frame[string]`, is deprecated and will be removed in a future version. Use `frame.loc[string]` instead.
   &quot;&quot;&quot;
 </pre></div>
 </div>
 <img alt="../_images/manipulating_time_series_63_1.png" src="../_images/manipulating_time_series_63_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="daily-insolation-throughout-the-year">
-<h3>4.4 Daily insolation throughout the year<a class="headerlink" href="#daily-insolation-throughout-the-year" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="daily-insolation-throughout-the-year">
+<h3>4.4 Daily insolation throughout the year<a class="headerlink" href="#daily-insolation-throughout-the-year" title="Permalink to this headline">#</a></h3>
 <p>With time-series data, the hourly/daily/monthly insolation (i.e. the sum of accumulated energy) can also be analysed throughout the year with time-series data. For example, below an example to visualize the daily insolation is shown:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3026,11 +3279,11 @@ dtype: float64
 <img alt="../_images/manipulating_time_series_67_0.png" src="../_images/manipulating_time_series_67_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="section-summary">
-<h2>Section summary<a class="headerlink" href="#section-summary" title="Permalink to this headline">¶</a></h2>
+<section id="section-summary">
+<h2>Section summary<a class="headerlink" href="#section-summary" title="Permalink to this headline">#</a></h2>
 <p>This section has shown how to build and work with a time-series in Python with multiple examples: <br></p>
 <ul class="simple">
 <li><p>We have seen how to prepare a DataFrame with <em>DatatimeIndex</em> to be used as a time-series when the timestamps are given in multiple formats in the temporal data and local/UTC time. <br></p></li>
@@ -3039,15 +3292,15 @@ dtype: float64
 <li><p>Finally, several ideas to visualize data have been presented. <br></p></li>
 </ul>
 <p>Overall, the possibilities with time-series of solar resource are many. The most useful and suitable analysis and visualizations will be determined by the application and scope of the study.</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="references-a-id-references-a">
-<h2>References<a id='references'></a><a class="headerlink" href="#references-a-id-references-a" title="Permalink to this headline">¶</a></h2>
+<section id="references-a-id-references-a">
+<h2>References<a id='references'></a><a class="headerlink" href="#references-a-id-references-a" title="Permalink to this headline">#</a></h2>
 <p>Andreas, A.; Stoffel, T.; (2006). University of Nevada (UNLV):
 Las Vegas, Nevada (Data); NREL Report No. DA-5500-56509.
 <a class="reference external" href="http://dx.doi.org/10.5439/1052548">http://dx.doi.org/10.5439/1052548</a></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -3071,64 +3324,48 @@ Las Vegas, Nevada (Data); NREL Report No. DA-5500-56509.
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="solar_components.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Solar Components</p>
-            </div>
-        </a>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="solar_components.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Solar Components</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="decomposition_models.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Solar Decomposition Models</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="decomposition_models.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Solar Decomposition Models</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By The Assessing Solar Community<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Assessing Solar Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-207152593-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
 
   </body>
 </html>
