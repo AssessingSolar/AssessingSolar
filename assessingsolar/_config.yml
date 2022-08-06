@@ -8,11 +8,6 @@ logo: graphics/assessing_solar_logo.png
 # Auto-exclude files not in the toc
 only_build_toc_files: true
 
-# Force re-execution of notebooks on each build.
-# See https://jupyterbook.org/content/execute.html
-execute:
-  execute_notebooks: force
-
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
@@ -53,3 +48,4 @@ launch_buttons:
 # Set the execution timeout (default=30 seconds)
 execute:
   timeout: 100
+  execute_notebooks: force  # Force re-execution of notebooks on each build.
