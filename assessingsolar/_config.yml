@@ -21,10 +21,12 @@ latex:
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
   - references.bib
-# Set reference style
+
 sphinx:
   config:
-    bibtex_reference_style: author_year
+    bibtex_reference_style: author_year  # Set reference style
+  extra_extensions:
+   - sphinx_gallery.gen_gallery
 
 # Information about where the book exists on the web
 repository:
