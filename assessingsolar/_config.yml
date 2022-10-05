@@ -38,7 +38,7 @@ html:
   use_issues_button         : true
   favicon                   : graphics/assessing_solar_favicon.ico  # A path to a favicon image
   baseurl                   : https://assessingsolar.org
-  google_analytics_id       : UA-207152593-1
+  google_analytics_id       : G-C67N2C1BYZ
 
 # Information about where the book exists on the web
 repository:
