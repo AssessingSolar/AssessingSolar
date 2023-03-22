@@ -8,7 +8,7 @@ timezone, or drift in datalogger timing.
 
 # %%
 # Incorrect timezone
-# ----------------
+# ------------------
 # First, let's take an existing dataset and purposefully set an incorrect
 # timezone in order to investigate how this can be detected.
 import numpy as np
@@ -16,6 +16,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import pvlib
+# sphinx_gallery_thumbnail_number = 2
 
 filename = '../notebooks/data/solar_irradiance_dtu_2019_extended.csv'
 df = pd.read_csv(filename, index_col=0, parse_dates=True)

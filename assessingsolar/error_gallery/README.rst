@@ -3,4 +3,4 @@
 Example Error Gallery
 =====================
 
-This gallery shows examples of errors in irradiance measurements. Community contributions are welcome!
+This gallery shows examples of different types of errors in irradiance measurements. Community contributions are welcome!
