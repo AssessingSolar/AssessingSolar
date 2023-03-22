@@ -64,7 +64,7 @@ df['2019-05-11 03':'2019-05-11 20'].plot.scatter(
 plt.show()
 
 # %%
-# From the above plot, it's clear that this phenomena occurs in the morning.
+# From the above plot, it's clear that this phenomenon occurs in the morning.
 # Let's see if we also can see the issue in the raw measurements for the same
 # day:
 df.loc['2019-05-11 03':'2019-05-11 20',
