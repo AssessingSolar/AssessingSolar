@@ -11,7 +11,8 @@ only_build_toc_files: true
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: off
+  timeout: 100  # Set the execution timeout (default=30 seconds)
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -23,8 +24,13 @@ bibtex_bibfiles:
   - references.bib
 # Set reference style
 sphinx:
+  extra_extensions:
+   - sphinx_gallery.gen_gallery
   config:
     bibtex_reference_style: author_year
+    sphinx_gallery_conf:
+      examples_dirs: error_gallery  # path to example scripts
+      gallery_dirs: error_gallery_outputs  # path to where to save gallery generated output
 
 # Information about where the book exists on the web
 repository:
@@ -49,7 +55,3 @@ repository:
 # Add launch button for Theme - making it possible to execute "live" code in the document
 launch_buttons:
   thebe                  : true
-
-# Set the execution timeout (default=30 seconds)
-execute:
-  timeout: 100

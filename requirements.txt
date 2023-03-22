@@ -1,4 +1,5 @@
 jupyter-book
+sphinx-gallery
 matplotlib
 numpy
 pandas
