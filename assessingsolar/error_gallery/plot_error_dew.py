@@ -72,7 +72,7 @@ df.loc['2019-05-11 03':'2019-05-11 20',
 plt.show()
 
 # %%
-# The wobly nature of the GHI measurements are clearly not realistic but are
+# The wobbly nature of the GHI measurements is clearly not realistic but is
 # caused by dew. In the beginning of the morning the measured GHI is reduced
 # but then as the dew evaporates, more irradiance is focused onto the GHI
 # sensors and consequently the measured irradiance is overestimated.
