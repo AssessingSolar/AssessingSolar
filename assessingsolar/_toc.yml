@@ -34,6 +34,8 @@ parts:
 #      title: Satellite Data
 #    - file: notebooks/reanalysis_data
 #      title: Reanalysis Data
+    - file: gallery/index.rst
+      title: Gallery of Errors
     - file: notebooks/quality_asessment
       title: Quality Assessment
 #    - file: notebooks/benchmarking

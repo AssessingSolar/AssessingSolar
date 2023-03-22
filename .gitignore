@@ -1,4 +1,5 @@
 assessingsolar/_build/*
+assessingsolar/gallery/*
 .ipynb_checkpoints
 .DS_Store
 __pycache__/
