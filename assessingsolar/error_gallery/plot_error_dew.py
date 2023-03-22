@@ -92,7 +92,7 @@ df['2019-05-11 03':'2019-05-11 20'].plot.scatter(
 plt.show()
 
 # %%
-# The irradiance measurements effected by dew are within the zone of valid
+# The irradiance measurements affected by dew are within the zone of valid
 # data, thus this type of plot does not seem to be useful for detecting periods
 # with dew.
 
