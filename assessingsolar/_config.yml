@@ -31,6 +31,7 @@ sphinx:
     sphinx_gallery_conf:
       examples_dirs: error_gallery  # path to example scripts
       gallery_dirs: error_gallery_outputs  # path to where to save gallery generated output
+      download_all_examples: False  # remove option of downloading all gallery examples
 
 # Information about where the book exists on the web
 repository:
