@@ -20,6 +20,8 @@ unventilated and unheated pyranometers.
 #   :alt: Image of two pyranometers, one with dew and one without.
 #   :width: 400
 #
+# sphinx_gallery_thumbnail_path = '../graphics/dew_pyranometers_dtu_20210112.jpg'
+#
 # Detecting dew
 # -------------
 # Let's take a look at some irradiance measuremens from DTU's Climate Station
@@ -56,7 +58,6 @@ ax.set_title('2019-05-11')
 
 # %%
 # From the above plot, it's clear that this phenomena occurs in the morning.
-
 # Let's see if we can also see the issue in the raw measurements for the same
 # day:
 ax = df.loc['2019-05-11 00':'2019-05-11 23',
