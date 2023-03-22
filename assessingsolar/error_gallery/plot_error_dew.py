@@ -26,7 +26,7 @@ the true value.
 # Impact of dew
 # -------------
 # Let's take a look at some irradiance measuremens from DTU's Climate Station
-# and see if we can observe this pheonmena.
+# and see if we can observe this phenomenon.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
