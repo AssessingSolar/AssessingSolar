@@ -3,9 +3,7 @@ Dew on radiometers
 ==================
 
 Dew on radiometers cause a deviation of the measured irradiance compared to
-the true value.
-
-This issue is most often observed during the morning on cold days for
+the true value. This issue is most often observed during the morning on cold days for
 unventilated and unheated pyranometers.
 """
 
@@ -41,12 +39,14 @@ df['hourofday'] = df.index.hour
 # Compare the calculated and measured GHI:
 df.plot.scatter(x='GHI', y='GHI_calc', s=1, alpha=0.5, grid=True)
 
+# %%
 # Zooming in at the low irradiance region, it is possible to detect swirling
 # lines, where measured GHI is initially higher than GHI_calc and then the
 # reverse occurs.
 df.plot.scatter(x='GHI', y='GHI_calc', s=1, alpha=0.5, grid=True,
                 xlim=(-10, 400), ylim=(-10, 400))
 
+# %%
 # A closer inspection of the data, let's us find a specific day where this
 # phenomena is pronounced.
 ax = df['2019-05-11 00':'2019-05-11 23'].plot.scatter(
@@ -54,6 +54,7 @@ ax = df['2019-05-11 00':'2019-05-11 23'].plot.scatter(
     sharex=False)
 ax.set_title('2019-05-11')
 
+# %%
 # From the above plot, it's clear that this phenomena occurs in the morning.
 
 # Let's see if we can also see the issue in the raw measurements for the same
