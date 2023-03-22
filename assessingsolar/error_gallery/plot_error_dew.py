@@ -57,7 +57,7 @@ plt.show()
 
 # %%
 # For a closer inspection of the data, let's find a specific day where this
-# phenomena is pronounced. As an example we'll look at May 11th 2019.
+# phenomenon is pronounced. As an example we'll look at May 11th 2019.
 df['2019-05-11 03':'2019-05-11 20'].plot.scatter(
     x='ghi', y='ghi_calc', s=1, grid=True, c='hourofday', cmap='plasma',
     sharex=False)
