@@ -162,7 +162,7 @@ savings can also be detected using this method.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.753 seconds)
+   **Total running time of the script:** ( 0 minutes  14.954 seconds)
 
 
 .. _sphx_glr_download_gallery_plot_error_time_shift.py:
