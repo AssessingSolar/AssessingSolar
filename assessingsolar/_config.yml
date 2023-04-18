@@ -1,0 +1,58 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Solar Resource Assessment in Python
+author: The Assessing Solar Community
+logo: graphics/assessing_solar_logo.png
+
+# Auto-exclude files not in the toc
+only_build_toc_files: true
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: off
+  timeout: 100  # Set the execution timeout (default=30 seconds)
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+# Set reference style
+sphinx:
+  extra_extensions:
+   - sphinx_gallery.gen_gallery
+  config:
+    bibtex_reference_style: author_year
+    sphinx_gallery_conf:
+      examples_dirs: error_gallery  # path to example scripts
+      gallery_dirs: gallery  # path to where to save gallery generated output
+      download_all_examples: False  # remove option of downloading all gallery examples
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/AssessingSolar/Assessing-Solar  # Online location of your book
+  #path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: master  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button         : true
+  favicon                   : graphics/assessing_solar_favicon.ico  # A path to a favicon image
+  baseurl                   : https://assessingsolar.org
+  google_analytics_id       : G-C67N2C1BYZ
+
+# Information about where the book exists on the web
+repository:
+  url                       : https://github.com/AssessingSolar/AssessingSolar  # Online location of your book
+  path_to_book              : AssessingSolar  # Optional path to your book, relative to the repository root
+  branch                    : main  # Which branch of the repository should be used when creating links (optional)
+
+# Add launch button for Theme - making it possible to execute "live" code in the document
+launch_buttons:
+  thebe                  : true
