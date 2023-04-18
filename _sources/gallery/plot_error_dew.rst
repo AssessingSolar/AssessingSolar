@@ -220,7 +220,7 @@ In short, dew is less common on pyrheliometers although it can be observed.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  4.863 seconds)
+   **Total running time of the script:** ( 0 minutes  5.310 seconds)
 
 
 .. _sphx_glr_download_gallery_plot_error_dew.py:
