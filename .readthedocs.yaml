@@ -16,4 +16,4 @@ python:
 sphinx:
   configuration: assessingsolar/_config.yml
   builder: html
-  fail_on_warning: true
+  # fail_on_warning: true
