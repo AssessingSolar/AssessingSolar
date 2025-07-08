@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Quality assessment of solar irradiance data &#8212; Solar Resource Assessment in Python</title>
   
@@ -15,50 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-C67N2C1BYZ"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -66,17 +64,21 @@
                 gtag('js', new Date());
                 gtag('config', 'G-C67N2C1BYZ');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-C67N2C1BYZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/quality_asessment';</script>
     <link rel="canonical" href="https://assessingsolar.org/notebooks/quality_asessment.html" />
-    <link rel="shortcut icon" href="../_static/assessing_solar_favicon.ico"/>
+    <link rel="icon" href="../_static/assessing_solar_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Solar Power Modelling" href="solar_power_modeling.html" />
@@ -90,19 +92,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +130,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,9 +158,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -156,12 +174,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/assessing_solar_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/assessing_solar_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/assessing_solar_logo.png" class="logo__image only-light" alt="Solar Resource Assessment in Python - Home"/>
+    <script>document.write(`<img src="../_static/assessing_solar_logo.png" class="logo__image only-dark" alt="Solar Resource Assessment in Python - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -183,17 +212,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solar resource data</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="ground_measurements.html">Ground Measurements</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="bsrn.html">Baseline Surface Radiation Network (BSRN)</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="srml.html">SRML</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../gallery/index.html">Gallery of Errors</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1"><a class="reference internal" href="ground_measurements.html">Ground Measurements</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gallery/index.html">Gallery of Errors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../gallery/plot_error_dew.html">Dew on radiometers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gallery/plot_error_time_shift.html">Time shift</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Quality Assessment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
@@ -221,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -230,14 +254,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -358,26 +382,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -421,25 +447,25 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="quality-assessment-of-solar-irradiance-data">
-<h1>Quality assessment of solar irradiance data<a class="headerlink" href="#quality-assessment-of-solar-irradiance-data" title="Permalink to this heading">#</a></h1>
+<h1>Quality assessment of solar irradiance data<a class="headerlink" href="#quality-assessment-of-solar-irradiance-data" title="Link to this heading">#</a></h1>
 <p>It is virtually impossible to make continuous solar irradiance measurements without some amount of missing and erroneously data. While data providers often conduct a basic quality check, users of irradiance data are strongly urged to conduct their own quality assessment, as the necessary level of quality control depends on the application. There exists numerous methods for quality assessment of irradiance time-series. However, there is no commonly agreed upon methodology within the scientific community and hence, each user often ends up with his or her own method of quality assessing data and flagging/removing questionable data.</p>
 <p>This section aims at giving an introduction to the most commonly used quality assessment methods and a practical guide in how to apply them.</p>
 <hr class="docutils" />
 <div style="text-align: right"> <i>Content by Adam R. Jensen & Yves-Marie Saint-Drenan</i> </div><br>
 <section id="load-data">
-<h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
+<h2>Load data<a class="headerlink" href="#load-data" title="Link to this heading">#</a></h2>
 <p>In order to demonstrate the quality assessment methods which will be introduced in this notebook, some sample data is needed. In the following code block, a one year dataset of GHI, DHI, and DNI from the <a class="reference external" href="http://climatestationdata.byg.dtu.dk/">Technical University of Denmark</a> is read into a pandas DataFrame. The data file can be downloaded <a class="reference external" href="https://github.com/AssessingSolar/AssessingSolar/tree/main/assessingsolar/notebooks/data/solar_irradiance_dtu_2019.csv">here</a>. It is important to note, that in order to correctly calculate solar angles and sunrise/sunset times, the index must be made timezone aware.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
-<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
-<span class="kn">import</span> <span class="nn">pvlib</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.dates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mdates</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pvlib</span>
 
 <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;data/solar_irradiance_dtu_2019.csv&#39;</span>
 
@@ -533,7 +559,7 @@ document.write(`
 <br>
 </section>
 <section id="visual-inspection">
-<h2>Visual inspection<a class="headerlink" href="#visual-inspection" title="Permalink to this heading">#</a></h2>
+<h2>Visual inspection<a class="headerlink" href="#visual-inspection" title="Link to this heading">#</a></h2>
 <p>As a first check it is important to visualize the data, in order to ensure that the data has been loaded as expected and to detect major issues. For this purpose, the different measurements have been plotted as a function of time, as well as a histogram. Generally, this first qualitative analysis allows detecting major issues in the data set. Nevertheless, it is not possible to judge their plausibility at this stage of the data analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -549,13 +575,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/31346904ab00696c72b9832e9a9d4f8264057934e4b03f90bd4a1a451f45de29.png" src="../_images/31346904ab00696c72b9832e9a9d4f8264057934e4b03f90bd4a1a451f45de29.png" />
+<img alt="../_images/ddc9b5d9546260c45da7aabcecbba363f8610b5eae2e3f1ab0b566484935e1bd.png" src="../_images/ddc9b5d9546260c45da7aabcecbba363f8610b5eae2e3f1ab0b566484935e1bd.png" />
 </div>
 </div>
 <br>
 </section>
 <section id="checking-for-missing-data">
-<h2>Checking for missing data<a class="headerlink" href="#checking-for-missing-data" title="Permalink to this heading">#</a></h2>
+<h2>Checking for missing data<a class="headerlink" href="#checking-for-missing-data" title="Link to this heading">#</a></h2>
 <p>Depending on the source of the data, there may be significnatly amount of missing data or gaps in the time series. This is typicaly for ground measurements, where cleaning events and periods of instrument malfunction have often been removed. Preferably the timestamps for these periods should still be present in the dataset with a corresonding nan entry, though sometimes the time stamp entries have been entirely omitted. Therefore, it is important to first ensure that the time series has a consistent frequency, e.g. that that there are no missing time entries. This can easily be achieved using the <em>asfreq</em> function, which converts the time-series to a consistent frequency (e.g. 1 min., 15 min., or 1 h), by adding missing rows. First then can the amount of missing data be quantified and the subsequent 2D plots be generated in the next section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -571,19 +597,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Missing rows added: 0.5 %
-Missing data GHI: 0.5 %
-Missing data DHI: 0.5 %
-Missing data DNI: 0.5 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Missing rows added: 1.0 %
+Missing data GHI: 1.0 %
+Missing data DHI: 1.0 %
+Missing data DNI: 1.0 %
 </pre></div>
 </div>
-<img alt="../_images/ac0a9fb481cda3cde9d1db986d3cabcef586484c2fe87b81c693de1f0ec19546.png" src="../_images/ac0a9fb481cda3cde9d1db986d3cabcef586484c2fe87b81c693de1f0ec19546.png" />
+<img alt="../_images/b183396cded0bcbb4e4a195e64229571e964256aabbcb4a4794bd129e517fe8d.png" src="../_images/b183396cded0bcbb4e4a195e64229571e964256aabbcb4a4794bd129e517fe8d.png" />
 </div>
 </div>
 <br>
 </section>
 <section id="two-dimensional-visual-inspection">
-<h2>Two-dimensional visual inspection<a class="headerlink" href="#two-dimensional-visual-inspection" title="Permalink to this heading">#</a></h2>
+<h2>Two-dimensional visual inspection<a class="headerlink" href="#two-dimensional-visual-inspection" title="Link to this heading">#</a></h2>
 <p>In the visualization of the raw data in Section 5.2, it was possible to detect large gaps, extreme values, and seasonal variations. However, the daily variations was smothered and pratically indistinguisable due to the large amount of data. To overcome this limitation, a two-dimensional visualization method is presented in this section, where the x-axis coresponds to the day, the y-axis corresponds to the time of day, and the pixel color corresponds to the measurement value. The strength of this two-dimensional method is that each data point is visible, allowing for both intra-day and seasonal trends to be observe. This is particularly useful for detecting errors over time, such as time shifts, missing data, and possibly shading.</p>
 <p>To add structure to the 2D plots, we will plot the sunrise and sunset times, which are calculated as:</p>
 <div class="cell docutils container">
@@ -631,17 +657,17 @@ Missing data DNI: 0.5 %
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/88367cf96df27f09e4afcce9a51917bdb2c579126798fafd34b784c2f8f72728.png" src="../_images/88367cf96df27f09e4afcce9a51917bdb2c579126798fafd34b784c2f8f72728.png" />
+<img alt="../_images/dde8c665f82d9edee72cde10d887b773fbcccd590011f95de163644f9f3a97fe.png" src="../_images/dde8c665f82d9edee72cde10d887b773fbcccd590011f95de163644f9f3a97fe.png" />
 </div>
 </div>
 <br>
 </section>
 <section id="limit-checks">
-<h2>Limit checks<a class="headerlink" href="#limit-checks" title="Permalink to this heading">#</a></h2>
+<h2>Limit checks<a class="headerlink" href="#limit-checks" title="Link to this heading">#</a></h2>
 <p>To verify the validity of the measurements, we apply the test proposed by <a class="reference external" href="https://bsrn.awi.de/fileadmin/user_upload/bsrn.awi.de/Publications/BSRN_recommended_QC_tests_V2.pdf">Long and Dutton</a> and
 recommened by the BSRN. This first quality control consists in a set of two tests for each physical quantity: the physically possible limit and the extremely rare limit tests. These are detailed for the GHI, the DHI and the BNI below:</p>
 <section id="physical-possible-limits">
-<h3>Physical possible limits<a class="headerlink" href="#physical-possible-limits" title="Permalink to this heading">#</a></h3>
+<h3>Physical possible limits<a class="headerlink" href="#physical-possible-limits" title="Link to this heading">#</a></h3>
 <p>Physically Possible Limits (PPL) check the maximum and minimum limits that can be reached by irradiance, the upper limits depend on the solar zenith angle, the minimal value of solar irradiance must be 0 W/m², but because of the radiative cooling at night the limit is set at -4 W/m², the test applies independently to each of the three components as follows:</p>
 <div class="math notranslate nohighlight">
 \[ -4 \text{ W/m^2} &lt; \text{GHI} &lt; S_a \cdot 1.5 \mu_0^{1.2} + 100 \text{ W/m^2}\]</div>
@@ -651,7 +677,7 @@ recommened by the BSRN. This first quality control consists in a set of two test
 \[ -4 \text{ W/m$^2$} &lt; \text{DNI} &lt; S_a \]</div>
 </section>
 <section id="extremely-rare-limits">
-<h3>Extremely rare limits<a class="headerlink" href="#extremely-rare-limits" title="Permalink to this heading">#</a></h3>
+<h3>Extremely rare limits<a class="headerlink" href="#extremely-rare-limits" title="Link to this heading">#</a></h3>
 <p>The limits of the “Extremely Rare Limits”(ERL) procedure are more strict than those of the “Physically Possible” test. ERL differs from the PPL test in that the measurements rarely reach these limits, and even if the case is only for short periods of a few seconds to one or two minutes, and also in those measurements violating these limits are not necessarily incorrect but their plausibility should be checked more specifically. The ERL limits are defined as follows:</p>
 <div class="math notranslate nohighlight">
 \[ -2 \text{ W/m$^2$} &lt; \text{GHI} &lt; S_a \cdot 1.2 \mu_0^{1.2} + 50 \text{ W/m$^2$}\]</div>
@@ -660,7 +686,7 @@ recommened by the BSRN. This first quality control consists in a set of two test
 <div class="math notranslate nohighlight">
 \[ -2 \text{ W/m$^2$} &lt; \text{DNI} &lt; S_a \cdot 0.95 \mu_0^{0.2} + 10 \text{ Wm$^{-2}$}\]</div>
 <p>A graphical representation of these two tests is possible by representing the 10-minute averages of GHI, DHI or DNI as a function of the irradiance received at the top of the atmosphere (TOA). This representation is shown in Fig. 7 where the one-component PPL and ERL tests are represented by green and red lines respectively. In view of the QC equations, it might have been simpler to use the cosine of the zenith solar angle for the graphical representation of the QC. However, we opted for the irradiance at the top of the atmosphere because we judged this quantity to be more intuitive. Finally, another quantity would have been more suitable to represent the quality control of the DNI but we chose to keep the same quantity between the different representations for consistency reasons.</p>
-<p>First, it is necessary to calculate the extraterrestrial radiation I<span class="math notranslate nohighlight">\(_0\)</span> as used in the equations above:</p>
+<p>First, it is necessary to calculate the extraterrestrial radiation <span class="math notranslate nohighlight">\(S_a\)</span> as used in the equations above:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;extra_radiation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">get_extra_radiation</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
@@ -702,16 +728,24 @@ recommened by the BSRN. This first quality control consists in a set of two test
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cd1b2dbb4930e4374f768f9534bb76ed760925fedec89c0a63a5d8729656b8b0.png" src="../_images/cd1b2dbb4930e4374f768f9534bb76ed760925fedec89c0a63a5d8729656b8b0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\arajen\AppData\Local\Temp\ipykernel_29376\1538918722.py:23: MatplotlibDeprecationWarning: The legendHandles attribute was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use legend_handles instead.
+  for handle in legend.legendHandles:
+C:\Users\arajen\AppData\Local\Temp\ipykernel_29376\1538918722.py:23: MatplotlibDeprecationWarning: The legendHandles attribute was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use legend_handles instead.
+  for handle in legend.legendHandles:
+C:\Users\arajen\AppData\Local\Temp\ipykernel_29376\1538918722.py:23: MatplotlibDeprecationWarning: The legendHandles attribute was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use legend_handles instead.
+  for handle in legend.legendHandles:
+</pre></div>
+</div>
+<img alt="../_images/1fec732f48087f8b8584c4d6631d5670694f46f569e454b1b271c81351b79de1.png" src="../_images/1fec732f48087f8b8584c4d6631d5670694f46f569e454b1b271c81351b79de1.png" />
 </div>
 </div>
 <br>
 </section>
 </section>
 <section id="comparison-checks">
-<h2>Comparison checks<a class="headerlink" href="#comparison-checks" title="Permalink to this heading">#</a></h2>
+<h2>Comparison checks<a class="headerlink" href="#comparison-checks" title="Link to this heading">#</a></h2>
 <section id="diffuse-ratio-test">
-<h3>Diffuse ratio test<a class="headerlink" href="#diffuse-ratio-test" title="Permalink to this heading">#</a></h3>
+<h3>Diffuse ratio test<a class="headerlink" href="#diffuse-ratio-test" title="Link to this heading">#</a></h3>
 <p>Another test recommended by BSRN is the two-component test where the consistency of independent measurements is tested. Where GHI and DHI measurements are available, a comparison of these two measures can be checked for consistency by applying, for GHI&gt;50 W/m², the following two-component tests:</p>
 <div class="math notranslate nohighlight">
 \[ 0.92 &lt; \frac{GHI}{\text{DHI + DNI cos($\theta_z$)}} &lt; 1.08 \]</div>
@@ -731,25 +765,25 @@ recommened by the BSRN. This first quality control consists in a set of two test
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x196642214f0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1dcb62b1390&gt;]
 </pre></div>
 </div>
-<img alt="../_images/4a6a1425ad1dd7e1924918bc258793c2551c38e5186ebba1d76c59978830cf6f.png" src="../_images/4a6a1425ad1dd7e1924918bc258793c2551c38e5186ebba1d76c59978830cf6f.png" />
+<img alt="../_images/2481ff386249dddd65f35221d036a6d6e213e6991529479384e94a90123b9603.png" src="../_images/2481ff386249dddd65f35221d036a6d6e213e6991529479384e94a90123b9603.png" />
 </div>
 </div>
 </section>
 <section id="closure-equation-test">
-<h3>Closure-equation test<a class="headerlink" href="#closure-equation-test" title="Permalink to this heading">#</a></h3>
-<p>The three-component test is intended to compare the GHI measured by the pyranometer and calculated from the measured DHI and DNI:</p>
-<p>This test only applies for GHI&gt;50 W/m<span class="math notranslate nohighlight">\(^2\)</span>.</p>
-<p>Here again, we propose a data visualization corresponding to this test. For this, we can note that the three-component test consists in comparing the GHI measured with the pyranometer with an estimate of the GHI obtained with the DNI measured with a pherilyometer and the DHI measured with a shaded pyranometer using the equation linking the GHI with two other components and the zenith solar angle . Ideally, the ratio of measured and estimated GHI should be 1.0, but instruments characteristics often produce values far from unity.</p>
+<h3>Closure-equation test<a class="headerlink" href="#closure-equation-test" title="Link to this heading">#</a></h3>
+<p>The three-component test is intended to compare the GHI measured by the pyranometer and GHI calculated from the measured DHI and DNI:</p>
+<p>This test only applies when the calculated GHI&gt;50 W/m<span class="math notranslate nohighlight">\(^2\)</span>.</p>
+<p>Here again, we propose a data visualization corresponding to this test. For this, we can note that the three-component test consists in comparing the GHI measured with the pyranometer with an estimate of the GHI obtained with the DNI measured with a pyrheliometer and the DHI measured with a shaded pyranometer using the equation linking the GHI with two other components and the zenith solar angle. Ideally, the ratio of measured and estimated GHI should be 1.0, but instrument characteristics often produce values far from unity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sumsw&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DHI&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DNI&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">]))</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sumsw_ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GHI&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sumsw&#39;</span><span class="p">]</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">93</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;GHI&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;zenith&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sumsw_ratio&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.76</span><span class="p">,</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;zenith&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">93</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sumsw&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;zenith&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sumsw_ratio&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.76</span><span class="p">,</span>
                                                   <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">93</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">93</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.08</span><span class="p">,</span><span class="mf">1.08</span><span class="p">,</span><span class="mf">1.15</span><span class="p">,</span><span class="mf">1.15</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">93</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.92</span><span class="p">,</span><span class="mf">0.92</span><span class="p">,</span><span class="mf">0.85</span><span class="p">,</span><span class="mf">0.85</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -757,10 +791,10 @@ recommened by the BSRN. This first quality control consists in a set of two test
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x19664285850&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1dcb5db1a50&gt;]
 </pre></div>
 </div>
-<img alt="../_images/1bd26c56e6403ea29bfd75ea51827bae875edf26a08c1a53c91d61e50db3e966.png" src="../_images/1bd26c56e6403ea29bfd75ea51827bae875edf26a08c1a53c91d61e50db3e966.png" />
+<img alt="../_images/92bf126d9043d6ce42962807a83a3edb922e9bf00b8547bd569023c9caf68c55.png" src="../_images/92bf126d9043d6ce42962807a83a3edb922e9bf00b8547bd569023c9caf68c55.png" />
 </div>
 </div>
 </section>
@@ -792,11 +826,10 @@ recommened by the BSRN. This first quality control consists in a set of two test
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../gallery/plot_error_time_shift.html"
@@ -816,10 +849,7 @@ recommened by the BSRN. This first quality control consists in a set of two test
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -827,6 +857,7 @@ recommened by the BSRN. This first quality control consists in a set of two test
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -869,9 +900,10 @@ By The Assessing Solar Community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -895,8 +927,8 @@ By The Assessing Solar Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

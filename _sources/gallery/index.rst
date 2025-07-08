@@ -13,6 +13,7 @@ This gallery shows examples of different types of errors in irradiance measureme
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
@@ -33,7 +34,7 @@ This gallery shows examples of different types of errors in irradiance measureme
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Time shifts in irradiance data is common, e.g., due daylight savings, incorrect timezone, or dr...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Time shifts in irradiance data is common, e.g., due daylight savings, incorrect timezone, or drift in datalogger timing.">
 
 .. only:: html
 
@@ -47,6 +48,8 @@ This gallery shows examples of different types of errors in irradiance measureme
       <div class="sphx-glr-thumbnail-title">Time shift</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
