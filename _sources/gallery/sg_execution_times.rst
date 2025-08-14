@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:09.367** total execution time for 2 files **from gallery**:
+**00:09.357** total execution time for 2 files **from gallery**:
 
 .. container::
 
@@ -33,8 +33,8 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_gallery_plot_error_time_shift.py` (``plot_error_time_shift.py``)
-     - 00:05.662
+     - 00:05.647
      - 0.0
    * - :ref:`sphx_glr_gallery_plot_error_dew.py` (``plot_error_dew.py``)
-     - 00:03.704
+     - 00:03.710
      - 0.0
